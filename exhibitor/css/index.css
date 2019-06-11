@@ -20,7 +20,6 @@ html, body {
 .tab-pane {
     padding: 20px;
 }
-
 @media (max-width: 768px) {
     /* For mobile devices */
     /* This is to make the side bar and the main tabs stack on top of each other*/
