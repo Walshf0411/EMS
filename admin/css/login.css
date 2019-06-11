@@ -1,0 +1,60 @@
+html, body {
+    background: #e0e0e0;
+}
+
+#main-container{
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
+.input_box{
+	background-color: transparent;
+	border:none;
+	width: 100%;
+	color: black;
+}
+.input_box::placeholder{
+	color: black;
+}
+.input_div{
+	position: relative;
+	display: flex;
+	border:1px solid black;
+	border-radius: 10px;
+	max-width: 450px;
+}
+.fa{
+	margin: 0;
+	padding: 12px;	
+}
+.input_box_text{
+	position: absolute;
+	top: 6px;
+	left: 40px;
+}
+.clear{
+	clear: both;
+}
+
+.login-container {
+    width: 30%;
+    position: relative;
+    top: 15%;
+    display: flex;
+    justify-content: center;
+    background: #fafafa;
+    border-radius: 15px;
+    margin-top: 7%;
+    padding: 12px;
+    box-shadow: 0 0 10px black; 
+}
+#logo_image {
+    margin-top: 15px;
+}
+
+@media (max-width: 474px) {
+    .login-container{
+        width: 85%;
+    }
+}
