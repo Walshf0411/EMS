@@ -1,0 +1,19 @@
+html, body {
+    background: #e0e0e0;
+}
+.fa, .fab{
+    margin: 0;
+    padding: 6px;
+}
+.main-content {
+    margin-top: 20px;
+}
+.nav-link, .side-tab, .tab-pane {
+    border-radius: 15px;
+}
+.side-tab, .tab-pane {
+    background: #fafafa;
+}
+.tab-pane {
+    padding: 20px;
+}
