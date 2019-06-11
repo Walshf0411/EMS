@@ -1,0 +1,34 @@
+#add-exhibitor-form {
+    margin: 0 2%;
+}
+
+#exhibitor-list-table{
+    width: 100%;
+}
+
+/* css to show scroll bar in table*/
+.table-wrapper{
+    overflow: auto;
+    max-height: 350px;
+}
+
+.add-exhibitor, .exhibitor-list{
+    position: relative;
+}
+#overlay-child-add-exhibitor {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+}
+#overlay-child-exhibitor-list{
+    position: absolute;
+    top: 25%;
+    left: 34%;
+}
+
+#exhibitor-list-overlay {
+    display: none;
+}
+#add-exhibitor-overlay {
+    display: none;
+}

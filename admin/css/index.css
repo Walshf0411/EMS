@@ -14,6 +14,32 @@ html, body {
 .side-tab, .tab-pane {
     background: #fafafa;
 }
+.side-tab {
+    position: fixed;
+}
 .tab-pane {
     padding: 20px;
+}
+
+@media (max-width: 768px) {
+    /* For mobile devices */
+    /* This is to make the side bar and the main tabs stack on top of each other*/
+    .side-tab {
+        position: static;
+        margin-bottom: 12px;
+    }
+    .tab-pane {
+        padding: 12px;
+    }
+}
+
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px) {
+    /* for tablets*/
+    .side-tab {
+        position: static;
+        margin-bottom: 12px;
+    }
+
 }

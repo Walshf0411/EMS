@@ -1,0 +1,11 @@
+.change-preference-form {
+    margin: 0 2% 15px 2%;
+} 
+.change-preference-form label {
+    font-weight: bold;
+}
+.help-text {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px; 
+}
