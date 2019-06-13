@@ -1,5 +1,9 @@
 <?php
 
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
+
 require_once("globals.php");
 if (DEBUG) {
     require_once("local_connect.php");
@@ -10,10 +14,7 @@ if (DEBUG) {
 function sendMail ($conn, $toAddress, $toName, $username, $password) {
     $preferences = getAdminPreferences($conn);
 
-    require("../class.phpmailer.php");
-
-    $mail = new PHPMailer(true);
-    $mail->SMTPDebug = 2;
+    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
     $mailBody = "<html>
             <br>Dear $toName,<br>".
             $preferences['mail_body']."<br>Below are your login credentials. Kindly login to the provided link and fill in the exhbitor manual.<br><br>
@@ -52,5 +53,5 @@ function sendMail ($conn, $toAddress, $toName, $username, $password) {
     return $mail->Send();
 }
 
-var_dump(sendMail($conn, "2016.walsh.fernandes@ves.ac.in", "Walsh Fernandes", "walsh", "gitbtitw"));
+// var_dump(sendMail($conn, "2016.walsh.fernandes@ves.ac.in", "Walsh Fernandes", "walsh", "gitbtitw"));
 ?>
