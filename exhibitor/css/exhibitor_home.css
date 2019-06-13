@@ -1,0 +1,7 @@
+.home-header {
+    display: flex;
+    justify-content: center;
+}
+.home-content {
+    margin-top: 5%;
+}
