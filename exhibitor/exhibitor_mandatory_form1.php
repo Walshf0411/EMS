@@ -1,4 +1,4 @@
-
+    <?php require('../utils/form_logo_details.php'); ?>
     <div class="col-md-12 col-sm-12">
         <p class="table">
             <table style="width:100%;">
