@@ -1,9 +1,9 @@
     
-    
+    <?php include("../utils/form_logo_details.php");?>
     <div class="col-md-12 col-sm-12">
         <p class="table">
             <table style="width:100%;">
-                <tr style="background-color:rgb(193, 13, 109);">
+                <tr>
                     <th>FORM 4</th>
                     <th>ADVERTISING IN FAIR CATALOGUE</th>
                     <th>OPTIONAL</th>
