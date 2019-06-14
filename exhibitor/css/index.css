@@ -28,6 +28,7 @@ html, body {
 .side-tab {
     position: fixed;
 }
+
 .tab-pane {
     padding: 20px;
 }
