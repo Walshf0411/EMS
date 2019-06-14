@@ -35,39 +35,40 @@
                         <a class="nav-link active" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-home"></i>Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-exclamation-triangle"></i>General Rules & Regulations</a>
+                        <a class="nav-link" id="v-pills-tab2" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-exclamation-triangle"></i>Company Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="far fa-id-badge"></i>Company Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-exclamation-triangle"></i>Key contacts</a>
+                        <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="far fa-id-badge"></i>Quick Reference</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-asterisk"></i>Mandatory Forms</a>
                         <div class="dropdown-menu">
                             <!-- create additional tabs in the tab content div and then use href and data-toggle=pill to make them visible using the pills-->
-                            <a class="dropdown-item" data-toggle="pill" href="#" role="tab">Action</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#" role="tab">Another action</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#" role="tab">Something else here</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-4" role="tab">Standard Shell Scheme Package</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-5" role="tab">Listing in Fair Catalogue</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-6" role="tab">Registration for Badges</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-7" role="tab">Undertaking of Rules & Regulations</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fab fa-wpforms"></i>Optional Services</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" data-toggle="pill" href="#" role="tab">Action</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#" role="tab">Another action</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#" role="tab">Something else here</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-8" role="tab">Advertising in Fair Catalogue</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-9" role="tab">Other Services</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-10" role="tab">Electrical Fittings Additional Requirements</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-11" role="tab">Electrical Fittings Additional Requirements</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-12" role="tab">Electrical Fittings Additional Requirements</a>
+                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-13" role="tab">Incoming Items Label</a>
                         </div>
                     </li>
                     <div class="dropdown-divider"></div>
                     <div class="sidebar-header">Account Actions</div>
                     <div class="dropdown-divider"></div>
                     <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-pen"></i>Edit Exhibitor info</a>
+                        <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-14" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-pen"></i>Edit Exhibitor info</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Exhibitor Password</a>
+                        <a class="nav-link" id="v-pills-tab5" data-toggle="pill" href="#v-pills-15" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Exhibitor Password</a>
                     </li>
                 </ul>
             </div>
@@ -77,21 +78,64 @@
                     <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-home-tab">
                        <?php include("exhibitor_home.php");?>  
                     </div>
-                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                       <?php include("company_profile.php");?>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                       <?php include("exhibitor_quick_reference.php");?>                    
+                    </div>
+                    
 
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        
-                    </div>
+                    <!--mandatory form starts here-->
+                    
                     <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        
+                       <?php include("exhibitor_mandatory_form1.php");?>  
                     </div>
-                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <?php require("password_change.php"); ?>
+                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                       <?php include("exhibitor_mandatory_form2.php");?>  
                     </div>
-                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        
+                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                       <?php include("exhibitor_mandatory_form3.php");?>  
                     </div>
+                    <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                       <?php include("exhibitor_mandatory_form9.php");?>  
+                    </div>
+
+                    <!--mandatory form ends here-->
+
+                    <!--optional form starts here-->
+                    <div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php include("exhibitor_optional_form4.php"); ?>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php include("exhibitor_optional_form5.php"); ?>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php include("exhibitor_optional_form6.php"); ?>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php include("exhibitor_optional_form7.php"); ?>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php include("exhibitor_optional_form8.php"); ?>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-13" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php include("exhibitor_optional_form10.php"); ?>
+                    </div>
+                    
+                    <!-- optional form ends here -->
+                    <div class="tab-pane fade" id="v-pills-14" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                       <?php include("exhibitor_information_edit.php");?>  
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-15" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                       <?php include("exhibitor_password_change.php");?>  
+                    </div>
+
                 </div>
             </div>
         </div>
