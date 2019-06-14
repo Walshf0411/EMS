@@ -17,6 +17,11 @@
     <?php require('../utils/stylesheets.php'); ?>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/exhibitor_home.css">
+    <link rel="stylesheet" href="css/company_profile.css">
+    <link rel="stylesheet" href="css/exhibitor_quick_reference.css">
+    <link rel="stylesheet" href="css/exhibitor_mandatory_forms.css">
+    <link rel="stylesheet" href="css/exhibitor_optional_forms.css">
+    <link rel="stylesheet" href="css/exhibitor_edit_information.css">
 </head>
 
 <?php require('../utils/header.php'); ?>
