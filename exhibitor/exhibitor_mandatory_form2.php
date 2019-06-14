@@ -43,48 +43,50 @@
         <div class="row">    
             <div class="col-md-4 col-sm-12">
                 <label for="isd code">Fax ISD code:</label>
-                <input oninput="this.className = ''" name="f_isd_code"class="data-input">
+                <input name="f_isd_code" class="form-control">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="std code">STD code:</label>
-                <input oninput="this.className = ''" name="f_std_code"class="data-input">
+                <input name="f_std_code" class="form-control">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="phone number">phone no.</label>
-                <input oninput="this.className = ''" name="f_isd_code"class="data-input">
+                <input name="f_isd_code" class="form-control">
             </div>
         </div>
-        <div class="col-md-4 col-sm-12">
-            <label for="isd code">Mobile ISD code:</label>
-            <input oninput="this.className = ''" name="m_isd_code"class="data-input">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <label for="isd code">Mobile ISD code:</label>
+                <input name="m_isd_code" class="form-control">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <label for="std code">STD code:</label>
+                <input name="m_std_code" class="form-control">
+            </div>
         </div>
-        <div class="col-md-4 col-sm-12">
-            <label for="std code">STD code:</label>
-            <input oninput="this.className = ''" name="m_std_code"class="data-input">
-        </div>
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <label for="email">Email:</label>
-            <input oninput="this.className = ''" name="email"class="data-input">
+            <input name="email" class="form-control">
         </div>
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <label for="website">Website:</label>
-            <input oninput="this.className = ''" name="website"class="data-input">
+            <input name="website" class="form-control">
         </div>
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <label for="person">Contact Person:</label>
-            <input oninput="this.className = ''" name="person"class="data-input">
+            <input name="person" class="form-control">
         </div>
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <label for="designation">Designation:</label>
-            <input oninput="this.className = ''" name="designation"class="data-input">
+            <input name="designation" class="form-control">
         </div>
         <div class="col-md-12 col-sm-12">
             <label for="profile">Company profile:(not more than 100 words)</label>
-            <input oninput="this.className = ''" name="profile"class="data-input">
+            <input name="profile" class="form-control">
         </div>
         <div class="col-md-12 col-sm-12">
             <label for="products">Products supplied / manufactured:</label>
-            <input oninput="this.className = ''" name="products"class="data-input">
+            <input name="products" class="form-control">
         </div>
     </form>
 
