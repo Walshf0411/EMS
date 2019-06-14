@@ -1,18 +1,19 @@
     <?php require('../utils/form_logo_details.php'); ?>
 
-    <p class="table">
-        <table style="width:100%;">
-            <tr style="background-color:rgb(193, 13, 109);">
-                <th>FORM 3</th>
-                <th>REGISTRATION OF EXHIBITION PERSONNEL FOR BADGES</th>
-                <th>MANDATORY</th>
-            </tr>
-            <tr>
-                <td colspan="3">Submission Date - 5th June 2019 </td>
-            </tr>
-        </table>
-    </p>    
-    
+    <div class="col-md-12 col-sm-12">
+        <p class="table">
+            <table style="width:100%;">
+                <tr style="background-color:rgb(193, 13, 109);">
+                    <th>FORM 3</th>
+                    <th>REGISTRATION OF EXHIBITION PERSONNEL FOR BADGES</th>
+                    <th>MANDATORY</th>
+                </tr>
+                <tr>
+                    <td colspan="3">Submission Date - 5th June 2019 </td>
+                </tr>
+            </table>
+        </p>    
+    </div>
     <p id="booth">
         <label for="Booth number">Booth number:</label>
         <input oninput="this.className = ''" name="booth_number">
