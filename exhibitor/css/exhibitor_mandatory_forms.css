@@ -3,3 +3,27 @@ table, tr, td, th{
     border-collapse: collapse;
     padding: 1%;    
 }
+
+.table-input>.row{
+    padding-left:5%;
+}
+
+.table-input{
+    width:90%;
+    margin-bottom: 2%;
+}
+
+
+.table-input>.row>div input{
+    border:none;
+    border-bottom:1px solid black;
+    border-top: 1px solid black;
+}
+
+.table-input>.row>div input:focus{
+    border:none;
+}
+
+.table-input>.row>div{
+    outline: 1px solid black;
+}
