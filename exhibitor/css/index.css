@@ -1,3 +1,13 @@
+:root{
+    --primary-color:rgb(193, 13, 109);
+}
+
+th{
+    background-color: var(--primary-color);
+    color:white;
+}
+
+
 html, body {
     background: #e0e0e0;
 }
