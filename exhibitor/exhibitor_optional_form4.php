@@ -1,18 +1,19 @@
     
     
-    
-    <p class="table">
-        <table style="width:100%;">
-            <tr style="background-color:rgb(193, 13, 109);">
-                <th>FORM 4</th>
-                <th>ADVERTISING IN FAIR CATALOGUE</th>
-                <th>OPTIONAL</th>
-            </tr>
-            <tr>
-                <td colspan="3">Submission Date - 8th June 2019 </td>
-            </tr>
-        </table>
-    </p>
+    <div class="col-md-12 col-sm-12">
+        <p class="table">
+            <table style="width:100%;">
+                <tr style="background-color:rgb(193, 13, 109);">
+                    <th>FORM 4</th>
+                    <th>ADVERTISING IN FAIR CATALOGUE</th>
+                    <th>OPTIONAL</th>
+                </tr>
+                <tr>
+                    <td colspan="3">Submission Date - 8th June 2019 </td>
+                </tr>
+            </table>
+        </p>
+    </div>
 
     <p>
         <strong>ADVERTISING IN FAIR CATALOGUE</strong>
@@ -105,7 +106,7 @@
 
     <pre>
 <strong>FOR ADVERTISEMENT QUERY:</strong>
-<strong>CONTACT:</strong>Farheen Khan
+<strong>CONTACT:</strong> Farheen Khan
             +91 80808 99927
             farheen.khan@peppermint.co.in
     </pre>
