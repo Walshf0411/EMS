@@ -11,3 +11,16 @@ input{
 table, th, tr, td{
     padding: none;
 }
+span {
+    display: inline-block;
+}
+.table-layout-fixed {
+    table-layout: fixed;
+    width:100%;
+  }
+  
+table-layout-fixed > th,
+td {
+    width: 100px;
+    overflow: hidden;
+}

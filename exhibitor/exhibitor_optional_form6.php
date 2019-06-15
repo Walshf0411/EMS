@@ -19,7 +19,7 @@
     
     <p id="booth">
         <label for="Booth number">Booth number:</label>
-        <input oninput="this.className = ''" name="booth_number">
+        <input name="booth_number">
     </p>
 
     <p align="center">
@@ -33,65 +33,62 @@
     2. The supply available is 130 V Single Phase 50 Hz AC only
     </p>
     <div class="col-md-12 col-sm-12">
-        <div class="col-md-1"></div>
-        <div class="col-md-11 col-sm-12">
-            <table style="width:100%;">
-                <tr style="background-color:rgb(193, 13, 109);color:white;">
-                    <th>DESCRIPTION OF SERVICE/ITEMS</th>
-                    <th>Cost@INR</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
-                <tr>
-                    <td>INDIVIDUAL FITINGS</td>
-                    <td></td>
-                    <td><input type="text" class="data-input" name="fitings_quantity_1"></td>
-                    <td><input type="text" class="data-input" name="fitings_total_1"></td>
-                </tr>
-                <tr>
-                    <td>Spot light of 100 watts</td>
-                    <td>525</td>
-                    <td><input type="text" class="data-input" name="fitings_quantity_2"></td>
-                    <td><input type="text" class="data-input" name="fitings_total_2"></td>
-                </tr>
-                <tr>
-                    <td>Socket of 5/15 amperes</td>
-                    <td>525</td>
-                    <td><input type="text" class="data-input" name="fitings_quantity_3"></td>
-                    <td><input type="text" class="data-input" name="fitings_total_3"></td>
-                </tr>
-                <tr>
-                    <td>Adapter</td>
-                    <td>175</td>
-                    <td><input type="text" class="data-input" name="fitings_quantity_4"></td>
-                    <td><input type="text" class="data-input" name="fitings_total_4"></td>
-                </tr>
-                <tr>
-                    <td>Multiple Plugs</td>
-                    <td>525</td>
-                    <td><input type="text" class="data-input" name="fitings_quantity_5"></td>
-                    <td><input type="text" class="data-input" name="fitings_total_5"></td>
-                </tr>
-                <tr>
-                    <td align="right"><strong>Sub Total(A)</strong></td>
-                    <td><input type="text" class="data-input" name="subtotal_cost"></td>
-                    <td><input type="text" class="data-input" name="subtotal_quantity"></td>
-                    <td><input type="text" class="data-input" name="subtotal_total"></td>
-                </tr>
-                <tr>
-                    <td align="right"><strong>GST 18.00%(B)</strong></td>
-                    <td><input type="text" class="data-input" name="gst_cost"></td>
-                    <td><input type="text" class="data-input" name="gst_quantity"></td>
-                    <td><input type="text" class="data-input" name="gst_total"></td>
-                </tr>
-                <tr>
-                    <td align="right"><strong>Total cost(A + B)</strong></td>
-                    <td><input type="text" class="data-input" name="total_cost"></td>
-                    <td><input type="text" class="data-input" name="total_quantity"></td>
-                    <td><input type="text" class="data-input" name="total_total"></td>
-                </tr>
-            </table>
-        </div>
+        <table style="width:100%;" class="table-layout-fixed">
+            <tr >
+                <th>DESCRIPTION OF SERVICE/ITEMS</th>
+                <th>Cost@INR</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>INDIVIDUAL FITINGS</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Spot light of 100 watts</td>
+                <td id="fitings_price_1">525</td>
+                <td><input type="number" min=0 class="data-input" id="fitings_quantity_1" oninput="onItemChanged(1, this.value)"></td>
+                <td><span id="fitings_total_1">0</span></td>
+            </tr>
+            <tr>
+                <td>Socket of 5/15 amperes</td>
+                <td><span id="fitings_price_2">525</span></td>
+                <td><input type="number" min=0 class="data-input" id="fitings_quantity_2" oninput="onItemChanged(2, this.value)"></td>
+                <td><span id="fitings_total_2">0</span></td>
+            </tr>
+            <tr>
+                <td>Adapter</td>
+                <td><span id="fitings_price_3">175</span></td>
+                <td><input type="number" min=0 class="data-input" id="fitings_quantity_3" oninput="onItemChanged(3, this.value)"></td>
+                <td><span id="fitings_total_3">0</span></td>
+            </tr>
+            <tr>
+                <td>Multiple Plugs</td>
+                <td><span id="fitings_price_4">525</span></td>
+                <td><input type="number" class="data-input" id="fitings_quantity_4" oninput="onItemChanged(4, this.value)"></td>
+                <td><span id="fitings_total_4">0</span></td>
+            </tr>
+            <tr>
+                <td align="right"><strong>Sub Total(A)</strong></td>
+                <td></td>
+                <td></td>
+                <td><span id="subtotal_total">0</span></td>
+            </tr>
+            <tr>
+                <td align="right"><strong>GST 18.00%(B)</strong></td>
+                <td></td>
+                <td></td>
+                <td><span id="gst_total">0</span></td>
+            </tr>
+            <tr>
+                <td align="right"><strong>Total cost(A + B)</strong></td>
+                <td></td>
+                <td></td>
+                <td><span id="total_total">0</span></td>
+            </tr>
+        </table>
     </div>
 
     <p align="center"><strong>PLEASE INDICATE LOCATIONS OF THE ABOVE REQUIREMENTS BELOW - PLAN OF STALL</strong></p>
@@ -121,3 +118,45 @@ T: +91-22-4095 6666
 E: superjuniorzexpo@gmail.com  |  W: www.peppermint.co.in</pre>
     </div>
 <div style="clear:both;"></div>
+
+<script>
+    function updateTotals() {
+        var numberOfAvailableItems = 4;
+        var totalIdPrefix = "fitings_total_";
+        var subTotalId = "subtotal_total";
+        var gsTotalId = "gst_total";
+        var finalTotalId = "total_total";
+        var gst = 0.18;
+        var total = 0;
+
+        for (i=1; i <= numberOfAvailableItems; i++) {
+            var selector = totalIdPrefix + i;
+            console.log(selector);  
+            total += Number(document.getElementById(selector).innerHTML);
+        }
+        var gstTotal = gst * total;
+        var finalTotal = total + gstTotal;
+
+        document.getElementById(subTotalId).innerHTML = total;
+        document.getElementById(gsTotalId).innerHTML = gstTotal;
+        document.getElementById(finalTotalId).innerHTML = finalTotal;
+
+    }
+    function onItemChanged(number, quantity) {
+        var priceId = "fitings_price_" + number;
+        var totalId = "fitings_total_" + number;
+        
+        quantity = Number(quantity);
+        price = Number(document.getElementById(priceId).innerHTML);
+        
+        if (quantity > 0) {
+            var total = quantity * price;
+        
+            document.getElementById(totalId).innerHTML = total;
+        } else {
+            document.getElementById(totalId).innerHTML = "0";
+        }
+
+        updateTotals();
+    }
+</script>
