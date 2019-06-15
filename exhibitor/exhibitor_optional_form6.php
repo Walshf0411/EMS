@@ -134,7 +134,7 @@ E: superjuniorzexpo@gmail.com  |  W: www.peppermint.co.in</pre>
             console.log(selector);  
             total += Number(document.getElementById(selector).innerHTML);
         }
-        var gstTotal = gst * total;
+        var gstTotal = Math.ceil(gst * total);
         var finalTotal = total + gstTotal;
 
         document.getElementById(subTotalId).innerHTML = total;

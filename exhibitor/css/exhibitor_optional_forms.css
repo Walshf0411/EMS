@@ -19,7 +19,7 @@ span {
     width:100%;
   }
   
-table-layout-fixed > th,
+.table-layout-fixed > th,
 td {
     width: 100px;
     overflow: hidden;
