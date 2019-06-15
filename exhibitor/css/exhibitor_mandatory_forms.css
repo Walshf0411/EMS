@@ -25,3 +25,7 @@ table, tr, td, th{
 .table-input>.row>div{
     outline: 1px solid black;
 }
+.error {
+    color: #F00;
+    background-color: #FFF;
+  }

@@ -18,80 +18,86 @@
         <input oninput="this.className = ''" name="booth_number">
     </p>
     
-    <form action=""> 
+    <form action="" id="fair-listing"> 
         <div class="form-group">
             <label for="company-name">Company name:</label>
-            <input name ="company-name" class="form-control">
+            <input name ="company-name" class="form-control required">
         </div>
-        <div class="col-md-12 col-sm-12">
+        <div class="form-group">
             <label for="address">Company address:</label>
-            <input class="form-control" name="address">
+            <input class="form-control required" name="address">
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <label for="isd code">Telephone ISD code:</label>
-                <input name="isd_code" class="form-control">
+                <input name="isd_code" class="form-control required">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="std code">STD code:</label>
-                <input name="std_code" class="form-control">
+                <input name="std_code" class="form-control required">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="phone">Phone number:</label>
-                <input name="phone" class="form-control">
+                <input name="phone" class="form-control required">
             </div>
         </div>
         <div class="row">    
             <div class="col-md-4 col-sm-12">
                 <label for="isd code">Fax ISD code:</label>
-                <input name="f_isd_code" class="form-control">
+                <input name="f_isd_code" class="form-control required">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="std code">STD code:</label>
-                <input name="f_std_code" class="form-control">
+                <input name="f_std_code" class="form-control required">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="phone number">phone no.</label>
-                <input name="f_isd_code" class="form-control">
+                <input name="f_isd_code" class="form-control required">
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <label for="isd code">Mobile ISD code:</label>
-                <input name="m_isd_code" class="form-control">
+                <input name="m_isd_code" class="form-control required">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="std code">STD code:</label>
-                <input name="m_std_code" class="form-control">
+                <input name="m_std_code" class="form-control required">
             </div>
         </div>
-        <div class="col-md-12 col-sm-12">
+        <div class="form-group">
             <label for="email">Email:</label>
-            <input name="email" class="form-control">
+            <input name="email" class="form-control required email">
         </div>
-        <div class="col-md-12 col-sm-12">
+        <div class="form-group">
             <label for="website">Website:</label>
-            <input name="website" class="form-control">
+            <input name="website" class="form-control required">
         </div>
-        <div class="col-md-12 col-sm-12">
+        <div class="form-group">
             <label for="person">Contact Person:</label>
-            <input name="person" class="form-control">
+            <input name="person" class="form-control required">
         </div>
-        <div class="col-md-12 col-sm-12">
+        <div class="form-group">
             <label for="designation">Designation:</label>
-            <input name="designation" class="form-control">
+            <input name="designation" class="form-control required">
         </div>
-        <div class="col-md-12 col-sm-12">
+        <div class="form-group">
             <label for="profile">Company profile:(not more than 100 words)</label>
-            <input name="profile" class="form-control">
+            <textarea name="profile" class="form-control required" maxlength="100"></textarea>
         </div>
-        <div class="col-md-12 col-sm-12">
+        <div class="form-group">
             <label for="products">Products supplied / manufactured:</label>
-            <input name="products" class="form-control">
+            <textarea name="products" class="form-control required"></textarea>
         </div>
+
+        <div class="form-group">
+            <label for="company-logo">Company Logo</label>
+            <input type=file name="company-logo" class="form-control required">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
 
-    <p>
-        <pre><strong>IMPORTANT:</strong> Please provide your company logo in either EPS, CDR, PDF or PSD format.
-        (You can alternatively email us the logo and company profile on superjuniorzexpo@gmail.com)</pre>
-    </p>
+    <script>
+        $("#fair-listing").validate();
+    </script>

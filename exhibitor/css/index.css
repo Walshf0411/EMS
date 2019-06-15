@@ -49,6 +49,9 @@ html, body {
     .tab-pane {
         padding: 12px;
     }
+    .table-wrapper{
+        overflow: auto;
+    }
 }
 
 @media only screen

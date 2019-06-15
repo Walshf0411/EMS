@@ -1,10 +1,8 @@
 <?php require('../utils/form_logo_details.php'); ?>
-
-
     <div class="col-md-12 col-sm-12">
         <p class="table">
             <table style="width:100%;">
-                <tr style="background-color:rgb(193, 13, 109);">
+                <tr ">
                     <th>FORM 6</th>
                     <th>ELECTRICAL FITINGS ADDITIONAL REQUIREMENTS</th>
                     <th>OPTIONAL</th>
@@ -18,8 +16,7 @@
     </div>
     
     <p id="booth">
-        <label for="Booth number">Booth number:</label>
-        <input name="booth_number">
+        Booth number: <span id="booth_number">Number</span>
     </p>
 
     <p align="center">
@@ -109,16 +106,8 @@ LEFT BACK TO STALL RIGHT / LEFT AISLE RIGHT
 <p>Mobile Number</p>
     </div>
     <div style="float:left;" id="receiver">
-<pre>
-SEND THIS FORM TO :
-<strong>PEPPERMINT COMMUNICATIONS PVT. LTD.</strong> 
-Unit B-135, Antophill Warehousing Complex, V.I.T. College Road, 
-Wadala (E), Mumbai - 400037, INDIA.   
-T: +91-22-4095 6666
-E: superjuniorzexpo@gmail.com  |  W: www.peppermint.co.in</pre>
     </div>
 <div style="clear:both;"></div>
-
 <script>
     function updateTotals() {
         var numberOfAvailableItems = 4;
