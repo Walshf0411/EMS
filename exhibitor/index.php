@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/exhibitor_mandatory_forms.css">
     <link rel="stylesheet" href="css/exhibitor_optional_forms.css">
     <link rel="stylesheet" href="css/exhibitor_edit_information.css">
+    <link rel="stylesheet" href="css/exhibitor_general_information.css">
 </head>
 
 <?php require('../utils/header.php'); ?>
@@ -38,9 +39,13 @@
                     <li class="nav-item">
                         <a class="nav-link active" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-home"></i>Home</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="#v-pills-2" class="nav-link" data-toggle="pill" id="v-pills-tab2" role="tab"><i class="fas fa-exclamation-triangle"></i>General Information</a>
+                    </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="far fa-id-badge"></i>Quick Reference</a>
+                        <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-home" ><i class="far fa-id-badge"></i>Quick Reference</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-asterisk"></i>Mandatory Forms</a>
@@ -78,7 +83,9 @@
                     <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-home-tab">
                        <?php include("exhibitor_home.php");?>  
                     </div>
-                    
+                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                       <?php include("exhibitor_general_information.php");?>                    
+                    </div>  
                     <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                        <?php include("exhibitor_quick_reference.php");?>                    
                     </div>  

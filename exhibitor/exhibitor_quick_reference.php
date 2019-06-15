@@ -1,9 +1,14 @@
 <div align=center>
     <h5>Quick Reference</h5>
 </div>
-<div align=center>
-    <h5>List Of Contacts</h5>
+<div class="container">
+    <div class="row">
+        <div class="offset-sm-4"></div>
+        <div class="col-sm-4 colored-header" align=center>List of Contacts</div>
+        <div class="offset-sm-4"></div>
+    </div>
 </div>
+<br>
 <div class="table-wrapper">
     <table width=100%>
         <thead>
