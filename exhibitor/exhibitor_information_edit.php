@@ -2,7 +2,7 @@
     <h5>Edit Exhibitor Information</h5>
 </div>
 <?php 
-    require('../utils/globals.php');
+    require_once('../utils/globals.php');
     if (DEBUG){
         require('../utils/local_connect.php');
     } else {
