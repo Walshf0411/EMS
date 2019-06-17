@@ -2,7 +2,7 @@
     <h5>Edit Exhibitor Information</h5>
 </div>
 <div>
-    <form action="#">
+    <form action="#" id="edit_exhibitor_information_form">
         <div class="form-group">
             <strong><label for="company_name_edit">Company Name:</label></strong>
             <input type="text" name="company_name_edit" class="form-control required">
@@ -29,3 +29,6 @@
         <button class="btn btn-info"><i class="fa fa-pen"></i>Edit Information</button>
     </form>
 </div>
+<script>
+    $("#edit_exhibitor_information_form").validate();
+</script>
