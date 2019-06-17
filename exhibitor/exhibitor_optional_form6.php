@@ -90,11 +90,11 @@
 
     <p align="center"><strong>PLEASE INDICATE LOCATIONS OF THE ABOVE REQUIREMENTS BELOW - PLAN OF STALL</strong></p>
 
-    <pre>
-LEFT BACK TO STALL RIGHT / LEFT AISLE RIGHT
-1. The Organisers will forward your request to the respective shell contractor appointed for the hall
-2. Orders received after 10th June 2019 may be accepted subject to the availability.
-3. On spot orders will be subject to availability and 100% premium.</pre>
+   <p>LEFT BACK TO STALL RIGHT / LEFT AISLE RIGHT <br>
+1. The Organisers will forward your request to the respective shell contractor appointed for the hall <br>
+2. Orders received after 10th June 2019 may be accepted subject to the availability. <br>
+3. On spot orders will be subject to availability and 100% premium. <br>
+</p>
 
     <div style="float:right;">
 <pre>
