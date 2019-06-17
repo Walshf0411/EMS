@@ -17,13 +17,14 @@
 <p id="fascia-name">
     Please enter below the Exhibitor’s name as you require on the fascia. This will be provided in upper case, standard English alphabets (Maximum 24 letters) cut in white vinyl and pasted on Name fascia.
 </p>
+
 <p>
     <p id="use-bold">PLEASE USE BOLD LETTERS</p>
     <ol id="list1">
         <li>
             <div class="form-group">
                 <label for="fasica_name"></label>FASCIA NAME (As it should appear on your stall)</label>
-                <input type="text" class="form-control required" name="fasica_name" maxlength=24>
+                <input type="text" class="form-control required" id="fascia_name" name="fasica_name" maxlength="24" style="text-transform:uppercase">
             </div>
         </li>
         <li>
@@ -41,7 +42,7 @@
 </div>
 <div style="clear:both;"></div>
 <div align=center>
-    <button class="btn btn-success">Next <i class="fa fa-caret-right"></i></button>
+    <button id="mandatory-form1-next-btn" data-toggle="pill" href="#v-pills-5" class="btn btn-success">Next <i class="fa fa-caret-right"></i></button>
 </div>
 
 <button type="button" id="std-booth-layout-modal-toggler" class="btn btn-primary" data-toggle="modal" data-target="#imageModal" style="display:none;">
@@ -84,7 +85,18 @@
     function standardBoothLayoutInfoButtonClicked() {
         $("#std-booth-layout-modal-toggler").click();
     }
+    function onInputFascia() {
+        if ($("#fascia_name").val()) {
+            // some value has been entered in the fascia field
+            $("#mandatory-form1-next-btn").prop('disabled', false);
+        } else {
+            // fascia input field is empty.
+            $("#mandatory-form1-next-btn").prop('disabled', true);
+        }
+    }
     $(document).ready(function () {
         $(".id-icon").attr('onclick', "standardBoothLayoutInfoButtonClicked()");
+        onInputFascia();
+        $("#fascia_name").attr("oninput", "onInputFascia()");
     });
 </script>
