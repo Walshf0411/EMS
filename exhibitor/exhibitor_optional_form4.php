@@ -117,3 +117,6 @@
 2. Provide us the Advertisement material on CD
 3. All materials and payment must reach us on or before 8th June 2019.
     </pre>
+<div style="float:right">
+    <?php include("../utils/exhibitor_footer.php");?>
+</div>

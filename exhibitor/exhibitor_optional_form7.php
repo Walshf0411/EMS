@@ -103,24 +103,9 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
 </div>
 <?php endif ?>
 <div style="float:right;">
-<pre>
-(PLEASE TYPE IN BLOCK LETTERS)
-(OR ATTACH BUSINESS NAME CARD)</pre>
-<input oninput="this.className = ''" name="business_name_card"class="data-input">
-        <p>Name,Signature & Stamp of an Authorized Person</p>
-        <input oninput="this.className = ''" name="business_name_card"class="data-input">
-        <p>Mobile Number</p>
-    </div>
-    <div style="float:left;" id="receiver">
-<pre>
-SEND THIS FORM TO :
-<strong>PEPPERMINT COMMUNICATIONS PVT. LTD.</strong> 
-Unit B-135, Antophill Warehousing Complex, V.I.T. College Road, 
-Wadala (E), Mumbai - 400037, INDIA.   
-T: +91-22-4095 6666
-E: superjuniorzexpo@gmail.com  |  W: www.peppermint.co.in</pre>
-    </div>
-    <div style = "clear:both;"></div>
+<?php include("../utils/exhibitor_footer.php");?>
+</div>
+<div style = "clear:both;"></div>
 
 <script>
     var numberOfAvailableItems = 67;

@@ -96,17 +96,9 @@
 3. On spot orders will be subject to availability and 100% premium. <br>
 </p>
 
-    <div style="float:right;">
-<pre>
-(PLEASE TYPE IN BLOCK LETTERS)
-(OR ATTACH BUSINESS NAME CARD)</pre>
-<input name="business_name_card"class="data-input">
-<p>Name,Signature & Stamp of an Authorized Person</p>
-<input name="business_name_card"class="data-input">
-<p>Mobile Number</p>
-    </div>
-    <div style="float:left;" id="receiver">
-    </div>
+<div style="float:right;">
+    <?php include("../utils/exhibitor_footer.php");?>
+</div>
 <div style="clear:both;"></div>
 <script>
     function updateTotals() {
