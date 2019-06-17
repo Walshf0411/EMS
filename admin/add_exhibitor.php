@@ -10,9 +10,11 @@
                 <thead>
                     <tr>
                         <th>Sr.no</th>
-                        <th>Exhibitor Name</th>
+                        <th>Company Name</th>
                         <th>Email</th>
-                        <th>Phone number</th>
+                        <th>Contact Person</th>
+                        <th>Contact number</th>
+                        <th>Booth Number</th>
                     </tr>
                 </thead>
                 <tbody id="exhibitor-list-body">
@@ -34,23 +36,34 @@
     <div>
         <h4>Add Exhibitor</h4>
         
-        <form action="#" id="add-exhibitor-form" method="POST" class="add-exhibitor" onsubmit="showSomething()">     
+        <form action="#" id="add-exhibitor-form" method="POST" class="add-exhibitor">     
             <div class="form-group">
-                <strong><label for="name">Name:</label></strong><br>
-                <input type="text" name="name" class="form-control" required=true/>
+                <strong><label for="name">Company Name:</label></strong><br>
+                <input type="text" name="name" class="form-control required"/>
             </div>
 
             <div class="form-group">
                 <strong><label for="email">Email:</label></strong><br>
-                <input type="email" name="email" class="form-control" required=true/>
+                <input type="email" name="email" class="form-control required email"/>
             </div>
-
             <div class="form-group">
-                <strong><label for="phone_number">Phone Number:</label></strong><br>
-                <input type="phone" class="form-control" name="phone_number" required=true/>
+                <strong><label for="contact_person">Contact Person:</label></strong>
+                <input type="text" class="form-control required" name="contact_person">
             </div>
-
+            <div class="form-group">
+                <strong><label for="phone_number">Contact number:</label></strong><br>
+                <input type="phone" class="form-control required" name="phone_number"/>
+            </div>
+            <div class="form-group">
+                <strong><label for="brand_name">Brand Name:</label></strong>
+                <textarea class="form-control required" name="brand_name"></textarea>
+            </div>
+            <div class="form-group">
+                <strong><label for="booth_number">Booth Number:</label></strong>
+                <input type="text" class="form-control required" name="booth_number">
+            </div>
             <button type="submit" class="btn btn-outline-info">Add Exhibitor</button>
+
             <div class="overlay" id="add-exhibitor-overlay" align=center>
                 <div id="overlay-child-add-exhibitor">
                 <i class="fas fa-spinner fa-spin fa-7x"></i><br>
@@ -63,7 +76,9 @@
 </div>
 
 <script>
-
+    $(document).ready(function() {
+        $("#add-exhibitor-form").validate();
+    });
 
     function showSomething() {
         $("#add-exhibitor-overlay").css("display", 'block');
@@ -106,11 +121,14 @@
 <?php
 
 // below is the code to execute
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone_number'])) {
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_person']) && isset($_POST['phone_number']) && isset($_POST['brand_name']) && isset($_POST['booth_number'])) {
     // if the data is properly send through the request.
-    $name = $conn->real_escape_string($_POST['name']);
-    $email = $conn->real_escape_string($_POST['email']);
-    $phoneNumber = $conn->real_escape_string($_POST['phone_number']);
+    $name = $conn->real_escape_string(trim($_POST['name']));
+    $email = $conn->real_escape_string(trim($_POST['email']));
+    $contactPerson = $conn->real_escape_string(trim($_POST['contact_person']));
+    $phoneNumber = $conn->real_escape_string(trim($_POST['phone_number']));
+    $brandName = $conn->real_escape_string(trim($_POST['brand_name']));
+    $boothNumber = $conn->real_escape_string(trim($_POST['booth_number']));
 
     logToJS($name.$email.$phoneNumber);
 
@@ -118,34 +136,43 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['phone_numbe
     // 1. insert data to the exhibitor database.
     // 2. send notification to the exhibitor
     // 3. notify the current user i.e admin
-    
-    if (!checkExists($conn, $name, $email, $phoneNumber)) {
-        require_once("../utils/mailer.php");
-        require_once("../utils/globals.php");
-        $password = generatePassword();
-        // the below mail is written as such that, only if the mail is sent to the user then only, 
-        // will the exhibitor be added in the database.
-        if (sendMail($conn, $email, $name, $email, $password) && insertDataToDB($conn, $name, $email, $phoneNumber, $email, $password)) {
-            $_SESSION['insert_status'] = "success";
-            $_SESSION['insert_message'] = "Exhibitor Added successfully.";
-            if (DEBUG) {
-                logToJS("Added exhibitor to the database");
+    if (!checkBoothNumberExists($conn, $boothNumber)){
+        if (!checkExists($conn, $name, $email, $phoneNumber)) {
+            require_once("../utils/mailer.php");
+            require_once("../utils/globals.php");
+            $password = generatePassword();
+            // the below mail is written as such that, only if the mail is sent to the user then only, 
+            // will the exhibitor be added in the database.
+            if (insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $brandName, $boothNumber, $username, $password)) {
+                sendMail($conn, $email, $name, $email, $password);
+                $_SESSION['insert_status'] = "success";
+                $_SESSION['insert_message'] = "Exhibitor Added successfully.";
+                if (DEBUG) {
+                    logToJS("Added exhibitor to the database");
+                }
+                JS("reload();");
+            } else {
+                // ERROR!!!
+                $_SESSION['insert_status'] = "error";
+                $_SESSION['insert_message'] = "Exhibitor couldn't be added.";
+                if (DEBUG) {
+                    logToJS("Database Error");
+                }
             }
-            JS("reload();");
         } else {
-            // ERROR!!!
+            // ERROR: Already Exists
             $_SESSION['insert_status'] = "error";
-            $_SESSION['insert_message'] = "Exhibitor couldn't be added.";
+            $_SESSION['insert_message'] = "Exhibitor already exists.";
             if (DEBUG) {
-                logToJS("Database Error");
+                logToJS("User Already exists");
             }
         }
     } else {
-        // ERROR: Already Exists
+        // booth number is alrady taken
         $_SESSION['insert_status'] = "error";
-        $_SESSION['insert_message'] = "Exhibitor already exists.";
+        $_SESSION['insert_message'] = "Booth Number is already taken";
         if (DEBUG) {
-            logToJS("User Already exists");
+            logToJS("Booth number already taken");
         }
     }
 }

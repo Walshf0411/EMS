@@ -60,7 +60,7 @@
             $dbHashedPassword = $user['password'];
             if (password_verify($password, $dbHashedPassword)) {
                 // correct credentials
-                $_SESSION['user_username'] = $user['username'];
+                $_SESSION['username'] = $user['username'];
                 $_SESSION['user_full_name'] = $user['participant_name'];
                 $_SESSION['user_id'] = $user['id'];
                 $valid = TRUE;

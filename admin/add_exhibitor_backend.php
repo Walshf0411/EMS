@@ -15,20 +15,23 @@ function printExhibitorList($conn, $queryResult) {
     if ($queryResult->num_rows > 0) {
         $count = 1;
         while ($exhibitor = $queryResult->fetch_assoc()) {
-            $id = $exhibitor['id'];
             $name = $exhibitor['participant_name'];
             $email = $exhibitor['email'];
+            $contactPerson = $exhibitor['contact_person'];
             $phoneNumber = $exhibitor['phone_number'];
+            $boothNumber = $exhibitor['booth_number'];
             echo "<tr>
                     <td>$count</td>
                     <td>$name</td>
                     <td>$email</td>
+                    <td>$contactPerson</td>
                     <td>$phoneNumber</td>
+                    <td>$boothNumber</td>
                 </tr>";
             $count++;
         }
     } else {
-        echo "<tr><td colspan=4>No Exhibitors Found.</td></tr>";
+        echo "<tr><td colspan=6>No Exhibitors Found.</td></tr>";
     }
     
 }
@@ -48,12 +51,21 @@ function checkExists($conn, $name, $email, $phoneNumber) {
     } 
     return $exists;
 }
+function checkBoothNumberExists($conn, $boothNumber) {
+    $query = "SELECT * FROM Exhibitor where booth_number='$boothNumber'";
+    return executeQuery($conn, $query)->num_rows > 0;
+}
 
-function insertDataToDB($conn, $name, $email, $phoneNumber, $username, $password) {
+function insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $brandName, $boothNumber, $username, $password) {
     // data is not in DB.
+    $username = $email;
+    if (DEBUG){
+        logToJS("password: " + $password);
+    }
+    
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $query = "INSERT INTO exhibitor(participant_name, email, phone_number, username, password) 
-    values('$name', '$email', '$phoneNumber', '$username', '$hashedPassword')";
+    $query = "INSERT INTO exhibitor(participant_name, brands, username, phone_number, email, password, booth_number, contact_person) 
+    values('$name', '$brandName', '$username', '$phoneNumber','$email', '$hashedPassword', '$boothNumber', '$contactPerson')";
     $queryResult = executeQuery($conn, $query);
     return $queryResult;
 }
