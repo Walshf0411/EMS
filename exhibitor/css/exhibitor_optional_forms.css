@@ -24,3 +24,6 @@ td {
     width: 100px;
     overflow: hidden;
 }
+.table-wrapper{
+    overflow: auto;
+}
