@@ -24,7 +24,6 @@
                 <img id="logo_image" src="../images/logo.png" alt="Super Juniorz's logo">
                 <br><br>
                 <h5>Exhibitor Login</h5>
-                <br>
                 <div class="input_div">
                     <i class="fa fa-user"></i>
                     <input type="text" name="email" autocomplete="false" class="form-control input_box" placeholder="Enter Username" required>
@@ -60,9 +59,13 @@
             $dbHashedPassword = $user['password'];
             if (password_verify($password, $dbHashedPassword)) {
                 // correct credentials
+                // session Variables for exhibitor
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['user_full_name'] = $user['participant_name'];
                 $_SESSION['user_id'] = $user['id'];
+                $_SESSION['exhibitor_booth_number'] = $user['booth_number'];
+                $_SESSION['exhibitor_contact_person'] = $user['contact_person'];
+                $_SESSION['exhibitor_contact_number'] = $user['phone_number'];
                 $valid = TRUE;
             }
         }

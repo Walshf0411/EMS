@@ -27,3 +27,8 @@ td {
 .table-wrapper{
     overflow: auto;
 }
+.colored-header {
+    background-color: var(--primary-color);
+    color:white;
+    border-style:double;
+}

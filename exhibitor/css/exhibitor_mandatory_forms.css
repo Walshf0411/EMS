@@ -29,3 +29,18 @@ table, tr, td, th{
     color: #F00;
     background-color: #FFF;
   }
+.id-icon{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    cursor: pointer;
+}
+.id-icon:hover{
+    color: #424242;
+}
+.colored-header {
+    background-color: var(--primary-color);
+    color:white;
+    border-style:double;
+}
