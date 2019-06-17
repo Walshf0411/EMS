@@ -13,10 +13,7 @@
             </table>
         </p>        
     </div>
-    <p id="booth">
-        <label for="Booth number">Booth number:</label>
-        <input oninput="this.className = ''" name="booth_number">
-    </p>
+    <?php include("../utils/booth_number_header.php");?>
     
     <form action="" id="fair-listing"> 
         <div class="form-group">
@@ -94,8 +91,19 @@
             <label for="company-logo">Company Logo</label>
             <input type=file name="company-logo" class="form-control required">
         </div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
+        <div style="float:right">
+            <?php include("../utils/exhibitor_footer.php");?>
+        </div>
+        <div style="clear:both"></div>
+        <div align=center>
+            <button class="btn btn-danger" data-toggle="pill" href="#v-pills-4">
+                <i class="fa fa-caret-left"></i>Previous
+            </button>
+            &nbsp;
+            <button class="btn btn-success" data-toggle="pill" href="#v-pills-6">
+                Next<i class="fa fa-caret-right"></i>
+            </button>
+        </div>
     </form>
 
     <script>

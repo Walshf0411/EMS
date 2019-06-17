@@ -15,14 +15,7 @@
         </p>
 
     </div>
-    <p>
-        <label for="Comapny Name"><strong>CompanyName:</strong></label>
-        <input type="text" name="companyName" class="data-input" style="width:75%;" >
-    </p>        
-    <p id="booth">
-        <label for="Booth number">Booth number:</label>
-        <input name="booth_number">
-    </p>
+    <?php include("../utils/booth_number_header.php");?>
 
     <pre>
 To,
@@ -39,22 +32,16 @@ Mumbai
         Communications Pvt. Ltd.
         </p>
 
-    <div style="float:right;">
-        <pre>
-        (PLEASE TYPE IN BLOCK LETTERS)
-        (OR ATTACH BUSINESS NAME CARD)</pre>
-        <input oninput="this.className = ''" name="business_name_card"class="data-input">
-        <p>Name,Signature & Stamp of an Authorized Person</p>
-        <input oninput="this.className = ''" name="business_name_card"class="data-input">
-        <p>Mobile Number</p>
-    </div>
-    <div style="float:left;" id="receiver">
-        <pre>
-    SEND THIS FORM TO :
-    <strong>PEPPERMINT COMMUNICATIONS PVT. LTD.</strong> 
-    Unit B-135, Antophill Warehousing Complex, V.I.T. College Road, 
-    Wadala (E), Mumbai - 400037, INDIA.   
-    T: +91-22-4095 6666
-    E: superjuniorzexpo@gmail.com  |  W: www.peppermint.co.in</pre>
-    </div>
+<div style="float:right;">
+    <?php include("../utils/exhibitor_footer.php");?>
+</div>
 <div style = "clear:both;"></div>
+<div align=center>
+    <button class="btn btn-danger" data-toggle="pill" href="#v-pills-6">
+        <i class="fa fa-caret-left"></i>Previous
+    </button>
+
+    <button class="btn btn-info" id="mandatory-forms-submit-btn">
+        Submit<i class="fas fa-paper-plane"></i>
+    </button>
+</div>
