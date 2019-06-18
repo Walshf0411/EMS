@@ -27,39 +27,39 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <label for="telephone_isd_code">Telephone ISD code:</label>
-                <input type="text" name="telephone_isd_code" class="form-control required">
+                <input type="text" name="telephone_isd_code" class="form-control required number-input">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="telephone_std_code">STD code:</label>
-                <input type="text" name="telephone_std_code" maxlength="3" class="form-control required">
+                <input type="text" name="telephone_std_code" maxlength="3" class="form-control required number-input">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="telephone">Phone number:</label>
-                <input type="text" name="telephone" maxlength="8" class="form-control required">
+                <input type="text" name="telephone" maxlength="8" class="form-control required number-input">
             </div>
         </div>
         <div class="row">    
             <div class="col-md-4 col-sm-12">
                 <label for="fax_isd_code">Fax ISD code:</label>
-                <input type="text" name="fax_isd_code" class="form-control required">
+                <input type="text" name="fax_isd_code" class="form-control required number-input" maxlength="3">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="fax_std_code">STD code:</label>
-                <input type="text" name="fax_std_code" maxlength="3" class="form-control required">
+                <input type="text" name="fax_std_code" maxlength="3" class="form-control required number-input" >
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="fax">Phone number:</label>
-                <input type="text" name="fax" maxlength="8" class="form-control required">
+                <input type="text" name="fax" maxlength="8" class="form-control required number-input">
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <label for="mobile_isd_code">Mobile ISD code:</label>
-                <input type="text" name="mobile_isd_code" class="form-control required">
+                <input type="text" name="mobile_isd_code" class="form-control required number-input">
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="mobile">Mobile Number:</label>
-                <input type="text" name="mobile" maxlength="10" class="form-control required">
+                <input type="text" name="mobile" maxlength="10" class="form-control required number-input">
             </div>
         </div>
         <div class="form-group">
@@ -103,7 +103,28 @@
     </form>
 
     <script>
+    function pasteFunction (e) {
+        var pastedData = e.originalEvent.clipboardData.getData('text');
+        const regex = /\d+/gm;
+        if (pastedData.match(regex)) {
+            return true;
+        } else{
+            return false;
+        }
+        
+    }
+    function keypressFunction (event) {
+        return event.charCode >= 48 && event.charCode <= 57;
+    }
+
     $(document).ready(function () {
+        $(".number-input").on("keypress", function(event) {
+            return keypressFunction(event);
+        });
+        $(".number-input").on("paste", function(event) {
+            return pasteFunction(event);
+        });
+
         var form = $("#fair-listing");
         form.validate();
         form.sisyphus({
