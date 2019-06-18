@@ -16,7 +16,6 @@
 
     </div>
     <?php include("../utils/booth_number_header.php");?>
-
     <pre>
 To,
 The Chief Organiser

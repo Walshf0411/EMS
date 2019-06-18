@@ -44,3 +44,18 @@ table, tr, td, th{
     color:white;
     border-style:double;
 }
+.textbox {
+    display: flex;  
+    flex-wrap: wrap;
+}
+.textbox input {
+    background-color: #FFF;
+    width: 90%;
+}
+.prepend_text {
+    border: 1px solid #eeeeee;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    width: 10%;
+}

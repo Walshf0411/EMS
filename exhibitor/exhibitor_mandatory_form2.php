@@ -27,7 +27,10 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <label for="telephone_isd_code">Telephone ISD code:</label>
-                <input type="text" name="telephone_isd_code" class="form-control required number-input">
+                <div class="textbox"> 
+                    <span class="prepend_text">+</span>
+                    <input type="text" name="telephone_isd_code" class="form-control required number-input" maxlength="4">
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="telephone_std_code">STD code:</label>
@@ -41,7 +44,10 @@
         <div class="row">    
             <div class="col-md-4 col-sm-12">
                 <label for="fax_isd_code">Fax ISD code:</label>
-                <input type="text" name="fax_isd_code" class="form-control required number-input" maxlength="3">
+                <div class="textbox"> 
+                    <span class="prepend_text">+</span>
+                    <input type="text" name="fax_isd_code" class="form-control required number-input" maxlength="4">
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="fax_std_code">STD code:</label>
@@ -55,7 +61,10 @@
         <div class="row">
             <div class="col-md-4 col-sm-12">
                 <label for="mobile_isd_code">Mobile ISD code:</label>
-                <input type="text" name="mobile_isd_code" class="form-control required number-input">
+                <div class="textbox"> 
+                    <span class="prepend_text">+</span>
+                    <input type="text" name="mobile_isd_code" class="form-control required number-input" maxlength="4">
+                </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="mobile">Mobile Number:</label>
@@ -68,7 +77,7 @@
         </div>
         <div class="form-group">
             <label for="website">Website:</label>
-            <input type="url" name="website" class="form-control required">
+            <input type="url" name="website" class="form-control required" placeholder="Example: https://google.com">
         </div>
         <div class="form-group">
             <label for="person">Contact Person:</label>
