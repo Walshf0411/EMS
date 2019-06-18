@@ -22,18 +22,22 @@
     <p id="use-bold">PLEASE USE BOLD LETTERS</p>
     <ol id="list1">
         <li>
-            <div class="form-group">
-                <label for="fasica_name"></label>FASCIA NAME (As it should appear on your stall)</label>
-                <input type="text" class="form-control required" id="fascia_name" name="fasica_name" maxlength="24" style="text-transform:uppercase">
-            </div>
+            <form action="#" onsubmit="return false" id="fascia_form">
+                <div class="form-group">
+                    <label for="fasica_name"></label>FASCIA NAME (As it should appear on your stall)</label>
+                    <input type="text" class="form-control required" id="fascia_name" name="fasica_name" maxlength="24" style="text-transform:uppercase">
+                </div>
+            </form>
         </li>
         <li>
             SHELL SCHEME PACKAGE
-            <p>Shell Scheme package includes partition walls on maximum 3 sides, needle punch carpet, name fascia with basic furniture and fittings etc. shown in the Application Form. <i class="fa fa-info-circle fa-2x id-icon" ></i></p>
+            <p>Shell Scheme package includes partition walls on maximum 3 sides, needle punch carpet, name fascia with basic furniture and fittings.
+            <i class="fa fa-info-circle fa-2x id-icon" data-toggle="tooltip" data-placement="top" title="Click Here To view Standard booth layout and stall amenties"></i></p>
         </li>
         <li>
             DRAWINGS / DIAGRAMS
-            <p>The perspective of the Standard Shell Scheme Stall is shown on the Application Form. <i class="fa fa-info-circle fa-2x id-icon"></i></p>
+            <p>The perspective of the Standard Shell Scheme Stall is shown on the Application Form.
+            <i class="fa fa-info-circle fa-2x id-icon" data-toggle="tooltip" data-placement="top" title="Click Here To view Standard booth layout and stall amenties"></i></p>
         </li>
     </ol>
 </p>
@@ -98,5 +102,6 @@
         $(".id-icon").attr('onclick', "standardBoothLayoutInfoButtonClicked()");
         onInputFascia();
         $("#fascia_name").attr("oninput", "onInputFascia()");
+        $('[data-toggle="tooltip"]').tooltip(); 
     });
 </script>

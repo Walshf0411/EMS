@@ -3,7 +3,7 @@
 <div class="col-md-12 col-sm-12">
     <p class="table">
         <table style="width:100%;">
-            <tr style="background-color:rgb(193, 13, 109);">
+            <tr>
                 <th>FORM 3</th>
                 <th>REGISTRATION OF EXHIBITION PERSONNEL FOR BADGES</th>
                 <th>MANDATORY</th>
