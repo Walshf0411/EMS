@@ -1,7 +1,7 @@
 <div class="content_wrapper">
     <ol>
         <li>
-            Rules and Regulations 
+            <div><h3>Rules and Regulations</h3></div> 
             <ul>
                 <li> <strong>Terms of Application and Exhibition Rules & Regulations</strong>
                     <ol>
@@ -464,7 +464,7 @@
                     Photography, filming, sound or video recording, telecasting and broadcasting will not be allowed in the fair venue, unless approved by the Organiser in writing in advance.
                 </li>
                 <li>
-                    Official Website: www.superjuniorz.com
+                    <a href="http://superjuniorz.com/">Official Website: www.superjuniorz.com</a>
                 </li>
             </ul> 
         </li>
