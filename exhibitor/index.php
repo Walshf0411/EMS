@@ -52,13 +52,13 @@
                         <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-home" ><i class="far fa-id-badge"></i>Quick Reference</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-asterisk"></i>Mandatory Forms</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="mandatory-forms-dropdown"><i class="fa fa-asterisk"></i>Mandatory Forms</a>
                         <div class="dropdown-menu">
                             <!-- create additional tabs in the tab content div and then use href and data-toggle=pill to make them visible using the pills-->
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-4" role="tab">Standard Shell Scheme Package</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-5" role="tab">Listing in Fair Catalogue</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-6" role="tab">Registration for Badges</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-7" role="tab">Undertaking of Rules & Regulations</a>
+                            <a class="dropdown-item" id="v-pills-tab-4" data-toggle="pill" href="#v-pills-4" role="tab">Standard Shell Scheme Package</a>
+                            <a class="dropdown-item" id="v-pills-tab-5" data-toggle="pill" href="#v-pills-5" role="tab">Listing in Fair Catalogue</a>
+                            <a class="dropdown-item" id="v-pills-tab-6" data-toggle="pill" href="#v-pills-6" role="tab">Registration for Badges</a>
+                            <a class="dropdown-item" id="v-pills-tab-7" data-toggle="pill" href="#v-pills-7" role="tab">Undertaking of Rules & Regulations</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

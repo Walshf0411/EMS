@@ -14,7 +14,7 @@
         </p>        
     </div>
     <?php include("../utils/booth_number_header.php");?>
-
+    <span id="fair-listing-form-error" class="text-danger" style="display:none">Kindly fill in all the details. If you think this is a mistake, press Next.</span>
     <form onsubmit="return false;" id="fair-listing"> 
         <div class="form-group">
             <label for="company-name">Company name:</label>
@@ -112,6 +112,7 @@
     </form>
 
     <script>
+    var fairListingFormValid = false;
     function pasteFunction (e) {
         var pastedData = e.originalEvent.clipboardData.getData('text');
         const regex = /\d+/gm;
@@ -141,14 +142,16 @@
                 
             }, 
             onRestore: function() {
-                
+            
             }, 
-            timeout: 10,
+            timeout: 1,
         });
         $("#exhibitor_mandatory_form2_submit_btn").click(function() {
             if (form.valid()) {
                 // the tab show method is based on the anchor in the navbar
                 // and not on the tab pane.
+                $("#fair-lising-form-error").css("display", "none");
+                fairListingFormValid = true;
                 $("#v-pills-tab-6").tab("show");
             } 
         });

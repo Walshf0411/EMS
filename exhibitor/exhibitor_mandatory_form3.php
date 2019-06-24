@@ -15,6 +15,7 @@
     </p>    
 </div>
 <?php include("../utils/booth_number_header.php");?>
+<span id="staff-personnel-form-error" class="text-danger" style="display:none">Kindly fill in all the details. If you think this is a mistake, press Next</span><br>
 <p>
     <ol>
         <strong>THIS FORM MUST BE COMPLETED AND RETURNED BY EVERY EXHIBITOR</strong>
@@ -29,40 +30,41 @@
         Kindly issue the Exhibitors’ badges for following stall personnel</li>
     </ol>
 </p>
-<?php include("../utils/booth_number_header.php");?>
-
+<form action="#" onsubmit="return false" id="exhibitor_staff_badges">
 <div class="table-input">
     <div class="row" id="header">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">Sr.No.</div>
         <div class="col-md-6 col-sm-11 col-sm-offset-1">Name of the stall Personnel</div>
         <div class="col-md-4 col-sm-11 col-sm-offset-1">Designation</div>
     </div>
+
     <div class="row">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">1.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_1"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_1_designation"></div>
+        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_1"></div>
+        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_1_designation"></div>
     </div>
     <div class="row">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">2.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_2"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_2_designation"></div>
+        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_2"></div>
+        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_2_designation"></div>
     </div>
     <div class="row">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">3.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_3"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_3_designation"></div>
+        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_3"></div>
+        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_3_designation"></div>
     </div>
     <div class="row">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">4.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_4"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_4_designation"></div>
+        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_4"></div>
+        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_4_designation"></div>
     </div>
     <div class="row">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">5.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_5"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input oninput="this.className = ''" name="stall_personnel_5_designation"></div>
+        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_5"></div>
+        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_5_designation"></div>
     </div>
 </div>
+</form>
 <div style="float:right;">
     <?php include("../utils/exhibitor_footer.php");?>
 </div>
@@ -72,7 +74,25 @@
         <i class="fa fa-caret-left"></i>Previous
     </button>
 
-    <button class="btn btn-success" data-toggle="pill" href="#v-pills-7">
+    <button class="btn btn-success" id="mandatory_form3_next_btn">
         Next<i class="fa fa-caret-right"></i>
     </button>
 </div>
+
+<script>
+    var staffPersonnelFormValid = false;
+    $(document).ready(function () {
+        var staffPersonnelForm = $("#exhibitor_staff_badges");
+        staffPersonnelForm.validate();
+        staffPersonnelForm.sisyphus();
+        $("#mandatory_form3_next_btn").click(function() {
+            
+            if (staffPersonnelForm.valid()){
+                staffPersonnelFormValid = true;
+                $("#staff-personnel-form-error").css("display", "none");
+                $("#v-pills-tab-7").tab("show");
+            }
+        });
+    });
+    
+</script>

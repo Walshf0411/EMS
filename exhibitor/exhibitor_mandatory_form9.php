@@ -36,11 +36,88 @@ Mumbai
 </div>
 <div style = "clear:both;"></div>
 <div align=center>
+    <input type="checkbox" name="" id="agreement_checkbox">
+    <p>I have read the terms and conditions.</p>
+    <br><br>
     <button class="btn btn-danger" data-toggle="pill" href="#v-pills-6">
         <i class="fa fa-caret-left"></i>Previous
     </button>
 
-    <button class="btn btn-info" id="mandatory-forms-submit-btn">
+    <button class="btn btn-info" id="mandatory-forms-submit-btn" disabled>
         Submit<i class="fas fa-paper-plane"></i>
     </button>
 </div>
+<script>
+    function submitMandatoryForms() {
+
+    }
+
+    $(document).ready(function() {
+        $("#agreement_checkbox").click(function () {
+            if ($(this) .prop("checked") == true) {
+                $("#mandatory-forms-submit-btn").attr("disabled", false);
+            } else {
+                $("#mandatory-forms-submit-btn").attr("disabled", true);
+            }
+        });
+        $("#mandatory-forms-submit-btn").click(function() {
+            var fasciaName = $("#fascia_name");
+            var fairListingFormError = $("#fair-listing-form-error");
+            var staffPersonnelFormError = $("#staff-personnel-form-error");
+            var valid = true;
+            var fasciaNameTab = $("#v-pills-tab-4");
+            var fairListingFormTab = $("#v-pills-tab-5");
+            var exhibhitorStaffBadgesFormTab = $("#v-pills-tab-6");
+            var mandatoryFormsDropdown = $("#mandatory-forms-dropdown");
+            
+            // check all the previous page forms and add errors in the dropdown
+            // fascia name validation
+            if (!fasciaName.val()) {
+                // set an erro on the link in the dropdown
+                valid = false;
+                fasciaName.addClass("is-invalid");
+                fasciaNameTab.addClass("text-danger");
+            } else {
+                fasciaName.removeClass("is-invalid");
+                fasciaNameTab.removeClass("text-danger");
+            }
+
+            // fair catalogue listing validation
+            if (!fairListingFormValid) {
+                // set an error on the fair catalogue listing tab
+                valid = false;
+                fairListingFormError.css("display", "block");
+                fairListingFormTab.addClass("text-danger");
+            } else {
+                fairListingFormError.css("display", "none");
+                fairListingFormTab.removeClass("text-danger");
+            }
+
+            // staff badges listing validation
+            if (!staffPersonnelFormValid) {
+                // set an error on the staff badges tab
+                valid = false;
+                staffPersonnelFormError.css("display", "block");
+                exhibhitorStaffBadgesFormTab.addClass("text-danger");
+            } else {
+                staffPersonnelFormError.css("display", "none");
+                exhibhitorStaffBadgesFormTab.removeClass("text-danger");
+            }
+
+            // at the end of the form if there is an error in any of the forms
+            // show a notification asking the user to correct the errors.
+            if (!valid) {
+                mandatoryFormsDropdown.addClass("text-danger");
+                $.notify.defaults({
+                    globalPosition: 'top center',
+                });
+                $.notify('Kindly Correct the errors', 'error');
+            } else {
+                alert("thanks for submitting");
+                mandatoryFormsDropdown.removeClass("text-danger");
+            }
+
+        });
+    });
+
+</script>
