@@ -49,7 +49,24 @@ Mumbai
 </div>
 <script>
     function submitMandatoryForms() {
+        var fasciaName = $("#fascia_name");
+        var fairListingForm = $("#fair-listing");
+        var stallPersonnelForm = $("#exhibitor_staff_badges");
+        var fairListingFormData = new FormData(fairListingForm.get(0));
+        var stallPersonnelFormData = new FormData(stallPersonnelForm.get(0));
+        var finalFormData = new FormData();
+        
+        finalFormData.append("fascia_name", fasciaName.val());
+        for (pair of fairListingFormData.entries()) {
+            finalFormData.append(pair[0], pair[1]);
+        }
+        for (pair of stallPersonnelFormData.entries()) {
+            finalFormData.append(pair[0], pair[1]);
+        }
 
+        for (pair of finalFormData.entries()) {
+            console.log("key: " + pair[0] + " - " + "value: " + pair[1]);
+        }
     }
 
     $(document).ready(function() {
@@ -62,6 +79,8 @@ Mumbai
         });
         $("#mandatory-forms-submit-btn").click(function() {
             var fasciaName = $("#fascia_name");
+            var fairListingForm = $("#fair-listing");
+            var stallPersonnelForm = $("#exhibitor_staff_badges");
             var fairListingFormError = $("#fair-listing-form-error");
             var staffPersonnelFormError = $("#staff-personnel-form-error");
             var valid = true;
@@ -114,6 +133,7 @@ Mumbai
                 $.notify('Kindly Correct the errors', 'error');
             } else {
                 alert("thanks for submitting");
+                submitMandatoryForms();
                 mandatoryFormsDropdown.removeClass("text-danger");
             }
 
