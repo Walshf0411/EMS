@@ -27,6 +27,15 @@
 <?php require('../utils/header.php'); ?>
 
 <body>
+    <div id="full-overlay">
+        <div id="loading-icon">
+            <i class="fas fa-spinner fa-10x fa-spin"></i>
+            <div id="loading-content">
+                Please Wait...<br/>
+                Do not press the reload button.
+            </div>
+        </div>
+    </div>
     <!-- The side nav (Pills style)-->
     <div class="container main-content">
         <div class="row">

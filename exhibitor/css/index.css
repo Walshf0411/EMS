@@ -67,6 +67,27 @@ font-size: 14px;
         overflow: auto;
     }
 }
+#full-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+#loading-icon{
+    color:white;
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    text-align: center;
+}
+#loading-content {
+    font-size: 20px;
+}
 
 @media only screen
 and (min-width : 768px)
