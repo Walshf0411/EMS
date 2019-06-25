@@ -1,3 +1,25 @@
+<?php
+    require_once('../utils/globals.php');
+    if(DEBUG){
+        require_once('../utils/local_connect.php');
+    } else {
+        require_once('../utils/superz_connect.php');
+    }
+
+    function getElectricalRequirements(){
+        global $conn;
+
+        $query ="SELECT * FROM electrical_requirements";
+        $queryResult = executeQuery($conn,$query);
+        $requirements =array();
+        while($row = $queryResult-> fetch_assoc()) {    
+            $requirements[] = $row;
+        }
+
+        return $requirements;
+    }
+?>
+
 <?php require('../utils/form_logo_details.php'); ?>
     <div class="col-md-12 col-sm-12">
         <p class="table">
@@ -43,30 +65,16 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td>Spot light of 100 watts</td>
-                <td id="fitings_price_1">525</td>
-                <td><input type="number" min=0 class="data-input" id="fitings_quantity_1" oninput="onItemChanged(1, this.value)"></td>
-                <td><span id="fitings_total_1">0</span></td>
-            </tr>
-            <tr>
-                <td>Socket of 5/15 amperes</td>
-                <td><span id="fitings_price_2">525</span></td>
-                <td><input type="number" min=0 class="data-input" id="fitings_quantity_2" oninput="onItemChanged(2, this.value)"></td>
-                <td><span id="fitings_total_2">0</span></td>
-            </tr>
-            <tr>
-                <td>Adapter</td>
-                <td><span id="fitings_price_3">175</span></td>
-                <td><input type="number" min=0 class="data-input" id="fitings_quantity_3" oninput="onItemChanged(3, this.value)"></td>
-                <td><span id="fitings_total_3">0</span></td>
-            </tr>
-            <tr>
-                <td>Multiple Plugs</td>
-                <td><span id="fitings_price_4">525</span></td>
-                <td><input type="number" class="data-input" id="fitings_quantity_4" oninput="onItemChanged(4, this.value)"></td>
-                <td><span id="fitings_total_4">0</span></td>
-            </tr>
+            <?php
+                foreach (getElectricalRequirements() as $row) {
+                    echo "<tr>
+                        <td>".$row["item_description"]."</td>
+                        <td><span id='fitings_price_".$row["id"]."'>".$row["cost"]."</span></td>
+                        <td><input type='number' min=0 class='data-input' id='fitings_quantity_".$row["id"]."' oninput='onItemChanged(".$row["id"].", this.value)'></td>
+                        <td><span id='fitings_total_".$row["id"]."'>0</span></td>
+                    </tr>";
+                }
+            ?>
             <tr>
                 <td align="right"><strong>Sub Total(A)</strong></td>
                 <td></td>

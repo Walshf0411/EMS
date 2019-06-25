@@ -1,9 +1,9 @@
 <?php 
-    require("../utils/globals.php");
+    require_once("../utils/globals.php");
     if (DEBUG) {
-        require("../utils/local_connect.php");
+        require_once("../utils/local_connect.php");
     } else {
-        require("../utils/superz_connect.php");
+        require_once("../utils/superz_connect.php");
     }
     $getAdditionalItemsQuery = "SELECT * FROM additional_requirements_items";
     $queryResult = executeQuery($conn, $getAdditionalItemsQuery);
