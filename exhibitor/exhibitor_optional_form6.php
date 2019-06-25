@@ -104,10 +104,17 @@
 3. On spot orders will be subject to availability and 100% premium. <br>
 </p>
 
-<div style="float:right;">
+<div style="float:right">
     <?php include("../utils/exhibitor_footer.php");?>
 </div>
-<div style="clear:both;"></div>
+<div style="clear:both"></div>
+
+<div align=center>
+    <button class="btn btn-success" id="exhibitor_optional_form4_submit_btn">
+        Submit<i class="fas fa-paper-plane"></i>
+    </button>
+</div>
+
 <script>
     function updateTotals() {
         var numberOfAvailableItems = 4;

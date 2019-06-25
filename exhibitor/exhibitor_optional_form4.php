@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
-                <div class="col-md-11">
+                <div class="col-md-12">
                     <table style="width:100%;">
                         <tr style="background-color:rgb(193, 13, 109);color:white;">
                             <th>Position</th>
@@ -91,20 +91,22 @@
         </div>
     </p>
 
-    <pre>
-<strong>Full page size (Techinical Specifications) :</strong>
-• Trim Size: 125mm X 215mm
-• Bleed: 150mm X 210mm
-• Non-bleed: 140mm X 200mm
-• Require Bleed margin of 5mm on all side of the page.
-    </pre>
+    <div>
+        <strong>Full page size (Techinical Specifications) :</strong>
+        <ul>
+            <li>Trim Size: 125mm X 215mm</li>
+            <li>Bleed: 150mm X 210mm</li>
+            <li>Non-bleed: 140mm X 200mm</li>
+            <li>Require Bleed margin of 5mm on all side of the page.</li>
+        </ul>
+    </div>
 
     <p>
         <strong>Format :</strong>
         <p>Files must be provided to us in the following format(s): EPS | CDR | PSD | PDF
         ------------------------------------------------------------------------------------------------------------------------------------------------------------ 
         I would wish to place an Advertisement in the Fair Catalogue</p>
-        <label for="Position">Position <select name="position" id="">
+        <label for="Position">Position</label> <select name="position" id="">
             <?php
                 foreach (getDetails() as $row) {
                     echo "
@@ -115,20 +117,23 @@
         </select>
     </p>
 
-    <pre>
-<strong>FOR ADVERTISEMENT QUERY:</strong>
-<strong>CONTACT:</strong> Farheen Khan
-            +91 80808 99927
-            farheen.khan@peppermint.co.in
-    </pre>
+    
+    <div class="container">
+        <strong>FOR ADVERTISEMENT QUERY:</strong><br>
+        <strong>CONTACT:</strong>
+        Farheen Khan <br>
+        <a href="tel:+91 8080899927">+91 8080899927<br>
+        <a href="mailto:farheen.khan@peppermint.co.in">farheen.khan@peppermint.co.in</a><br>
+    </div><br>
 
-    <pre>
-<strong>IMPORTANT:</strong>
-1. Please provide ‘open files’ along with the fonts used in the advertisement
-2. Provide us the Advertisement material on CD
-3. All materials and payment must reach us on or before 8th June 2019.
-    </pre>
-<div style="float:right">
-    <?php include("../utils/exhibitor_footer.php");?>
-</div>
-<div style="clear:both;"></div>
+    <div style="float:right">
+        <?php include("../utils/exhibitor_footer.php");?>
+    </div>
+    <div style="clear:both"></div>
+
+    <div align=center>
+        <button class="btn btn-success" id="exhibitor_optional_form4_submit_btn">
+            Submit<i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+    
