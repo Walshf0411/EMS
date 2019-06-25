@@ -17,6 +17,7 @@
     <?php require('../utils/stylesheets.php'); ?>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/add_exhibitor.css">
+    <link rel="stylesheet" href="css/view_forms.css">
 </head>
 
 <?php require('../utils/header.php'); ?>
@@ -43,7 +44,7 @@
                         <?php require("add_exhibitor.php");?>
                     </div>
                     <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-
+                        <?php require("view_forms.php"); ?>
                     </div>
                     <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <?php require("change_admin_preferences.php");?>

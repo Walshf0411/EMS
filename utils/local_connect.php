@@ -9,6 +9,7 @@
     $doc_url = $_SERVER['DOCUMENT_ROOT'].'/superz';
 
     // create connection
+
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     #var_dump($conn);
     

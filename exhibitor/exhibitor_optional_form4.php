@@ -1,4 +1,24 @@
-    
+ <?php
+    require_once('../utils/globals.php');
+    if(DEBUG){
+        require_once('../utils/local_connect.php');
+    } else {
+        require_once('../utils/superz_connect.php');
+    }
+    function getDetails(){
+        global $conn;
+
+        $query = "Select * from advertising_in_fair_catalogue";
+        $queryResult = executeQuery($conn,$query);
+
+        $advertising_in_fair_catalogue = array();
+        while($row = $queryResult->fetch_assoc()){
+            $advertising_in_fair_catalogue[]= $row;
+        }
+
+        return $advertising_in_fair_catalogue;
+    }
+ ?>   
     <?php include("../utils/form_logo_details.php");?>
     <div class="col-md-12 col-sm-12">
         <p class="table">
@@ -31,26 +51,18 @@
                             <th>Position</th>
                             <th>Rate(Rs.)</th>
                         </tr>
-                        <tr>
-                            <td>Front Gate</td>
-                            <td>30,000</td>
-                        </tr>
-                        <tr>
-                            <td>Back Cover</td>
-                            <td>25,000</td>
-                        </tr>
-                        <tr>
-                            <td>Inside front cover</td>
-                            <td>22,000</td>
-                        </tr>
-                        <tr>
-                            <td>Inside back cover</td>
-                            <td>20,000 </td>
-                        </tr>
-                        <tr>
-                            <td>Opening Page</td>
-                            <td>18,000 </td>
-                        </tr>
+                        <?php
+                            foreach (getDetails() as $row) {
+                                if($row["id"] <= 5){
+                                    echo "
+                                        <tr>
+                                            <td>".$row["position"]."</td>
+                                            <td>".$row["rate"]."</td>
+                                        </tr>
+                                    ";
+                                }
+                            }
+                        ?>
                     </table>
                 </div>
             </div>
@@ -61,26 +73,18 @@
                             <th>Position</th>
                             <th>Rate(Rs.)</th>
                         </tr>
-                        <tr>
-                            <td>Front Gate</td>
-                            <td> </td>
-                        </tr>
-                        <tr>
-                            <td>First 10 Pages(Right)</td>
-                            <td>25,000</td>
-                        </tr>
-                        <tr>
-                            <td>First 10 Pages(Left)</td>
-                            <td>14,000</td>
-                        </tr>
-                        <tr>
-                            <td>Inside pages(Right)</td>
-                            <td>12,000 </td>
-                        </tr>
-                        <tr>
-                            <td>Inside pages(Left)</td>
-                            <td>10,000 </td>
-                        </tr>
+                        <?php
+                            foreach (getDetails() as $row) {
+                                if($row["id"] > 5){
+                                    echo "
+                                        <tr>
+                                            <td>".$row["position"]."</td>
+                                            <td>".$row["rate"]."</td>
+                                        </tr>
+                                    ";
+                                }
+                            }
+                        ?>
                     </table>
                 </div>
             </div>
@@ -100,8 +104,15 @@
         <p>Files must be provided to us in the following format(s): EPS | CDR | PSD | PDF
         ------------------------------------------------------------------------------------------------------------------------------------------------------------ 
         I would wish to place an Advertisement in the Fair Catalogue</p>
-        <label for="Position">Position <input type="text" class="data-input"style="width:70%;"></label>
-        <p>Please find enclosed Cheque / DD of amount <input type="text" class="data-input" style="width:20%;"> drawn in favour of “Peppermint Communications Pvt. Ltd.” and payable in Mumbai.</p>
+        <label for="Position">Position <select name="position" id="">
+            <?php
+                foreach (getDetails() as $row) {
+                    echo "
+                    <option value =".$row["id"].">".$row["position"]."</option>
+                    ";
+                }
+            ?>
+        </select>
     </p>
 
     <pre>
