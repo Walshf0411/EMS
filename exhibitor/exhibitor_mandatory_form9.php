@@ -48,6 +48,38 @@ Mumbai
     </button>
 </div>
 <script>
+    function showWaitingOverlay() {
+        $("#full-overlay").css("z-index", "1000");
+        $("#full-overlay").animate({
+            opacity: 1
+        }, 500); 
+    }
+
+    function hideWaitingOverlay() {
+        $("#full-overlay").animate({
+            opacity: 0
+        }, 500); 
+        $("#full-overlay").css("z-index", "-1");
+    }
+    function sendData(finalFormData) {
+        $.ajax({
+            type: "POST",
+            url: "exhibitor_mandatory_form_submit.php",
+            data: finalFormData,
+            success: function (response) {
+                console.log(response);
+                hideWaitingOverlay();
+                $.notify("Form Submitted successfully", "success", "top middle");
+            },
+            error: function(response) {
+                hideWaitingOverlay();
+                $.notify("Error", "error", "top middle");
+            },
+            processData: false,
+            contentType: false,
+        });
+
+    }
     function submitMandatoryForms() {
         // get all the forms.
         var fasciaName = $("#fascia_name");
@@ -70,11 +102,8 @@ Mumbai
         for (pair of finalFormData.entries()) {
             console.log("key: " + pair[0] + " - " + "value: " + pair[1]);
         }
-        $("#full-overlay").css("z-index", 1000);
-        $("#full-overlay").animate({
-            opacity: 1
-        }, 500); 
-
+        showWaitingOverlay();
+        sendData(finalFormData);
     }
 
     $(document).ready(function() {
@@ -86,13 +115,14 @@ Mumbai
             }
         });
         $("#mandatory-forms-submit-btn").click(function() {
+            // form 1 input tag
             var fasciaName = $("#fascia_name");
-            var fairListingForm = $("#fair-listing");
-            var stallPersonnelForm = $("#exhibitor_staff_badges");
-            var fairListingFormError = $("#fair-listing-form-error");
-            var staffPersonnelFormError = $("#staff-personnel-form-error");
+            var fairListingForm = $("#fair-listing"); // mandatory form 2 
+            var stallPersonnelForm = $("#exhibitor_staff_badges"); // mandatory form 3
+            var fairListingFormError = $("#fair-listing-form-error"); // mandatory form  2 error
+            var staffPersonnelFormError = $("#staff-personnel-form-error"); // mandatory form 3 error
             var valid = true;
-            var fasciaNameTab = $("#v-pills-tab-4");
+            var fasciaNameTab = $("#v-pills-tab-4"); // tab in the side tab
             var fairListingFormTab = $("#v-pills-tab-5");
             var exhibhitorStaffBadgesFormTab = $("#v-pills-tab-6");
             var mandatoryFormsDropdown = $("#mandatory-forms-dropdown");
@@ -140,7 +170,6 @@ Mumbai
                 });
                 $.notify('Kindly Correct the errors', 'error');
             } else {
-                alert("thanks for submitting");
                 submitMandatoryForms();
                 mandatoryFormsDropdown.removeClass("text-danger");
             }
