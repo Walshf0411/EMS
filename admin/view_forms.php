@@ -51,7 +51,7 @@
                 echo "
                     <tr>
                         <td>".$row["booth_number"]."</td>
-                        <td>".$row["participant_name"]."</td>
+                        <td><a href='./submitted_form.php'>".$row["participant_name"]."</td>
                         <td>4</td>
                 ";
                 
@@ -60,3 +60,14 @@
         ?>
     </table>
 </div>
+<!-- 
+    
+    <a class="nav-link" id="v-pills-tab5" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-settings" aria-selected="false">Form 1</a>
+    <a class="nav-link" id="v-pills-tab6" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-settings" aria-selected="false">Form 2</a>
+    <a class="nav-link" id="v-pills-tab7" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-settings" aria-selected="false">Form 3</a>
+    <a class="nav-link" id="v-pills-tab8" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-settings" aria-selected="false">Form 4</a>
+    <a class="nav-link" id="v-pills-tab9" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-settings" aria-selected="false">Form 5</a>
+    <a class="nav-link" id="v-pills-tab10" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Password</a>
+    <a class="nav-link" id="v-pills-tab11" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Password</a>
+                    
+-->

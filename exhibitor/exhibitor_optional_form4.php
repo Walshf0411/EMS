@@ -104,7 +104,8 @@
         <p>Files must be provided to us in the following format(s): EPS | CDR | PSD | PDF
         ------------------------------------------------------------------------------------------------------------------------------------------------------------ 
         I would wish to place an Advertisement in the Fair Catalogue</p>
-        <label for="Position">Position <select name="position" id="">
+        <label for="Position">Position </label>
+        <select name="position" id="">
             <?php
                 foreach (getDetails() as $row) {
                     echo "
