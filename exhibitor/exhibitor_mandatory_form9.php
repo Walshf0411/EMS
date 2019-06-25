@@ -49,13 +49,16 @@ Mumbai
 </div>
 <script>
     function submitMandatoryForms() {
+        // get all the forms.
         var fasciaName = $("#fascia_name");
         var fairListingForm = $("#fair-listing");
         var stallPersonnelForm = $("#exhibitor_staff_badges");
+        // creating form Data objects for the two forms.
         var fairListingFormData = new FormData(fairListingForm.get(0));
         var stallPersonnelFormData = new FormData(stallPersonnelForm.get(0));
         var finalFormData = new FormData();
         
+        // add all the details to the final form Data object
         finalFormData.append("fascia_name", fasciaName.val());
         for (pair of fairListingFormData.entries()) {
             finalFormData.append(pair[0], pair[1]);
@@ -67,6 +70,11 @@ Mumbai
         for (pair of finalFormData.entries()) {
             console.log("key: " + pair[0] + " - " + "value: " + pair[1]);
         }
+        $("#full-overlay").css("z-index", 1000);
+        $("#full-overlay").animate({
+            opacity: 1
+        }, 500); 
+
     }
 
     $(document).ready(function() {
