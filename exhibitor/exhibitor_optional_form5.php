@@ -1,4 +1,23 @@
+<?php
+    require_once('../utils/globals.php');
+    if(DEBUG){
+        require_once('../utils/local_connect.php');
+    } else {
+        require_once('../utils/superz_connect.php');
+    }
 
+    function getServices() {
+        global $conn;
+        $query = "SELECT * from other_services";
+        $queryResult = executeQuery($conn,$query);
+        $services =array();
+        while($row = $queryResult-> fetch_assoc()) {    
+            $services[] = $row;
+        }
+
+        return $services;
+    }
+?>
 
 <?php require('../utils/form_logo_details.php'); ?>
 
@@ -35,41 +54,22 @@
             <th>Quantity</th>
             <th>Total</th>
         </tr>
-        <tr>
-            <td>1.</td>
-            <td>Hanger</td>
-            <td>Rs. 200 per dozen</td>
-            <td><input min=0 type="number" class="data-input" id="item_quantity_1" onchange="itemChanged(200, this.value, 'item_total_1')"></td>
-            <td>Rs: <span id="item_total_1">0</span></td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td>Hostesses(10:00 am to 7:00pm)</td>
-            <td>Rs. 3,000 per day</td>
-            <td><input min=0 type="number" class="data-input" id="item_quantity_2" onchange="itemChanged(3000, this.value, 'item_total_2')"></td>
-            <td>Rs: <span id="item_total_2">0</span></td>
-        </tr>
-        <tr>
-            <td>3.</td>
-            <td>Malyalam Translater(10:00 am to 7:00pm)</td>
-            <td>Rs. 5,000 per day</td>
-            <td><input min=0 type="number" class="data-input" id="item_quantity_3" onchange="itemChanged(5000, this.value, 'item_total_3')"></td>
-            <td>Rs: <span id="item_total_3">0</span></td>
-        </tr>
-        <tr>
-            <td>4.</td>
-            <td>Full Body Mannequin</td>
-            <td>Rs. 3,500 Three Days</td>
-            <td><input min=0 type="number" class="data-input" id="item_quantity_4" onchange="itemChanged(3500, this.value, 'item_total_4')"></td>
-            <td>Rs: <span id="item_total_4">0</span></td>
-        </tr>
-        <tr>
-            <td>5.</td>
-            <td>Half Mannequin</td>
-            <td>Rs. 2,500 Three Days</td>
-            <td><input min=0 type="number" class="data-input" id="item_quantity_5" onchange="itemChanged(2500, this.value, 'item_total_5')"></td>
-            <td>Rs: <span id="item_total_5">0</span></td>
-        </tr>   
+
+        <?php
+            foreach (getServices() as $row) {
+                $onchange = "itemChanged(".$row["amount"].", this.value, ".$row["id"].")";
+                echo "
+                    <tr>
+                        <td>".$row["id"]."</td>
+                        <td>".$row["item_description"]."</td>
+                        <td>".$row["amount"]." ".$row["duration"]."</td>
+                        <td><input min=0 type='number' class='data-input' id='item_quantity_".$row["id"]."' onchange='".$onchange."'></td>
+                        <td>Rs: <span id='item_total_".$row["id"]."'>0</span></td>
+                    </tr>
+                ";
+            }
+        ?>
+   
         <tr>
             <td colspan=5>
                 <div style="float:right">
@@ -98,9 +98,9 @@
         var item1Price = 200;
         if (value > 0) {
             var total = value * price;
-            document.getElementById(totalId).innerHTML = total;
+            document.getElementById("item_total_" + totalId).innerHTML = total;
         } else {
-            document.getElementById(totalId).innerHTML = 0;
+            document.getElementById("item_total_" + totalId).innerHTML = 0;
         }
         total = 0;
         for(i=1; i<=5; i++) {

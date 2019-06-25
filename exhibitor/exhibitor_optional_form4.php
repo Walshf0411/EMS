@@ -131,3 +131,4 @@
 <div style="float:right">
     <?php include("../utils/exhibitor_footer.php");?>
 </div>
+<div style="clear:both;"></div>
