@@ -134,7 +134,7 @@
         </button>
     </div>
 
-    <div class="modal fade" id="exhibitor_form4_modal">
+    <div class="modal fade" id="optional_form4_modal">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content">
 
@@ -150,7 +150,7 @@
                         <div class="alert alert-danger">
                             <strong>Note:</strong> Kindly review the form before submitting. You will not be able to make any changes to the form after submitting.
                         </div>
-                        <div id="exhibitor_form4_modal_content">
+                        <div id="optional_form4_modal_content">
                             <table></table>
                         </div>
                     </div>
@@ -197,8 +197,8 @@
         tableData += "<tr><td colspan=4 align='right'>Grand Total(Rs): " + finalTotal + "</td></tr>";
 
         tableData += "</table>";
-        $("#exhibitor_form4_modal_content").html(tableData);
-        $("#exhibitor_form4_modal").modal("show");
+        $("#optional_form4_modal_content").html(tableData);
+        $("#optional_form4_modal").modal("show");
         
     }
     $(document).ready(function () {
