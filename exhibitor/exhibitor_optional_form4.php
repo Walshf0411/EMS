@@ -159,6 +159,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                    <button class="btn btn-success" id="optional_form4_accept_btn">Accept <i class="fa fa-check"></i></button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
@@ -201,10 +202,12 @@
         $("#optional_form4_modal").modal("show");
         
     }
+    var selectedOptions;
     $(document).ready(function () {
+        // click function for the main outer button(Submit)
         $("#exhibitor_optional_form4_submit_btn").click(function () {
             // initialize empty array
-            var selectedOptions = [];
+            selectedOptions = [];
             // take each of the selected items and add it to the favourite array
             var selected = $("input[name='optional_form4_checkbox']:checked");
             if (selected.length > 0) {
@@ -219,7 +222,21 @@
                 });
                 $.notify("Kindly select at least one of the options", "error");
             }
-            
-        });    
+        });  
+        $("#optional_form4_accept_btn").click(function (e) { 
+            e.preventDefault();
+            formData = new FormData();
+            formData.append("selected_items", JSON.stringify(selectedOptions));
+            $.ajax({
+                type: "POST",
+                url: "exhibitor_optional_form4_submit.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        });  
     });
 </script>
