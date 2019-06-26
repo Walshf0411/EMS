@@ -86,12 +86,24 @@
 2. Orders received after 1st June 2019 may be accepted subject to the availability.
 </pre>
 
-<div style="float:right;">
+<div style="float:right">
     <?php include("../utils/exhibitor_footer.php");?>
 </div>
 <div style="clear:both"></div>
 
+<div align=center>
+    <button class="btn btn-success" id="exhibitor_optional_form5_submit_btn">
+        Submit<i class="fas fa-paper-plane"></i>
+    </button>
+</div>
+
 <script>
+    $(document).ready(function () {
+        $("#exhibitor_optional_form5_submit_btn").click(function() {
+            // make and show the invoice.
+
+        });
+    });
     function itemChanged(price, value, totalId) {
         value = Number(value);
         price = Number(price);

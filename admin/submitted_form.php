@@ -37,23 +37,10 @@
                             require_once('../utils/superz_connect.php');
                         }
 
-                        $query="select distinct exhibitor.id, participant_name,email, booth_number 
-                        from exhibitor as exhibitor 
-                        inner JOIN optional_additional_fittings1 as fittings1 
-                        on exhibitor.id = fittings1.exhibitor_id 
-                        inner join optional_form_advertising as advertising 
-                        on exhibitor.id = advertising.exhibitor_id 
-                        inner join optional_other_services as services 
-                        on exhibitor.id = services.id 
-                        inner join optional_additional_fittings2 as fitting 
-                        on exhibitor.id = fitting.id
-                        ";
+                        function getSubmittedFormDetails(){
+                            global $conn;
 
-                        $queryResult = executeQuery($conn, $query);
-
-                        if($queryResult){
-                            // Do something 
-                        }
+                        
                     ?>
                 </div>
             </div>

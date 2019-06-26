@@ -102,10 +102,16 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
     No items available
 </div>
 <?php endif ?>
-<div style="float:right;">
-<?php include("../utils/exhibitor_footer.php");?>
+<div style="float:right">
+    <?php include("../utils/exhibitor_footer.php");?>
 </div>
-<div style = "clear:both;"></div>
+<div style="clear:both"></div>
+
+<div align=center>
+    <button class="btn btn-success" id="exhibitor_optional_form4_submit_btn">
+        Submit<i class="fas fa-paper-plane"></i>
+    </button>
+</div>
 
 <script>
     var numberOfAvailableItems = 67;
