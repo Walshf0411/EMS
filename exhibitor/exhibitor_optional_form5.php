@@ -54,7 +54,7 @@
             <th>Quantity</th>
             <th>Total</th>
         </tr>
-        
+        <form method="POST" id="optional_form5">
         <?php
             foreach (getServices() as $row) {
                 $onchange = "itemChanged(".$row["amount"].", this.value, ".$row["id"].")";
@@ -69,7 +69,7 @@
                 ";
             }
         ?>
-   
+        </form>
         <tr>
             <td colspan=5>
                 <div style="float:right">
@@ -139,6 +139,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
+                <button class="btn btn-info" id="optional_form5_invoice_accept">Accept <i class="fa fa-check"></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
 
@@ -200,11 +201,17 @@
             $.notify("Kindly select at least one of the options", "error");
         }
     }
+    function submitOptionalForm5() {
+        
+    }
 
     $(document).ready(function () {
         $("#exhibitor_optional_form5_submit_btn").click(function() {
             // make and show the invoice.
             setOptionalForm5Invoice();
+        });
+        $("#optional_form5_invoice_accept").click(function() {
+            submitOptionalForm5();
         });
     });
     function itemChanged(price, value, totalId) {
