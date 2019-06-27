@@ -232,6 +232,7 @@
                 $.notify("Form Submitted Successfully.", "success");
             }
         });
+        
     }
     
     function updateTotals() {

@@ -10,7 +10,6 @@
 
     if (isset($_POST['selected_items'])) {
         $arr = json_decode($_POST['selected_items']);
-        var_dump($arr);
         // insert all the positions in the database
         // attributes position exhibitor_id
         $exhibitorId = $_SESSION['user_id'];
