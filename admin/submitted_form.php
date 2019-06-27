@@ -77,13 +77,13 @@
                         <?php require_once("show_optional_form4.php"); ?>    
                     </div>
                     <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <?php require_once("show_.php"); ?>                        
+                        <?php require_once("show_optional_form5.php"); ?>                       
                     </div>
                     <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <?php require_once("show_form1.php"); ?>                        
+                        <?php require_once("show_optional_form6.php"); ?>
                     </div>
                     <div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <?php require_once("show_form1.php"); ?>                        
+                        <?php require_once("show_optional_form7.php"); ?>
                     </div>
                 </div>
             </div>
