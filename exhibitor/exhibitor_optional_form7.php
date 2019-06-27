@@ -203,7 +203,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
             $.notify("Kindly select at least one of the options", "error");
         }
     }
-    function submitOptionalForm6() {
+    function submitOptionalForm7() {
         alert("thanks");
     }
     var inputIdPrefix = "electrical-item-";
