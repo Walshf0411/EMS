@@ -220,7 +220,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
     function submitOptionalForm7() {
         var quantityIdPrefix = "#electrical-item-";
         var selectedItems = {}; 
-        for (i=1; i < Number(numberOfform7Items); i++) {
+        for (i=1; i < Number(numberOfForm7Items); i++) {
             selector = quantityIdPrefix + i;
             console.log(selector);
             if (Number($(selector).val())) {
