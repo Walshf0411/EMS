@@ -40,7 +40,15 @@
         Advertise in the Fair Catalogue and gain maximum advantage of your participation in Super Juniorz.
         Advertising in the Fair Catalogue is cost effective and will be retained by the trade visitors as a sourcing referencer.
     </p>
-
+    <?php
+    if (isset($_SESSION['optional_form4_submitted'])) {
+        // if the user has already filled in the form, the button will be disabled
+        echo "<div class='alert alert-danger'>
+            You have already submitted this form, wait for the admin to review it.
+        </div>";
+    }
+    ?>
+    
     <p>
         <strong>Advertising rates: </strong>
         <form>
@@ -169,6 +177,12 @@
 
 
 <script>
+    <?php
+    if (isset($_SESSION['optional_form4_submitted'])) {
+        // if the user has already filled in the form, the button will be disabled
+        echo "$('#exhibitor_optional_form4_submit_btn').attr('disabled', 'true');";
+    }
+    ?>
     function setOptionalForm4Invoice(items) {
         // take the items and add it to a table and show it in the modal
         var tableData = "<table width='100%'>\
@@ -234,7 +248,9 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    console.log(response);
+                    $("#exhibitor_optional_form4_submit_btn").attr("disabled", "true");
+                    $("#optional_form4_modal").modal("hide");
+                    $.notify("Form submitted Successfully.", "success");
                 }
             });
         });  
