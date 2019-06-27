@@ -44,7 +44,14 @@
     <strong>Other services</strong>
     PLEASE FILL THIS FORM AND RETURN IT TO THE ORGANISERS IF THESE SERVICES ARE REQUIRED
 </p>
-
+<?php
+    if (isset($_SESSION['optional_form5_submitted'])) {
+        // if the user has already filled in the form, the button will be disabled
+        echo "<div class='alert alert-danger'>
+            You have already submitted this form, wait for the admin to review it.
+        </div>";
+    }
+?>
 <div class="table-wrapper">
     <table style="width:100%;" id="optional_form5_table">
         <tr>
@@ -148,6 +155,12 @@
 </div>
 
 <script>
+    <?php
+        if (isset($_SESSION['optional_form4_submitted'])) {
+            // if the user has already filled in the form, the button will be disabled
+            echo "$('#exhibitor_optional_form5_submit_btn').attr('disabled', 'true');";
+        }
+    ?>
     var numberOfform5Items = "<?php echo count(getServices())?>";
     function setOptionalForm5Invoice() {
         // take the items and add it to a table and show it in the modal
@@ -202,7 +215,36 @@
         }
     }
     function submitOptionalForm5() {
+        var inputTagPrefix = "#item_quantity_";
+        var obj = {};
+        for (i=1; i<=numberOfform5Items; i++) {
+            var selector = inputTagPrefix + i;
+            
+            // convert the value to a number and check if there is a value
+            if (Number($(selector).val())) {
+                obj[i.toString()] = $(selector).val();
+            }
+        }
+        console.log(obj);
+        formData = new FormData();
+        formData.append("selected_items", JSON.stringify(obj));
         
+        $.ajax({
+            type: "POST",
+            url: "exhibitor_optional_form5_submit.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                if (response[0] == 1) {
+                    console.log(response);
+                }
+                $("#exhibitor_optional_form5_submit_btn").attr("disabled", "true");
+                $("#optional_form5_modal").modal("hide");
+                $.notify("Form Submitted Successfully", "success");
+            }
+        });
     }
 
     $(document).ready(function () {
