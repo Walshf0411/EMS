@@ -43,11 +43,9 @@
                     
                     <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-messages" aria-selected="false">Registration for badges </a>
                     
-                    <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-settings" aria-selected="false">Undertaking </a>
-                    
                     <?php
                         $optionalForms = ["optional_form4", "optional_form5", "optional_form6", "optional_form7"];
-                        $i=5;
+                        $i=4;
                         foreach ($optionalForms as $option) {
                             if (getSubmittedFormDetails()[$option] == 1){
                                 echo "<a class='nav-link' id='v-pills-tab4' data-toggle='pill' href='#v-pills-".$i."' role='tab' aria-controls='v-pills-settings' aria-selected='false'>".$option." </a>
@@ -68,21 +66,18 @@
                         <?php require_once("show_listing_in_fair_catalogue.php"); ?>
                     </div>
                     <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <?php require_once("show_registration_for_badges.php"); ?>                        
+                        <?php require_once("show_registration_for_badges.php"); ?>        
                     </div>
                     <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <?php require_once("show_undertaking.php"); ?>                    
-                    </div>
-                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <?php require_once("show_optional_form4.php"); ?>    
                     </div>
-                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <?php require_once("show_optional_form5.php"); ?>                       
                     </div>
-                    <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <?php require_once("show_optional_form6.php"); ?>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <?php require_once("show_optional_form7.php"); ?>
                     </div>
                 </div>

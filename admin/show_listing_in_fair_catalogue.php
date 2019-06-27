@@ -148,10 +148,9 @@
         <div style="float:right">
         </div>
         <div style="clear:both"></div>
-
-        <div align=center>
-            <button class="btn btn-success">
-                Verify
+        <div align="center">
+            <button class="btn btn-success" data-toggle="pill" href="#v-pills-3">
+                <i class="fa fa-caret-right"></i>Next
             </button>
         </div>
     </form>
