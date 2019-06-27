@@ -8,16 +8,13 @@
 
     function getSubmittedForms(){
         global $conn;
-        $query = "SELECT id from exhibitor ;";
+        $query = "SELECT * from exhibitor_forms_submitted ;";
         $queryResult = executeQuery($conn,$query);
-
-        $exhibitor_id = array();
-        if ($queryResult && $queryResult-> num_rows>=1){
-            foreach ($queryResult->fetch_assoc() as $row) {
-                $exhibitor_id[$row] = array();
-                echo "<script> alert('".$exhibitor_id."') </script>;";
-            }
+        $exhibitors = array();
+        foreach ($queryResult as $row) {
+            $exhibitors[$row["exhibitor_id"]] = $row;
         }
+        return $exhibitors;
     }
 ?>
 
@@ -37,14 +34,36 @@
             <td>form 7 & 8</td>
         </tr>
         <?php
-            foreach (getSubmittedForms() as $row) {
-                echo "
-                    <tr>
-                        <td>".$row["booth_number"]."</td>
-                        <td><a href='./submitted_form.php'>".$row["participant_name"]."</td>
-                        <td>4</td>
-                ";
-
+            $exhibitors = getSubmittedForms();
+            foreach ($exhibitors as $row) {
+                echo "<tr>
+                    <td>".$row["booth_number"]."</td>
+                    <td>".$row["exhibitor_name"]."</td>";
+                if($row["mandatory_forms"] == 1){
+                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
+                } else {
+                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
+                }
+                if($row["optional_form4"] == 1){
+                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
+                } else {
+                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
+                }
+                if($row["optional_form5"] == 1){
+                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
+                } else {
+                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
+                }
+                if($row["optional_form6"] == 1){
+                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
+                } else {
+                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
+                }
+                if($row["optional_form7"] == 1){
+                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
+                } else {
+                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
+                }
                 echo "</tr>";
             }
         ?>

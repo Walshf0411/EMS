@@ -120,10 +120,16 @@
             insertFascia($conn, $id);
             insertForm2($conn, $id);
             insertForm3($conn, $id);
-            
+
             //Inserting exhibitor id and mandatory forms flag set to 1  
-            $setQuery = "INSERT into exhibitor_forms_submitted(exhibitor_id, mandatory_forms) Values(".$_SESSION["user_id"].",1);";
+            $setQuery = "INSERT into exhibitor_forms_submitted(exhibitor_id, mandatory_forms, booth_number) Values(".$_SESSION["user_id"].",1,".$_SESSION['exhibitor_booth_number'].");";
             executeQuery($conn,$setQuery);
+            $setQuery= "SELECT participant_name	from exhibitor where id =".$_SESSION["user_id"];
+            $setQueryResult = executeQuery($conn,$setQuery);
+            $name = $setQueryResult->fetch_assoc()["participant_name"];
+            $setQuery = "UPDATE exhibitor_forms_submitted set exhibitor_name =".$name;
+            executeQuery($conn,$query);
+
         } else {
             echo "Some absent";
         }
