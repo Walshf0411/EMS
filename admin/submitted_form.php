@@ -1,4 +1,20 @@
+<?php
+    require_once('../utils/globals.php');
+    if(DEBUG) {
+        require_once('../utils/local_connect.php');
+    } else {
+        require_once('../utils/superz_connect.php');
+    }
 
+    function getSubmittedFormDetails(){
+        global $conn;
+        $id = $_GET["id"];
+        $query = "SELECT * from exhibitor_forms_submitted where exhibitor_id = ".$id;
+        $queryResult = executeQuery($conn,$query);
+        $forms = $queryResult-> fetch_assoc();
+        return $forms;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,17 +46,15 @@
                     <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-settings" aria-selected="false">Undertaking </a>
                     
                     <?php
-                        require_once('../utils/globals.php');
-                        if(DEBUG) {
-                            require_once('../utils/local_connect.php');
-                        } else {
-                            require_once('../utils/superz_connect.php');
-                        }
-
-                        function getSubmittedFormDetails(){
-                            global $conn;
-
-                        
+                        $optionalForms = ["optional_form4", "optional_form5", "optional_form6", "optional_form7"];
+                        $i=5;
+                        foreach ($optionalForms as $option) {
+                            if (getSubmittedFormDetails()[$option] == 1){
+                                echo "<a class='nav-link' id='v-pills-tab4' data-toggle='pill' href='#v-pills-".$i."' role='tab' aria-controls='v-pills-settings' aria-selected='false'>".$option." </a>
+                                ";
+                            }
+                            $i+=1;
+                        }                        
                     ?>
                 </div>
             </div>
@@ -48,12 +62,28 @@
             <div class="col-lg-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <?php require_once("show_standard_shell_scheme.php"); ?>
                     </div>
                     <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <?php require_once("show_listing_in_fair_catalogue.php"); ?>
                     </div>
                     <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php require_once("show_registration_for_badges.php"); ?>                        
                     </div>
                     <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <?php require_once("show_undertaking.php"); ?>                    
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <?php require_once("show_optional_form4.php"); ?>    
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <?php require_once("show_.php"); ?>                        
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <?php require_once("show_form1.php"); ?>                        
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <?php require_once("show_form1.php"); ?>                        
                     </div>
                 </div>
             </div>

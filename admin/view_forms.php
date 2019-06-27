@@ -38,31 +38,14 @@
             foreach ($exhibitors as $row) {
                 echo "<tr>
                     <td>".$row["booth_number"]."</td>
-                    <td>".$row["exhibitor_name"]."</td>";
-                if($row["mandatory_forms"] == 1){
-                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
-                } else {
-                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
-                }
-                if($row["optional_form4"] == 1){
-                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
-                } else {
-                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
-                }
-                if($row["optional_form5"] == 1){
-                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
-                } else {
-                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
-                }
-                if($row["optional_form6"] == 1){
-                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
-                } else {
-                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
-                }
-                if($row["optional_form7"] == 1){
-                    echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
-                } else {
-                    echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
+                    <td><a href='./submitted_form.php?id=".$row["exhibitor_id"]."'>".$row["exhibitor_name"]."</a></td>";
+                $forms=["mandatory_forms", "optional_form4", "optional_form5", "optional_form6", "optional_form7"];
+                foreach ($forms as $form) {
+                    if ($row[$form] == 1){
+                        echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
+                    } else {
+                        echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
+                    }
                 }
                 echo "</tr>";
             }
