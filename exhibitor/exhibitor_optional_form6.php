@@ -51,6 +51,14 @@
     1. The Shell Scheme Exhibitors’ Package includes 100 watts comptax spot lights – 3 Nos and 1 plug point (for consumption up to 1 KW only) – single phase on pro rata basis. <br>
     2. The supply available is 130 V Single Phase 50 Hz AC only
     </p>
+    <?php
+        if (isset($_SESSION['optional_form6_submitted'])) {
+            // if the user has already filled in the form, the button will be disabled
+            echo "<div class='alert alert-danger'>
+                You have already submitted this form, wait for the admin to review it.
+            </div>";
+        }
+    ?>
     <div class="col-md-12 col-sm-12">
         <table style="width:100%;" class="table-layout-fixed">
             <tr >
@@ -139,6 +147,12 @@
 </div>
 
 <script>
+    <?php
+        if (isset($_SESSION['optional_form6_submitted'])) {
+            // if the user has already filled in the form, the button will be disabled
+            echo "$('#exhibitor_optional_form6_submit_btn').attr('disabled', 'true');";
+        }
+    ?>
     var numberOfform6Items = "<?php echo count(getElectricalRequirements())?>";
     
     function setOptionalForm6Invoice() {
@@ -194,7 +208,31 @@
         }
     }
     function submitOptionalForm6() {
-        alert("thanks");
+        var fittingsInputPrefix = "#fitings_quantity_";
+        var selectedItems = {}; 
+        for (i=1; i < Number(numberOfform6Items); i++) {
+            selector = fittingsInputPrefix + i;
+            if (Number($(selector).val())) {
+                selectedItems[i.toString()] = $(selector).val();
+            }
+        }
+        formData = new FormData();
+        formData.append("selected_items", JSON.stringify(selectedItems));
+        console.log(formData);
+        $.ajax({
+            type: "POST",
+            url: "exhibitor_optional_form6_submit.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                $("#optional_form6_modal").modal("hide");
+                $("#exhibitor_optional_form6_submit_btn").attr("disabled", "true");
+                $.notify("Form Submitted Successfully.", "success");
+            }
+        });
+        
     }
     
     function updateTotals() {

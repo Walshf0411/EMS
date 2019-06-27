@@ -44,6 +44,14 @@ pro rata basis of the area booked as given in the Application Form. For furnitur
 contact the Organiser for a separate quote. ORDER ONLY ADDITIONAL REQUIREMENTS.
 EXTRA FURNITURE RATE LIST FOR SUPER JUNIORZ, CHENNAI
 DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
+    <?php
+        if (isset($_SESSION['optional_form7_submitted'])) {
+            // if the user has already filled in the form, the button will be disabled
+            echo "<div class='alert alert-danger'>
+                You have already submitted this form, wait for the admin to review it.
+            </div>";
+        }
+    ?>
 <?php if ($additionalItems):?>
 <div class="table-wrapper">
     <table width=100% class="table">
@@ -148,6 +156,12 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
 </div>
 
 <script>
+    <?php
+        if (isset($_SESSION['optional_form7_submitted'])) {
+            // if the user has already filled in the form, the button will be disabled
+            echo "$('#exhibitor_optional_form7_submit_btn').attr('disabled', 'true');";
+        }
+    ?>
     var numberOfForm7Items = <?php echo count($additionalItems)?>;
     function setOptionalForm7Invoice() {
         // take the items and add it to a table and show it in the modal
@@ -203,8 +217,32 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
             $.notify("Kindly select at least one of the options", "error");
         }
     }
-    function submitOptionalForm6() {
-        alert("thanks");
+    function submitOptionalForm7() {
+        var quantityIdPrefix = "#electrical-item-";
+        var selectedItems = {}; 
+        for (i=1; i < Number(numberOfform7Items); i++) {
+            selector = quantityIdPrefix + i;
+            console.log(selector);
+            if (Number($(selector).val())) {
+                selectedItems[i.toString()] = $(selector).val();
+            }
+        }
+        formData = new FormData();
+        formData.append("selected_items", JSON.stringify(selectedItems));
+        console.log(formData);
+        $.ajax({
+            type: "POST",
+            url: "exhibitor_optional_form7_submit.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                $("#optional_form7_modal").modal("hide");
+                $("#exhibitor_optional_form7_submit_btn").attr("disabled", "true");
+                $.notify("Form Submitted Successfully.", "success");
+            }
+        });
     }
     var inputIdPrefix = "electrical-item-";
     for (i=1; i <= numberOfForm7Items; i++) {
@@ -256,7 +294,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
         });
         $("#optional_form7_invoice_accept").click(function (e) { 
             e.preventDefault();
-            
+            submitOptionalForm7();
         });
     });
 </script>
