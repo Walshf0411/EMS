@@ -28,7 +28,7 @@
 <div class="col-md-12 col-sm-12">
     <p class="table table-bordered">
         <table style="width:100%;">
-            <tr>
+            <tr style="background-color:rgb(193, 13, 109);color:white;">
                 <th>FORM 1</th>
                 <th>STANDARD SHELL SCHEME PACKAGE</th>
                 <th>MANDATORY</th>
