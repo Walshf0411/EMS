@@ -23,6 +23,11 @@
         $query = substr($query, 0, -1);// removes the trailing comma from the query
         executeQuery($conn, $query);
         $_SESSION['optional_form4_submitted'] = TRUE;
+        
+        //Inserting or rather converting the flag in submitted_forms as 1/ set 
+        $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 1 where exhibitor_id = ".$_SESSION["user_id"];
+        executeQuery($conn,$setQuery);
+        
         echo DEBUG;
         echo $query;
     }

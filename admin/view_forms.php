@@ -8,26 +8,16 @@
 
     function getSubmittedForms(){
         global $conn;
-
-        $query = "select distinct exhibitor.id,booth_number,participant_name,flag_fittings1, flag_fittings2, flag_services,flag_advertising
-        from exhibitor
-        inner join fascia_names as names on exhibitor.id =names.exhibitor_id
-        inner JOIN fair_catalogue_listing as listing 
-        on exhibitor.id=listing.exhibitor_id 
-        inner join exhibitor_stall_personnel as stalls 
-        on exhibitor.id = stalls.exhibitor_id
-        ";
-
+        $query = "SELECT id from exhibitor ;";
         $queryResult = executeQuery($conn,$query);
-        $count = $queryResult -> num_rows;
-        
-        $exhibitors = array();
 
-        while ($row = $queryResult-> fetch_assoc()){   
-            $exhibitors[] = $row;
+        $exhibitor_id = array();
+        if ($queryResult && $queryResult-> num_rows>=1){
+            foreach ($queryResult->fetch_assoc() as $row) {
+                $exhibitor_id[$row] = array();
+                echo "<script> alert('".$exhibitor_id."') </script>;";
+            }
         }
-
-        return $exhibitors;
     }
 ?>
 
@@ -54,16 +44,7 @@
                         <td><a href='./submitted_form.php'>".$row["participant_name"]."</td>
                         <td>4</td>
                 ";
-                $query="select distinct exhibitor.id, participant_name,email, booth_number, 
-                        from exhibitor as exhibitor 
-                        ";
 
-                $queryResult = executeQuery($conn, $query);
-
-                if($queryResult && $queryResult-> num_rows >= 1 ){
-                    
-                }
-                    
                 echo "</tr>";
             }
         ?>

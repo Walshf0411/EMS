@@ -120,6 +120,10 @@
             insertFascia($conn, $id);
             insertForm2($conn, $id);
             insertForm3($conn, $id);
+            
+            //Inserting exhibitor id and mandatory forms flag set to 1  
+            $setQuery = "INSERT into exhibitor_forms_submitted(exhibitor_id, mandatory_forms) Values(".$_SESSION["user_id"].",1);";
+            executeQuery($conn,$setQuery);
         } else {
             echo "Some absent";
         }
