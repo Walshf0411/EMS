@@ -64,33 +64,34 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
                 $productName = $item['product_name'];
                 $price = $item['price'];
                 $days = $item['days'];
-                $priceId = "electrical-item-" . $count . "-price";
-                $quantityId = "electrical-item-" . $count;
-                $totalId = "electrical-item-" . $count . "-total";
+                $priceId = "electrical-item-" . $item['id'] . "-price";
+                $quantityId = "electrical-item-" . $item['id'];
+                $totalId = "electrical-item-" . $item['id'] . "-total";
+                $onInput = "onItemChanged1(" . $item['id'] . ", this.value)";
             ?>
             <tr>
                 <td><?php echo $count;?></td>
                 <td><?php echo $codeNumber;?></td>
                 <td><?php echo $productName?></td>
                 <td><span id="<?php echo $priceId;?>"><?php echo $price;?></span><?php if($days > 1) echo $days." Days"?></td>
-                <td><input type="number" id="<?php echo $quantityId;?>" min=0></td>
+                <td><input type="number" id="<?php echo $quantityId;?>" min=0 oninput='<?php echo $onInput ?>'></td>
                 <td><span id="<?php echo $totalId;?>">0</span></td>
             </tr>
             <?php $count++; endforeach ?>
             <!-- rows for total gst-total and final total-->
             <tr>
                 <td align=right colspan=6>
-                    <strong>Sub Total(Rs): <span id="electrical-items-total">0</span></strong>
+                    <strong>Sub Total(Rs):</strong> <span id="electrical-items-total">0</span>
                 </td>
             </tr>
             <tr>
                 <td align=right colspan=6>
-                    <strong>Gst Total (Rs): <span id="electrical-items-gst-total">0</span></strong>
+                    <strong>Gst Total (Rs): </strong><span id="electrical-items-gst-total">0</span>
                 </td>
             </tr>
             <tr>
                 <td align=right colspan=6>
-                    <strong>Total(Rs): <span id="electrical-items-final-total">0</span></strong>
+                    <strong>Total(Rs):</strong> <span id="electrical-items-final-total">0</span>
                 </td>
             </tr>
         </tbody>
@@ -108,15 +109,105 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
 <div style="clear:both"></div>
 
 <div align=center>
-    <button class="btn btn-success" id="exhibitor_optional_form4_submit_btn">
+    <button class="btn btn-success" id="exhibitor_optional_form7_submit_btn">
         Submit<i class="fas fa-paper-plane"></i>
     </button>
 </div>
 
+<div class="modal fade" id="optional_form7_modal">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Invoice</h5>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                    <div class="alert alert-danger">
+                        <strong>Note:</strong> Kindly review the form before submitting. You will not be able to make any changes to the form after submitting.
+                    </div>
+                    <div id="optional_form7_modal_content">
+                        <table></table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button class="btn btn-success" id="optional_form7_invoice_accept">Accept <i class="fa fa-check"></i></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script>
-    var numberOfAvailableItems = 67;
+    var numberOfForm7Items = <?php echo count($additionalItems)?>;
+    function setOptionalForm7Invoice() {
+        // take the items and add it to a table and show it in the modal
+        var inputTagPrefix = "#electrical-item-";
+        var selected = 0;
+        var tableData = "<table width='100%'>\
+                <tr><th>Sr.no</th>\
+                <th>Code no.</th>\
+                <th>Product name</th>\
+                <th>Amount(INR)</th>\
+                <th>Quantity</th>\
+                <th>Total</th></tr>";
+        var gst = 0.18;
+
+        for(i=1; i <= Number(numberOfForm7Items); i++) {
+            // iterate through the input tags and construct a table row for each items 
+            // that has a value greater than 0 in the input tag.
+            var selector = inputTagPrefix + i;
+            
+            // convert the value to a number and check if there is a value
+            if (Number($(selector).val())) {
+                // if the selected input tag has a number greater than 0
+                tableRow = $(selector).parents()[1]; // this will get the row of the element with value.
+                tableRowChildren = $(tableRow).children(); // get the all tds of the selected tr
+                tableRowString = "<tr><td>" + (selected + 1) + "</td>"; // set the Sr.no
+                // 1 2 4 indexes of the table row are needed.
+                tableRowString += $(tableRowChildren[1]).prop("outerHTML");
+                tableRowString += $(tableRowChildren[2]).prop("outerHTML");
+                tableRowString += $(tableRowChildren[3]).prop("outerHTML");
+                tableRowString += "<td>" + $(selector).val() + "</td>";
+                tableRowString += $(tableRowChildren[5]).prop("outerHTML");
+                tableRowString += "</tr>";
+                selected += 1;
+                tableData += tableRowString;
+            }
+        }
+        
+        tableData += $($("#electrical-items-total").parents()[1]).prop('outerHTML');
+        tableData += $($("#electrical-items-gst-total").parents()[1]).prop('outerHTML');
+        tableData += $($("#electrical-items-final-total").parents()[1]).prop('outerHTML');
+
+        tableData += "</table>";
+        if (selected > 0) {
+            // the user should be selecting at least one item
+            
+            console.log(tableData);
+            $("#optional_form7_modal_content").html(tableData);
+            $("#optional_form7_modal").modal("show");
+        } else {
+            $.notify.defaults({
+                globalPosition: 'top center',
+            });
+            $.notify("Kindly select at least one of the options", "error");
+        }
+    }
+    function submitOptionalForm6() {
+        alert("thanks");
+    }
     var inputIdPrefix = "electrical-item-";
-    for (i=1; i <= numberOfAvailableItems; i++) {
+    for (i=1; i <= numberOfForm7Items; i++) {
         var selector = inputIdPrefix + i;
         document.getElementById(selector).setAttribute("oninput", "onItemChanged1(" + i + ", this.value)");
     }
@@ -129,7 +220,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
         var gst = 0.18;
         var total = 0;
 
-        for (i=1; i <= numberOfAvailableItems; i++) {
+        for (i=1; i <= numberOfForm7Items; i++) {
             var selector = totalIdPrefix + i + totalIdSuffix;
             total += Number(document.getElementById(selector).innerHTML);
         }
@@ -158,4 +249,14 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
 
         updateTotals1();
     }
+    $(document).ready(function () {
+        $("#exhibitor_optional_form7_submit_btn").click(function (e) { 
+            e.preventDefault();
+            setOptionalForm7Invoice();
+        });
+        $("#optional_form7_invoice_accept").click(function (e) { 
+            e.preventDefault();
+            
+        });
+    });
 </script>

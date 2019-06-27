@@ -73,21 +73,21 @@
         <tr>
             <td colspan=5>
                 <div style="float:right">
-                    Total (Rs): <span id="form5_total_price">0</span>
+                    <strong>Total (Rs): </strong><span id="form5_total_price">0</span>
                 </div>
             </td>
         </tr>
         <tr>
             <td colspan=5>
                 <div style="float:right">
-                    GST Total (Rs)(18%): <span id="form5_gst_total">0</span>
+                    <strong>GST Total (Rs)(18%): </strong><span id="form5_gst_total">0</span>
                 </div>
             </td>
         </tr>
         <tr>
             <td colspan=5>
                 <div style="float:right">
-                    Grand Total (Rs): <span id="form5_final_total">0</span>
+                    <strong>Grand Total (Rs): </strong><span id="form5_final_total">0</span>
                 </div>
             </td>
         </tr>
@@ -230,7 +230,7 @@
             var selector = "item_total_" + i;
             total += parseInt(document.getElementById(selector).innerHTML);
         }
-        var gstTotal = gst * total;
+        var gstTotal = Math.ceil(gst * total);
         var finalTotal = total + gstTotal;
         $("#form5_total_price").html(total);
         $("#form5_gst_total").html(gstTotal);

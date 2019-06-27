@@ -75,13 +75,13 @@
                 }
             ?>
             <tr>
-                <td align="right" colspan=5>Sub Total(A):<span id="form6_subtotal_total">0</span></td>
+                <td align="right" colspan=5><strong>Sub Total(A):</strong><span id="form6_subtotal_total">0</span></td>
             </tr>
             <tr>
-                <td align="right" colspan=5>GST 18.00%(B):<span id="form6_gst_total">0</span></td>
+                <td align="right" colspan=5><strong>GST 18.00%(B):</strong><span id="form6_gst_total">0</span></td>
             </tr>
             <tr>
-                <td align="right" colspan=5>Total cost(A + B):<span id="form6_final_total">0</span></td>
+                <td align="right" colspan=5><strong>Total cost(A + B):</strong><span id="form6_final_total">0</span></td>
             </tr>
         </table>
     </div>
@@ -166,10 +166,10 @@
                 tableRowChildren = $(tableRow).children(); // get the all tds of the selected tr
                 tableRowString = "<tr><td>" + (selected + 1) + "</td>"; // set the Sr.no
                 // 1 2 4 indexes of the table row are needed.
-                tableRowString += $(tableRowChildren[0]).prop("outerHTML");
                 tableRowString += $(tableRowChildren[1]).prop("outerHTML");
+                tableRowString += $(tableRowChildren[2]).prop("outerHTML");
                 tableRowString += "<td>" + $(selector).val() + "</td>";
-                tableRowString += $(tableRowChildren[3]).prop("outerHTML");
+                tableRowString += $(tableRowChildren[4]).prop("outerHTML");
                 tableRowString += "</tr>";
                 selected += 1;
                 tableData += tableRowString;

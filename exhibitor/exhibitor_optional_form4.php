@@ -214,12 +214,12 @@
                 <td>" + itemPrice + "</td>\
             </tr>";
         }
-        gstTotal = Number(gst * total);
+        gstTotal = Math.ceil(Number(gst * total));
         finalTotal = total + gstTotal;
 
-        tableData += "<tr><td colspan=4 align='right'>Total(Rs): " + total + "</td></tr>";
-        tableData += "<tr><td colspan=4 align='right'>GST Total(18%)(Rs): " + gstTotal + "</td></tr>";
-        tableData += "<tr><td colspan=4 align='right'>Grand Total(Rs): " + finalTotal + "</td></tr>";
+        tableData += "<tr><td colspan=4 align='right'></strong>Total(Rs): </strong>" + total + "</td></tr>";
+        tableData += "<tr><td colspan=4 align='right'><strong>GST Total(18%)(Rs): </strong>" + gstTotal + "</td></tr>";
+        tableData += "<tr><td colspan=4 align='right'><strong>Grand Total(Rs): </strong>" + finalTotal + "</td></tr>";
 
         tableData += "</table>";
         $("#optional_form4_modal_content").html(tableData);
