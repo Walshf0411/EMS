@@ -40,7 +40,15 @@
         Advertise in the Fair Catalogue and gain maximum advantage of your participation in Super Juniorz.
         Advertising in the Fair Catalogue is cost effective and will be retained by the trade visitors as a sourcing referencer.
     </p>
-
+    <?php
+    if (isset($_SESSION['optional_form4_submitted'])) {
+        // if the user has already filled in the form, the button will be disabled
+        echo "<div class='alert alert-danger'>
+            You have already submitted this form, wait for the admin to review it.
+        </div>";
+    }
+    ?>
+    
     <p>
         <strong>Advertising rates: </strong>
         <form>
@@ -144,7 +152,7 @@
         </button>
     </div>
 
-    <div class="modal fade" id="exhibitor_form4_modal">
+    <div class="modal fade" id="optional_form4_modal">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content">
 
@@ -160,7 +168,7 @@
                         <div class="alert alert-danger">
                             <strong>Note:</strong> Kindly review the form before submitting. You will not be able to make any changes to the form after submitting.
                         </div>
-                        <div id="exhibitor_form4_modal_content">
+                        <div id="optional_form4_modal_content">
                             <table></table>
                         </div>
                     </div>
@@ -169,6 +177,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                    <button class="btn btn-success" id="optional_form4_accept_btn">Accept <i class="fa fa-check"></i></button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
@@ -178,6 +187,12 @@
 
 
 <script>
+    <?php
+    if (isset($_SESSION['optional_form4_submitted'])) {
+        // if the user has already filled in the form, the button will be disabled
+        echo "$('#exhibitor_optional_form4_submit_btn').attr('disabled', 'true');";
+    }
+    ?>
     function setOptionalForm4Invoice(items) {
         // take the items and add it to a table and show it in the modal
         var tableData = "<table width='100%'>\
@@ -207,14 +222,16 @@
         tableData += "<tr><td colspan=4 align='right'>Grand Total(Rs): " + finalTotal + "</td></tr>";
 
         tableData += "</table>";
-        $("#exhibitor_form4_modal_content").html(tableData);
-        $("#exhibitor_form4_modal").modal("show");
+        $("#optional_form4_modal_content").html(tableData);
+        $("#optional_form4_modal").modal("show");
         
     }
+    var selectedOptions;
     $(document).ready(function () {
+        // click function for the main outer button(Submit)
         $("#exhibitor_optional_form4_submit_btn").click(function () {
             // initialize empty array
-            var selectedOptions = [];
+            selectedOptions = [];
             // take each of the selected items and add it to the favourite array
             var selected = $("input[name='optional_form4_checkbox']:checked");
             if (selected.length > 0) {
@@ -229,7 +246,23 @@
                 });
                 $.notify("Kindly select at least one of the options", "error");
             }
-            
-        });    
+        });  
+        $("#optional_form4_accept_btn").click(function (e) { 
+            e.preventDefault();
+            formData = new FormData();
+            formData.append("selected_items", JSON.stringify(selectedOptions));
+            $.ajax({
+                type: "POST",
+                url: "exhibitor_optional_form4_submit.php",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    $("#exhibitor_optional_form4_submit_btn").attr("disabled", "true");
+                    $("#optional_form4_modal").modal("hide");
+                    $.notify("Form submitted Successfully.", "success");
+                }
+            });
+        });  
     });
 </script>
