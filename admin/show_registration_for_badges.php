@@ -78,8 +78,23 @@
     <strong><?php echo "CONTACT NUMBER: ".getForm1Details()["phone_number"];?></strong>
 </div>
 <div style="clear:both;"></div>
+
 <div align=center>
-    <button class="btn btn-success">
-        Verify
-    </button>
+    <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST">
+        <button class="btn btn-success" name="verify">
+            Verify<i class="fas fa-paper-plane"></i>
+        </button>
+    </form>
 </div>
+<?php
+    if(isset($_POST["verify"])){
+        global $conn;
+        $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 2 where exhibitor_id = ".$_GET["id"];
+        $queryResult = executeQuery($conn,$setQuery);
+        if($queryResult) {
+            echo "<script>alert('successfully reviewed');</script>";
+        } else {
+            echo "<script>alert('unsuccessfully reviewed');</script>";
+        }
+    }
+?>
