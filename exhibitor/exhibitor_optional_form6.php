@@ -229,6 +229,9 @@
                 console.log(response);
                 $("#optional_form6_modal").modal("hide");
                 $("#exhibitor_optional_form6_submit_btn").attr("disabled", "true");
+                $.notify.defaults({
+                    globalPosition: "top center"
+                });
                 $.notify("Form Submitted Successfully.", "success");
             }
         });
