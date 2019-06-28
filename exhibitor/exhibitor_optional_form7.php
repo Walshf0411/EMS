@@ -240,6 +240,9 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
                 console.log(response);
                 $("#optional_form7_modal").modal("hide");
                 $("#exhibitor_optional_form7_submit_btn").attr("disabled", "true");
+                $.notify.defaults({
+                    globalPosition: "top center"
+                });
                 $.notify("Form Submitted Successfully.", "success");
             }
         });
