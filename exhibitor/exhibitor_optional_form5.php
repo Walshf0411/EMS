@@ -156,7 +156,7 @@
 
 <script>
     <?php
-        if (isset($_SESSION['optional_form4_submitted'])) {
+        if (isset($_SESSION['optional_form5_submitted'])) {
             // if the user has already filled in the form, the button will be disabled
             echo "$('#exhibitor_optional_form5_submit_btn').attr('disabled', 'true');";
         }

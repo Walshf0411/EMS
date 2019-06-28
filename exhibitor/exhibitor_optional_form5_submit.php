@@ -24,9 +24,19 @@
         if(executeQuery($conn, $query)){
             $_SESSION['optional_form5_submitted'] = TRUE;
             
-            //Inserting or rather converting the flag in submitted_forms as 1/ set 
-            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 1 where exhibitor_id = ".$_SESSION["user_id"];
-            executeQuery($conn,$setQuery);
+            $checkExistsQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id = ".$_SESSION['user_id'];
+            $checkExistsQueryResult = executeQuery($conn, $checkExistsQuery);
+            
+            if ($checkExistsQueryResult->num_rows > 0) {
+                // user has already filled in some other form before
+                $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 1 where exhibitor_id = ".$_SESSION["user_id"];
+                executeQuery($conn,$setQuery);
+            } else {
+                // user has not filled in any form before therefore we insert
+                $setQuery = "INSERT INTO exhibitor_forms_submitted SET optional_form5 = 1 WHERE exhibitor_id =".$_SESSION["user_id"];
+                executeQuery($conn, $setQuery);
+            }
+            
         }
         echo DEBUG;
         echo $query;
