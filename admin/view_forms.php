@@ -38,7 +38,7 @@
             foreach ($exhibitors as $row) {
                 echo "<tr>
                     <td>".$row["booth_number"]."</td>
-                    <td><a href='./submitted_form.php?id=".$row["exhibitor_id"]."'>".$row["exhibitor_name"]."</a></td>";
+                    <td><a href='./submitted_form.php?id=".$row["exhibitor_id"]."'>".$row["participant_name"]."</a></td>";
                 $forms=["mandatory_forms", "optional_form4", "optional_form5", "optional_form6", "optional_form7"];
                 foreach ($forms as $form) {
                     if ($row[$form] == 1){
