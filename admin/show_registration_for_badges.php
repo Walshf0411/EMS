@@ -23,7 +23,7 @@
 <div class="col-md-12 col-sm-12">
     <p class="table">
         <table style="width:100%;">
-            <tr>
+                <tr style="background-color:rgb(193, 13, 109);color:white;">
                 <th>FORM 3</th>
                 <th>REGISTRATION OF EXHIBITION PERSONNEL FOR BADGES</th>
                 <th>MANDATORY</th>
@@ -52,7 +52,7 @@
         Kindly issue the Exhibitors’ badges for following stall personnel</li>
     </ol>
 </p>
-<div class="table-input">
+<div class="table table-bordered">
     <div class="row" id="header">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">Sr.No.</div>
         <div class="col-md-6 col-sm-11 col-sm-offset-1">Name of the stall Personnel</div>

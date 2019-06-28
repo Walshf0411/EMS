@@ -73,7 +73,11 @@
     <strong><?php echo "CONTACT NUMBER: ".getForm1Details()["phone_number"];?></strong>
 </div>
 <div style="clear:both;"></div>
-<div align="center" id ="end"><button class="btn btn-success">Verify</button></div>
+<div align="center">
+    <button class="btn btn-success" data-toggle="pill" href="#v-pills-2">
+        <i class="fa fa-caret-right"></i>Next
+    </button>
+</div>
 
 <button type="button" id="std-booth-layout-modal-toggler" class="btn btn-primary" data-toggle="modal" data-target="#imageModal" style="display:none;">
     Open modal
