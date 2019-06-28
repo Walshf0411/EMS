@@ -32,7 +32,9 @@
                 executeQuery($conn,$setQuery);
             } else {
                 // exhibitor has not filled any of the forms
-                $setQuery = "INSERT INTO exhibitor_forms_submitted(exhibitor_id, optional_form7) VALUES(".$_SESSION['user_id'].", 1)";
+                $participantName = $_SESSION['user_full_name'];
+                $boothNumber = $_SESSION['exhibitor_booth_number'];
+                $setQuery = "INSERT INTO exhibitor_forms_submitted(exhibitor_id, optional_form7, booth_number, participant_name) VALUES(".$_SESSION['user_id'].", 1, '$boothNumber', '$participantName')";
                 executeQuery($conn, $setQuery);
             }
 

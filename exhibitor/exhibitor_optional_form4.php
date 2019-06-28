@@ -258,9 +258,7 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-                    if (response[0] == 1) {
-                        console.log(response);
-                    }
+                    console.log(response);
                     $("#exhibitor_optional_form4_submit_btn").attr("disabled", "true");
                     $("#optional_form4_modal").modal("hide");
                     $.notify("Form submitted Successfully.", "success");

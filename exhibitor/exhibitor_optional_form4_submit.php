@@ -27,6 +27,7 @@
             //Inserting or rather converting the flag in submitted_forms as 1/ set 
 
             $checkExistsQuery = "SELECT * FROM exhibitor_forms_submitted where exhibitor_id = ".$_SESSION['user_id'];
+            echo $checkExistsQuery;
             $checkExistsQueryResults = executeQuery($conn, $checkExistsQuery);
             if ($checkExistsQueryResults->num_rows > 0) {
                 // there is already an entry in the database for the user 
@@ -34,8 +35,10 @@
                 $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 1 where exhibitor_id = ".$_SESSION["user_id"];
                 executeQuery($conn,$setQuery);
             } else {
+                $participantName = $_SESSION['user_full_name'];
+                $boothNumber = $_SESSION['exhibitor_booth_number'];
                 // user has not submitted any forms yet
-                $setQuery = "INSERT INTO exhibitor_forms_submitted(exhibitor_id, optional_form4) VALUES(".$_SESSION['user_id'].", 1)";
+                $setQuery = "INSERT INTO exhibitor_forms_submitted (exhibitor_id, optional_form4, booth_number, participant_name) VALUES(".$_SESSION['user_id'].", 1, '$boothNumber', '$participantName')";
                 executeQuery($conn, $setQuery);
             }
         }

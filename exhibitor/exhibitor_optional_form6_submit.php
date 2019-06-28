@@ -30,7 +30,9 @@
                 $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form6 = 1 where exhibitor_id = ".$_SESSION["user_id"];
                 executeQuery($conn,$setQuery);
             } else {
-                $setQuery = "INSERT INTO exhibitor_forms_submitted VALUES(exhibitor_id, optional_form6) VALUES(".$_SESSION['user_id'].", 1)";
+                $participantName = $_SESSION['user_full_name'];
+                $boothNumber = $_SESSION['exhibitor_booth_number'];
+                $setQuery = "INSERT INTO exhibitor_forms_submitted (exhibitor_id, optional_form6, booth_number, participant_name) VALUES(".$_SESSION['user_id'].", 1, '$boothNumber', '$participantName')";
                 executeQuery($conn, $setQuery);
             }
         
