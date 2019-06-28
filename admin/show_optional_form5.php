@@ -51,7 +51,7 @@
 </div>
 
 <div class="table-wrapper">
-    <table class="table table-bordered" style="width:100%;">
+    <table class="table " style="width:100%;">
         <tr style="background-color:rgb(193, 13, 109);color:white;">
             <th>No.</th>
             <th>Item Description</th>

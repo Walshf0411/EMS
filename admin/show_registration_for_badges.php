@@ -52,7 +52,7 @@
         Kindly issue the Exhibitors’ badges for following stall personnel</li>
     </ol>
 </p>
-<div class="table-input">
+<div class="table table-bordered">
     <div class="row" id="header">
         <div class="col-md-2 col-sm-11 col-sm-offset-1">Sr.No.</div>
         <div class="col-md-6 col-sm-11 col-sm-offset-1">Name of the stall Personnel</div>

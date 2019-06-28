@@ -47,9 +47,13 @@
         </p>
     </div>
 
+    <div style="margin-left: 1%;">
+        <h5>Your Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
+    </div>
+
     <div>
         <strong>SUBMITTED RATES</strong>
-        <table class="table table-bordered">
+        <table class="table">
             <tr style="background-color:rgb(193, 13, 109);color:white">
                 <th>
                     Position
