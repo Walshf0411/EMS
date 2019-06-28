@@ -243,6 +243,7 @@
                 $("#exhibitor_optional_form5_submit_btn").attr("disabled", "true");
                 $("#optional_form5_modal").modal("hide");
                 $.notify("Form Submitted Successfully", "success");
+                $('#v-pills-tab-9').addClass('text-success');
             }
         });
     }

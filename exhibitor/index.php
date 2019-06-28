@@ -65,10 +65,10 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fab fa-wpforms"></i>Optional Services</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-8" role="tab">Advertising in Fair Catalogue</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-9" role="tab">Other Services</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-10" role="tab">Electrical Fittings Additional Requirements</a>
-                            <a class="dropdown-item" data-toggle="pill" href="#v-pills-13" role="tab">Incoming Items Label</a>
+                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-8" href="#v-pills-8" role="tab">Advertising in Fair Catalogue</a>
+                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-9" href="#v-pills-9" role="tab">Other Services</a>
+                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-10" href="#v-pills-10" role="tab">Electrical Fittings Additional Requirements</a>
+                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-11" href="#v-pills-13" role="tab">Incoming Items Label</a>
                         </div>
                     </li>
                     <div class="dropdown-divider"></div>
@@ -164,6 +164,34 @@ if (isset($_SESSION['already_logged_in_message'])) {
 ?>
 
 <script>
+    <?php 
+        if (isset($_SESSION['mandatory_forms_submitted'])) {
+            echo "$('#mandatory-forms-dropdown').addClass('text-success');
+                $('#v-pills-tab-4').addClass('text-success');
+                $('#v-pills-tab-5').addClass('text-success');
+                $('#v-pills-tab-6').addClass('text-success');
+                $('#v-pills-tab-7').addClass('text-success');
+            ";
+        }
+
+        if (isset($_SESSION['optional_form4_submitted'])) {
+            echo "$('#v-pills-tab-8').addClass('text-success');";
+        }
+
+        if (isset($_SESSION['optional_form5_submitted'])) {
+            echo "$('#v-pills-tab-9').addClass('text-success');";
+        }
+
+        if (isset($_SESSION['optional_form6_submitted'])) {
+            echo "$('#v-pills-tab-10').addClass('text-success');";
+        }
+
+        if (isset($_SESSION['optional_form7_submitted'])) {
+            echo "$('#v-pills-tab-11').addClass('text-success');";
+        }
+
+    ?>
+
     // the logout.php file clears the session and once we receive response, 
     // we redirect user to the login page
     $("#logout-btn").click(function() {

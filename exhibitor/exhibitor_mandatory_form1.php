@@ -14,6 +14,14 @@
     </p>
 </div>        
 <?php include("../utils/booth_number_header.php"); ?>
+    <?php
+    if (isset($_SESSION['mandatory_forms_submitted'])) {
+        // if the user has already filled in the form, the button will be disabled
+        echo "<div class='alert alert-danger'>
+            You have already submitted this form, wait for the admin to review it.
+        </div>";
+    }
+    ?>
 <p id="fascia-name">
     Please enter below the Exhibitor’s name as you require on the fascia. This will be provided in upper case, standard English alphabets (Maximum 24 letters) cut in white vinyl and pasted on Name fascia.
 </p>

@@ -244,6 +244,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
                     globalPosition: "top center"
                 });
                 $.notify("Form Submitted Successfully.", "success");
+                $('#v-pills-tab-11').addClass('text-success');
             }
         });
     }

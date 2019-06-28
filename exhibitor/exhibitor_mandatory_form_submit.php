@@ -132,9 +132,12 @@
                 $participantName = $_SESSION['user_full_name'];
                 $boothNumber = $_SESSION['exhibitor_booth_number'];
                 $setQuery = "INSERT INTO exhibitor_forms_submitted(exhibitor_id, mandatory_forms, booth_number, participant_name) VALUES(".$_SESSION['user_id'].", 1, '$boothNumber', '$participantName')";
-                echo $setQuery;
+                if (DEBUG) {
+                    echo $setQuery;
+                }
                 executeQuery($conn, $setQuery);
             }
+            $_SESSION['mandatory_forms_submitted'] = TRUE;
 
         } else {
             echo "Some absent";

@@ -53,6 +53,14 @@ font-size: 14px;
     display: inline;
 }
 
+.submitted-tab {
+    color: white;
+    background-color: green;
+}
+.submitted-tab:hover{
+    color:white;
+}
+
 @media (max-width: 768px) {
     /* For mobile devices */
     /* This is to make the side bar and the main tabs stack on top of each other*/

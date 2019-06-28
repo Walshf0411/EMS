@@ -16,6 +16,14 @@
 
     </div>
     <?php include("../utils/booth_number_header.php");?>
+    <?php
+    if (isset($_SESSION['mandatory_forms_submitted'])) {
+        // if the user has already filled in the form, the button will be disabled
+        echo "<div class='alert alert-danger'>
+            You have already submitted this form, wait for the admin to review it.
+        </div>";
+    }
+    ?>
     <pre>
 To,
 The Chief Organiser
@@ -43,11 +51,16 @@ Mumbai
         <i class="fa fa-caret-left"></i>Previous
     </button>
 
-    <button class="btn btn-info" id="mandatory-forms-submit-btn" disabled>
+    <button class="btn btn-info" id="mandatory-forms-submit-btn">
         Submit<i class="fas fa-paper-plane"></i>
     </button>
 </div>
 <script>
+    <?php
+        if (isset($_SESSION['mandatory_forms_submitted'])) {
+            echo "$('#mandatory-forms-submit-btn, #agreement_checkbox').attr('disabled', 'true');";
+        }
+    ?>
     function showWaitingOverlay() {
         $("#full-overlay").css("z-index", "1000");
         $("#full-overlay").animate({
@@ -69,7 +82,16 @@ Mumbai
             success: function (response) {
                 console.log(response);
                 hideWaitingOverlay();
-                $.notify("Form Submitted successfully", "success", "top middle");
+                $('#mandatory-forms-submit-btn, #agreement_checkbox').attr('disabled', 'true');
+                $.notify.defaults({
+                    globalPosition: "top center"
+                });
+                $.notify("Form Submitted successfully", "success");
+                $('#mandatory-forms-dropdown').addClass('text-success');
+                $('#v-pills-tab-4').addClass('text-success');
+                $('#v-pills-tab-5').addClass('text-success');
+                $('#v-pills-tab-6').addClass('text-success');
+                $('#v-pills-tab-7').addClass('text-success');
             },
             error: function(response) {
                 hideWaitingOverlay();

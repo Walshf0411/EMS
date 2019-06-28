@@ -233,6 +233,7 @@
                     globalPosition: "top center"
                 });
                 $.notify("Form Submitted Successfully.", "success");
+                $('#v-pills-tab-10').addClass('text-success');
             }
         });
         
