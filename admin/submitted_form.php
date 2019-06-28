@@ -47,8 +47,8 @@
                         $optionalForms = ["optional_form4", "optional_form5", "optional_form6", "optional_form7"];
                         $i=4;
                         foreach ($optionalForms as $option) {
-                            if (getSubmittedFormDetails()[$option] == 1){
-                                echo "<a class='nav-link' id='v-pills-tab4' data-toggle='pill' href='#v-pills-".$i."' role='tab' aria-controls='v-pills-settings' aria-selected='false'>".$option." </a>
+                            if (getSubmittedFormDetails()[$option] >= 1){
+                                echo "<a class='nav-link' id='v-pills-tab".$i."' data-toggle='pill' href='#v-pills-".$i."' role='tab' aria-controls='v-pills-settings' aria-selected='false'>".$option." </a>
                                 ";
                             }
                             $i+=1;

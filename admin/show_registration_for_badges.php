@@ -92,9 +92,9 @@
         $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 2 where exhibitor_id = ".$_GET["id"];
         $queryResult = executeQuery($conn,$setQuery);
         if($queryResult) {
-            echo "<script>alert('successfully reviewed');</script>";
+            echo "<script>notify('Reviewed Successfully','success');</script>";
         } else {
-            echo "<script>alert('unsuccessfully reviewed');</script>";
+            echo "<script>notify('Reviewed Unsuccessfully','error');;</script>";
         }
     }
 ?>

@@ -101,20 +101,27 @@
 
     <div align=center>
     <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST">
-        <button class="btn btn-success" name="verify">
+        <button class="btn btn-success" name="verify_form4" href="#v-pills-5">
             Verify<i class="fas fa-paper-plane"></i>
         </button>
     </form>
 </div>
+<!-- <script>
+    $(document).ready(function(){
+        $("#v-pills-tab4").removeClass('active');
+        $("#v-pills-tab1").removeClass('active');
+        $("#v-pills-tab5").addClass('active');
+    });
+</script> -->
 <?php
-    if(isset($_POST["verify"])){
+    if(isset($_POST["verify_form4"])){
         global $conn;
         $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 2 where exhibitor_id = ".$_GET["id"];
         $queryResult = executeQuery($conn,$setQuery);
         if($queryResult) {
-            echo "<script>alert('successfully reviewed');</script>";
+            echo "<script>notify('Reviewed Successfully','success');</script>";
         } else {
-            echo "<script>alert('unsuccessfully reviewed');</script>";
+            echo "<script>notify('Reviewed Unsuccessfully','error');;</script>";
         }
     }
 ?>

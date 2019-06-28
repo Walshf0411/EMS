@@ -73,8 +73,9 @@
     <strong><?php echo "CONTACT NUMBER: ".getForm1Details()["phone_number"];?></strong>
 </div>
 <div style="clear:both;"></div>
+
 <div align="center">
-    <button class="btn btn-success" data-toggle="pill" href="#v-pills-2">
+    <button id="review_form1" class="btn btn-success" data-toggle="pill" href="#v-pills-2">
         <i class="fa fa-caret-right"></i>Next
     </button>
 </div>

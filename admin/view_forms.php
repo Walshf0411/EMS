@@ -43,6 +43,8 @@
                 foreach ($forms as $form) {
                     if ($row[$form] == 1){
                         echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
+                    } elseif($row[$form] == 2) {
+                        echo "<td style='color:green;'>Verified</td>";
                     } else {
                         echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
                     }

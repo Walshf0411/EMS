@@ -122,20 +122,20 @@
 
 <div align=center>
     <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST">
-        <button class="btn btn-success" name="verify">
+        <button class="btn btn-success" name="verify_form7">
             Verify<i class="fas fa-paper-plane"></i>
         </button>
     </form>
 </div>
 <?php
-    if(isset($_POST["verify"])){
+    if(isset($_POST["verify_form7"])){
         global $conn;
         $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form7 = 2 where exhibitor_id = ".$_GET["id"];
         $queryResult = executeQuery($conn,$setQuery);
         if($queryResult) {
-            echo "<script>alert('successfully reviewed');</script>";
+            echo "<script>notify('Reviewed Successfully','success');</script>";
         } else {
-            echo "<script>alert('unsuccessfully reviewed');</script>";
+            echo "<script>notify('Reviewed Unsuccessfully','error');;</script>";
         }
     }
 ?>
