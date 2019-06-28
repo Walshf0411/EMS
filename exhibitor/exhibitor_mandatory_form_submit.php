@@ -121,14 +121,17 @@
             insertForm2($conn, $id);
             insertForm3($conn, $id);
 
-            //Inserting exhibitor id and mandatory forms flag set to 1  
-            $setQuery = "INSERT into exhibitor_forms_submitted(exhibitor_id, mandatory_forms, booth_number) Values(".$_SESSION["user_id"].",1,".$_SESSION['exhibitor_booth_number'].");";
-            executeQuery($conn,$setQuery);
-            $setQuery= "SELECT participant_name	from exhibitor where id =".$_SESSION["user_id"];
-            $setQueryResult = executeQuery($conn,$setQuery);
-            $name = $setQueryResult->fetch_assoc()["participant_name"];
-            $setQuery = "UPDATE exhibitor_forms_submitted set exhibitor_name =".$name;
-            executeQuery($conn,$query);
+            $checkExistsQuery = "SELECT * FROM exhibitor_forms_submitted where exhibitor_id=".$_SESSION['user_id'];
+            $checkExistsQueryResult = executeQuery($conn, $checkExistsQuery);
+            
+            if ($checkExistsQueryResult->num_rows > 0) {
+                // if the user has already filled in another form
+                $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 1 where exhibitor_id = ".$_SESSION["user_id"];
+                executeQuery($conn, $setQuery);
+            } else {
+                $setQuery = "INSERT INTO exhibitor_forms_submitted(exhibitor_id, mandatory_forms) VALUES(".$_SESSION['user_id'].", 1)";
+                executeQuery($conn, $setQuery);
+            }
 
         } else {
             echo "Some absent";
