@@ -5,30 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BASE</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
         #outer-container{
             border: 1px solid black;
+            padding: 15px;
         }
         .main-header {
             font-weight: bold;
             text-transform: uppercase;
             margin: 3% 0;
         }
+        .jumbotron {
+            background-color: #e9ecef;  
+            
+        }
         @media(max-width:768px) {
             .main-content{
                 text-align: justify;
+            }
+            .container {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="jumbotron">
-        <div class="container" id="outer-container">
+    <div class="jumbotron container">
+        <div id="outer-container">
             <div align=center>
                 <img src="http://intimasia.co.in/img/logo_old.png" alt="Intimasia Logo">
             </div>
