@@ -26,6 +26,24 @@
             <button class="btn btn-outline-danger" type="submit">Change Deadline</button>
         </form><hr>
 
+        <!-- form to change the admin emai(Address that will receive emails regarding updates)-->
+        <form action="#" method="post" class="change-preference-form">
+            
+            <div class="form-group row">
+                <label for="display-name" class="col-sm-3 col-form-label col-form-label-sm">Admin Email:</label>    
+                <div class="col-sm-9">
+                    <input type="email" name="admin-email" id="admin-email" class="form-control form-control-sm" required value="<?php if($preferences) echo $preferences['admin_email']; ?>">
+                    <input type="hidden" name="change-admin-email-form">
+                </div>
+            </div>
+            <div class="alert alert-info help-text">
+                <strong>Info!: </strong>Email to receive emails regarding exhibitor updates.
+            </div>
+
+            <button class="btn btn-outline-info" type="submit">Change Admin Email</button>
+        </form><hr>
+
+
         <!-- Form to change the display name of the admin.(Name using which the mail will be sent)-->
         <form action="#" method="post" class="change-preference-form">
             
@@ -188,4 +206,16 @@
             notify("Mail Body Update failed", "error");
         }
     }
+
+    if (isset($_POST['change-admin-email-form'])) {
+        // change password form has been submitted
+        $adminEmail = $conn->escape_string($_POST['admin-email']);
+        if (updatePreference($conn, $adminEmail, 'admin_email')) {
+            echo "<script>$('#admin-email').val('$adminEmail')</script>";
+            notify("Admin Email updated", "success");
+        } else {
+            notify("Admin email update failed", "error");
+        }
+    }
+    
     

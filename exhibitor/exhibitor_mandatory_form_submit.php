@@ -7,7 +7,7 @@
     } else {
         require_once("../utils/superz_connect.php");
     }
-
+    require("../utils/mailer.php");
     function checkFormParamsInPost($iterator) {
         $valid = TRUE;
         foreach($iterator as $entry) {
@@ -138,6 +138,11 @@
                 executeQuery($conn, $setQuery);
             }
             $_SESSION['mandatory_forms_submitted'] = TRUE;
+
+            // the username is same as the email
+            
+
+            //sendMail ($conn, $toAddress, $toName, $mailBody=NULL, $subject=NULL);
 
         } else {
             echo "Some absent";

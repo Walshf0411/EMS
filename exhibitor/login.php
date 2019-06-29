@@ -86,7 +86,7 @@
             if (password_verify($password, $dbHashedPassword)) {
                 // correct credentials
                 // session Variables for exhibitor
-                $_SESSION['username'] = $user['username'];
+                $_SESSION['username'] = $user['username']; // this is baiscally his email
                 $_SESSION['user_full_name'] = $user['participant_name'];
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['exhibitor_booth_number'] = $user['booth_number'];
