@@ -219,6 +219,7 @@
         formData = new FormData();
         formData.append("selected_items", JSON.stringify(selectedItems));
         console.log(formData);
+        showWaitingOverlay();
         $.ajax({
             type: "POST",
             url: "exhibitor_optional_form6_submit.php",
@@ -226,6 +227,7 @@
             contentType: false,
             processData: false,
             success: function (response) {
+                hideWaitingOverlay();
                 console.log(response);
                 $("#optional_form6_modal").modal("hide");
                 $("#exhibitor_optional_form6_submit_btn").attr("disabled", "true");
@@ -234,6 +236,10 @@
                 });
                 $.notify("Form Submitted Successfully.", "success");
                 $('#v-pills-tab-10').addClass('text-success');
+            },
+            error: function(response) {
+                hideWaitingOverlay();
+                $.notify("Error", "error", "top center");
             }
         });
         

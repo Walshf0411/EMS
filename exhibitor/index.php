@@ -145,6 +145,12 @@
             </div>
         </div>
     </div>
+    <div class="loading-overlay" align=center>
+        <div class="loading-overlay-content">
+            <i class="fas fa-spinner fa-10x fa-spin"></i><br>
+            <span>Please wait...</span>
+        </div>
+    </div>
 
 <?php 
 if (isset($_SESSION['already_logged_in_message'])) {
@@ -164,6 +170,19 @@ if (isset($_SESSION['already_logged_in_message'])) {
 ?>
 
 <script>
+    function showWaitingOverlay() {
+        $(".loading-overlay").animate({
+            opacity: 1
+        }, 500); 
+        $(".loading-overlay").css("z-index", "1000");
+    }
+
+    function hideWaitingOverlay() {
+        $(".loading-overlay").animate({
+            opacity: 0
+        }, 500); 
+        $(".loading-overlay").css("z-index", "-1");
+    }
     <?php 
         if (isset($_SESSION['mandatory_forms_submitted'])) {
             echo "$('#mandatory-forms-dropdown').addClass('text-success');

@@ -230,6 +230,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
         formData = new FormData();
         formData.append("selected_items", JSON.stringify(selectedItems));
         console.log(formData);
+        showWaitingOverlay();
         $.ajax({
             type: "POST",
             url: "exhibitor_optional_form7_submit.php",
@@ -237,6 +238,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
             contentType: false,
             processData: false,
             success: function (response) {
+                hideWaitingOverlay();
                 console.log(response);
                 $("#optional_form7_modal").modal("hide");
                 $("#exhibitor_optional_form7_submit_btn").attr("disabled", "true");
@@ -245,6 +247,10 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
                 });
                 $.notify("Form Submitted Successfully.", "success");
                 $('#v-pills-tab-11').addClass('text-success');
+            },
+            error: function(response) {
+                hideWaitingOverlay();
+                $.notify("Error", "error", "top center");
             }
         });
     }

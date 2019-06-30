@@ -61,20 +61,8 @@ Mumbai
             echo "$('#mandatory-forms-submit-btn, #agreement_checkbox').attr('disabled', 'true');";
         }
     ?>
-    function showWaitingOverlay() {
-        $("#full-overlay").css("z-index", "1000");
-        $("#full-overlay").animate({
-            opacity: 1
-        }, 500); 
-    }
-
-    function hideWaitingOverlay() {
-        $("#full-overlay").animate({
-            opacity: 0
-        }, 500); 
-        $("#full-overlay").css("z-index", "-1");
-    }
     function sendData(finalFormData) {
+        showWaitingOverlay();
         $.ajax({
             type: "POST",
             url: "exhibitor_mandatory_form_submit.php",
@@ -95,7 +83,7 @@ Mumbai
             },
             error: function(response) {
                 hideWaitingOverlay();
-                $.notify("Error", "error", "top middle");
+                $.notify("Error", "error", "top center");
             },
             processData: false,
             contentType: false,

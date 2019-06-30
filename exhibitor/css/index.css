@@ -60,7 +60,24 @@ font-size: 14px;
 .submitted-tab:hover{
     color:white;
 }
-
+.loading-overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align:center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color:white;
+    z-index: -1;
+    opacity: 0;
+}
+.loading-overlay-content{
+    margin-top: 15%;
+}
+.loading-overlay span {
+    font-size: 2rem;
+}
 @media (max-width: 768px) {
     /* For mobile devices */
     /* This is to make the side bar and the main tabs stack on top of each other*/
@@ -73,6 +90,9 @@ font-size: 14px;
     }
     .table-wrapper{
         overflow: auto;
+    }
+    .loading-overlay-content{
+        margin-top: 50%;
     }
 }
 #full-overlay {
