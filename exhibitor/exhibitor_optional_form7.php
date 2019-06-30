@@ -230,7 +230,7 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
         formData = new FormData();
         formData.append("selected_items", JSON.stringify(selectedItems));
         console.log(formData);
-        showWaitingOverlay();
+        showWaitingOverlay("optional_form7_modal");
         $.ajax({
             type: "POST",
             url: "exhibitor_optional_form7_submit.php",

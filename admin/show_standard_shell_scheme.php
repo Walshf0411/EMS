@@ -13,6 +13,13 @@
         $details = $queryResult->fetch_assoc();
         return $details;
     }
+    function getFasciaName() {
+        global $conn;
+        $id = $_GET['id'];
+        $query = "SELECT * from fascia_names where exhibitor_id=".$id;
+        $queryResult = executeQuery($conn, $query);
+        return $queryResult->fetch_assoc()['fascia_name'];
+    }
 ?>
 <style>
     table, tr, td, th{
@@ -41,7 +48,7 @@
 </div>        
 <!-- Display booth number -->
 <div style="margin-left: 1%;">
-    <h5>Your Booth Number: <?php echo getForm1Details()["booth_number"];?></h5>
+    <h5>Exhibitor Booth number: <?php echo getForm1Details()["booth_number"];?></h5>
 </div>
 
 <p id="fascia-name">
@@ -54,7 +61,7 @@
         <li>
             <label for="fasica_name"></label>FASCIA NAME (As it should appear on your stall)</label>
             <!-- Display name --> 
-            <h5><?php echo getForm1Details()["participant_name"]; ?></h5>
+            <h5><?php echo getFasciaName(); ?></h5>
         </li>
         <li>
             SHELL SCHEME PACKAGE
@@ -68,10 +75,7 @@
         </li>
     </ol>
 </p>
-<div style="float:right;">
-    <strong><?php echo "CONTACT PERSON: ".getForm1Details()["contact_person"];?><br></strong>
-    <strong><?php echo "CONTACT NUMBER: ".getForm1Details()["phone_number"];?></strong>
-</div>
+
 <div style="clear:both;"></div>
 
 <div align="center">
@@ -122,7 +126,6 @@
     }
     $(document).ready(function () {
         $(".id-icon").attr('onclick', "standardBoothLayoutInfoButtonClicked()");
-        onInputFascia();
         $("#fascia_name").attr("oninput", "onInputFascia()");
         $('[data-toggle="tooltip"]').tooltip(); 
     });

@@ -32,7 +32,7 @@
     </div>
     <!-- Display Booth number -->
     <div style="margin-left: 1%;">
-        <h5>Your Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
+        <h5>Exhibitor Booth number: <?php echo getForm1Details()["booth_number"]; ?></h5>
     </div>
     <span id="fair-listing-form-error" class="text-danger" style="display:none">Kindly fill in all the details. If you think this is a mistake, press Next.</span>
     <form onsubmit="return false;" id="fair-listing"> 
@@ -50,46 +50,39 @@
             <div class="col-md-4 col-sm-12">
                 <label for="telephone_isd_code">Telephone ISD code:</label>
                 <div class="textbox"> 
-                    <span class="prepend_text">+
-                        <?php echo getForm2Details()["telephone_isd_code"]; ?>
-                    </span>
+                    <h5>+<?php echo getForm2Details()["telephone_isd_code"]; ?></h5>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="telephone_std_code">STD code:</label>
                 <div class="textbox">
-                    <span class="prepend_text">
-                        <?php echo getForm2Details()["telephone_std_code"]; ?>
-                    </span>
+                    <h5><?php echo getForm2Details()["telephone_std_code"]; ?></h5>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="telephone">Phone number:</label>
                 <div class="textbox">
-                    <span class="prepend_text">
-                        <?php echo getForm2Details()["telephone_number"]; ?>
-                    </span>
+                    <h5><?php echo getForm2Details()["telephone_number"]; ?></h5>
                 </div>
             </div>
         </div>
         <div class="row">    
             <div class="col-md-4 col-sm-12">
                 <label for="fax_isd_code">Fax ISD code:</label>
-                <div class="textbox"> 
-                    <span class="prepend_text">+</span>
-                    <?php echo getForm2Details()["fax_isd_code"]; ?>
+                <div class="textbox">
+                    <h5>+<?php echo getForm2Details()["fax_isd_code"]; ?></h5>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="fax_std_code">STD code:</label>
                 <div class="textbox">
-                    <?php echo getForm2Details()["fax_std_code"]; ?>                    
+                    <h5><?php echo getForm2Details()["fax_std_code"]; ?></h5>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="fax">Phone number:</label>
                 <div class="textbox">
-                    <?php echo getForm2Details()["fax_number"]; ?>
+                    <h5><?php echo getForm2Details()["fax_number"]; ?></h5>
                 </div>
             </div>
         </div>
@@ -97,51 +90,50 @@
             <div class="col-md-4 col-sm-12">
                 <label for="mobile_isd_code">Mobile ISD code:</label>
                 <div class="textbox"> 
-                    <span class="prepend_text">+</span>
-                    <?php echo getForm2Details()["mobile_isd_code"]; ?>                    
+                    <h5>+<?php echo getForm2Details()["mobile_isd_code"]; ?></h5>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <label for="mobile">Mobile Number:</label>
                 <div class="textbox">
-                    <?php echo getForm2Details()["mobile_number"]; ?>
+                    <h5><?php echo getForm2Details()["mobile_number"]; ?></h5>
                 </div>                
             </div>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <div>
-                <?php echo getForm2Details()["email"]; ?>
+                <h5><?php echo getForm2Details()["email"]; ?></h5>
             </div>
         </div>
         <div class="form-group">
             <label for="website">Website:</label>
             <div>
-                <?php echo getForm2Details()["website"]; ?>
+                <h5><?php echo getForm2Details()["website"]; ?></h5>
             </div>
         </div>
         <div class="form-group">
             <label for="person">Contact Person:</label>
             <div>
-                <?php echo getForm2Details()["contact_person"]; ?>                
+                <h5><?php echo getForm2Details()["contact_person"]; ?></h5>
             </div>
         </div>
         <div class="form-group">
             <label for="designation">Designation:</label>
             <div>
-                <?php echo getForm2Details()["designation"]; ?>
+                <h5><?php echo getForm2Details()["designation"]; ?></h5>
             </div>
         </div>
         <div class="form-group">
             <label for="profile">Company profile:(not more than 100 words)</label>
             <div>
-                <?php echo getForm2Details()["company_profile"]; ?>
+                <h5><?php echo getForm2Details()["company_profile"]; ?></h5>
             </div>        
         </div>
         <div class="form-group">
             <label for="products">Products supplied / manufactured:</label>
             <div>    
-                <?php echo getForm2Details()["products_supplied"]; ?>
+                <h5><?php echo getForm2Details()["products_supplied"]; ?></h5>
             </div>
         </div>
 
@@ -149,8 +141,11 @@
         </div>
         <div style="clear:both"></div>
         <div align="center">
+            <button class="btn btn-danger" data-toggle="pill" href="#v-pills-1">
+                <i class="fa fa-caret-left"></i>Previous
+            </button>
             <button class="btn btn-success" data-toggle="pill" href="#v-pills-3">
-                <i class="fa fa-caret-right"></i>Next
+                Next<i class="fa fa-caret-right"></i>
             </button>
         </div>
     </form>

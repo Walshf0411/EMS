@@ -170,7 +170,8 @@ if (isset($_SESSION['already_logged_in_message'])) {
 ?>
 
 <script>
-    function showWaitingOverlay() {
+    function showWaitingOverlay(modalId) {
+        $("#" + modalId).modal("hide");
         $(".loading-overlay").animate({
             opacity: 1
         }, 500); 

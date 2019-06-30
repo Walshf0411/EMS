@@ -62,3 +62,9 @@ function getAdminPreferences($conn) {
     $queryResult = executeQuery($conn, $query);
     return $queryResult->fetch_assoc();
 }
+
+function getExhibitorDetails($conn, $exhibitorId) {
+    $query = "SELECT * from exhibitor WHERE id=".$exhibitorId;
+    $queryResult = executeQuery($conn, $query);
+    return $queryResult->fetch_assoc();
+}

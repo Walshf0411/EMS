@@ -56,7 +56,12 @@
             </div>
         </div>
     </div>
-
+    <div class="loading-overlay" align=center>
+        <div class="loading-overlay-content">
+            <i class="fas fa-spinner fa-10x fa-spin"></i><br>
+            <span>Please wait...</span>
+        </div>
+    </div>
     <?php 
     if (isset($_SESSION['already_logged_in_message'])) {
         // user tried to access login.php even after being logged in.

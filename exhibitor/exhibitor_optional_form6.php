@@ -219,7 +219,7 @@
         formData = new FormData();
         formData.append("selected_items", JSON.stringify(selectedItems));
         console.log(formData);
-        showWaitingOverlay();
+        showWaitingOverlay("optional_form6_modal");
         $.ajax({
             type: "POST",
             url: "exhibitor_optional_form6_submit.php",

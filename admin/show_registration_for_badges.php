@@ -35,7 +35,7 @@
     </p>    
 </div>
 
-<h5>Your Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
+<h5>Exhibitor Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
 
 <span id="staff-personnel-form-error" class="text-danger" style="display:none">Kindly fill in all the details. If you think this is a mistake, press Next</span><br>
 <p>
@@ -60,10 +60,10 @@
     </div>
 
     <?php 
-        $i=0;
+        $i=1;
         foreach (getForm3Details() as $row) {    
             echo "<div class=row>
-            <div class='col-md-2 col-sm-11 col-sm-offset-1'>".$row["id"]."</div>
+            <div class='col-md-2 col-sm-11 col-sm-offset-1'>".$i."</div>
             <div class='col-md-6 col-sm-11 col-sm-offset-1' >".$row["stall_personnel_name"]."</div>
             <div class='col-md-4 col-sm-11 col-sm-offset-1'>".$row["designation"]."</div>
             </div>
@@ -79,22 +79,46 @@
 </div>
 <div style="clear:both;"></div>
 
+<div class="alert alert-info">
+    <strong>Info!:</strong>Kindly go through the exhibitors's submiitted details and review the form.
+</div>
+
 <div align=center>
     <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST">
         <button class="btn btn-success" name="verify">
-            Verify<i class="fas fa-paper-plane"></i>
+            Verify&nbsp;<i class="fas fa-paper-plane"></i>
         </button>
     </form>
 </div>
+
 <?php
     if(isset($_POST["verify"])){
         global $conn;
-        $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 2 where exhibitor_id = ".$_GET["id"];
-        $queryResult = executeQuery($conn,$setQuery);
-        if($queryResult) {
-            echo "<script>notify('Reviewed Successfully','success');</script>";
+        $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
+        
+        $checkQueryResults = executeQuery($conn, $checkQuery);
+        if ($checkQueryResults->fetch_assoc()['mandatory_forms'] == 2) {
+            notify("You have already reviewed this form.", "warn");
         } else {
-            echo "<script>notify('Reviewed Unsuccessfully','error');;</script>";
+            $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 2 where exhibitor_id = ".$_GET["id"];
+            $queryResult = executeQuery($conn,$setQuery);
+            if($queryResult) {
+                // form review mail the user
+                $exhibitor = getExhibitorDetails($conn, $_GET['id']);
+                echo $exhibitor;
+                require_once("../utils/mailer.php");
+                $exhibitionName = getAdminPreferences($conn)['event_name'];
+                
+                $subject = "Mandatory forms Reviewd for $exhibitionName.";
+                $mainHeader = "Mandatory forms have been reviewed successfully.";
+                $mailBody = "Your forms have been successfully reviewed by the admin.
+                Thank you for participating in $exhibitionName";
+
+                sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
+                notify("Form Reviewed successfully.", "success");
+            } else {
+                notify("Form Reviewed failed. Try Again later.", "error");
+            }
         }
     }
 ?>
