@@ -42,7 +42,7 @@ function sendMail1 ($conn, $toAddress, $toName, $mailBody, $subject, $mainHeader
     $mail->IsHTML(true);
     $mail->Subject = $subject;
     $mail->Body = $mailContent;
-    return $mail->Send();
+    $mail->Send();
 }
 function sendMail ($conn, $toAddress, $toName, $username, $password, $mainHeader) {
     $preferences = getAdminPreferences($conn);

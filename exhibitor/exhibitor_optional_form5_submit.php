@@ -7,7 +7,7 @@
     }else {
         require_once("../utils/superz_connect.php");
     }
-
+    require_once("../utils/mailer.php");
     if (isset($_POST['selected_items'])) {
         $arr = json_decode($_POST['selected_items']);
         
@@ -38,7 +38,17 @@
                 $setQuery = "INSERT INTO exhibitor_forms_submitted (exhibitor_id, optional_form5, booth_number, participant_name) VALUES(".$_SESSION['user_id'].", 1, '$boothNumber', '$participantName')";
                 executeQuery($conn, $setQuery);
             }
+            $participantName = $_SESSION['user_full_name'];
+            global $base_url;
             
+            $url = $base_url . "/admin/submitted_form.php?id=".$_SESSION["user_id"];
+            $mailBody = "
+                An application has been received from $participantName 
+                kindly <a href='$url'>click here</a> to view the application. User has submitted mandatory forms.
+            ";
+            $mainHeader = "$participantName has submitted optional form 5.";
+            $subject = "$participantName submitted optional form 5.";
+            sendMailToAdmin ($conn, $mailBody, $subject, $mainHeader);
         }
         echo DEBUG;
         echo $query;

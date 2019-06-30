@@ -151,7 +151,7 @@
             $mainHeader = "$participantName has submitted mandatory forms.";
             $subject = "$participantName submitted mandatory forms.";
 
-            sendMailToAdmin ($conn, $mailBody, $subject, $mainHeader) ;
+            sendMailToAdmin ($conn, $mailBody, $subject, $mainHeader);
             
         } else {
             echo "Some absent";
