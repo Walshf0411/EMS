@@ -8,6 +8,7 @@
         require_once("../utils/superz_connect.php");
     }
     require("../utils/mailer.php");
+    
     function checkFormParamsInPost($iterator) {
         $valid = TRUE;
         foreach($iterator as $entry) {
@@ -138,12 +139,20 @@
                 executeQuery($conn, $setQuery);
             }
             $_SESSION['mandatory_forms_submitted'] = TRUE;
+            $participantName = $_SESSION['user_full_name'] ;
 
-            // the username is same as the email
+            global $base_url;
             
+            $url = $base_url . "/admin/submitted_form.php?id=".$_SESSION["user_id"];
+            $mailBody = "
+                An application has been received from $participantName 
+                kindly <a href='$url'>click here</a> to view the application. User has submitted mandatory forms.
+            ";
+            $mainHeader = "$participantName has submitted mandatory forms.";
+            $subject = "$participantName submitted mandatory forms.";
 
-            //sendMail ($conn, $toAddress, $toName, $mailBody=NULL, $subject=NULL);
-
+            sendMailToAdmin ($conn, $mailBody, $subject, $mainHeader) ;
+            
         } else {
             echo "Some absent";
         }

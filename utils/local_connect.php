@@ -5,7 +5,7 @@
     $username = "root";
     $password = "";
     $dbname = "exhibitor_management_system";
-    $base_url = 'http://'.$_SERVER['SERVER_NAME'].'/superz';
+    $base_url = 'http://localhost/ems';
     $doc_url = $_SERVER['DOCUMENT_ROOT'].'/superz';
 
     // create connection
