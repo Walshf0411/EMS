@@ -120,18 +120,13 @@
         $checkQueryResult = executeQuery($conn, $checkQuery);
         if ($checkQueryResult->fetch_assoc()['optional_form4'] == 2) {
             // form already reviewed
-            notif("You already reviewed this form.", "warn");
+            notify("You already reviewed this form.", "warn");
         } else {
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 2 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if($queryResult) {
                 notify("Form reviewed successfully", "success");
                 $exhibitor = getExhibitorDetails($conn, $_GET['id']);
-
-                $subject = "Optional form 4 has been reviewed.";
-                $mailBody = "Optional form 4 has been reviewed. Kindly pay the money to the company";
-                $mainHeader = "Optional form 4 has been reviewed.";
-                sendMail1 ($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
             } else {
                 notify("Form review failed", "error");
             }

@@ -7,11 +7,11 @@
     }
     function getServices($id) {
         global $conn;
-        $query = "SELECT amount from other_services where id = ".$id;
+        $query = "SELECT * from other_services where id = ".$id;
         $queryResult = executeQuery($conn,$query);
         $servicesList = $queryResult->fetch_assoc();
         
-        return $servicesList["amount"];
+        return $servicesList;
     }
     function getUserServices() {
         global $conn;
@@ -21,7 +21,8 @@
         $servicesList = array();
         foreach ($result as $row) {
             $servicesList = getServices($row["item_id"]);
-            $row["amount"]=$servicesList;
+            $row["amount"] = $servicesList['amount'];
+            $row["item_description"] = $servicesList['item_description'];
             $userServices[] = $row;
         }
         return $userServices;
@@ -70,15 +71,20 @@
             }
             
             $userServices = getUserServices();
+            $count = 1;
+            $subTotal = 0;
             foreach ($userServices as $row) {
+                $total = $row["amount"] * $row['quantity'];
+                $subTotal += $total;
                 echo "<tr>
-                <td>".$row["id"]."</td>
+                <td>".$count."</td>
                 <td>".$row["item_description"]."</td>
                 <td>".$row["amount"]."</td>
                 <td>".$row["quantity"]."</td>
-                <td>".$row["total"]."</td>
+                <td>".$total."</td>
                 </tr>
                 ";
+                $count += 1;
             }
             
         ?>
@@ -87,7 +93,7 @@
                 <div style="float:right;">
                     <strong>Total (Rs.) </strong>
                     <span><?php
-                        echo getTotal(); 
+                        echo $subTotal; 
                     ?></span>
                 </div>
             </td>
@@ -98,7 +104,8 @@
                     <strong>GST Total (Rs.) </strong>
                     <span>
                         <?php 
-                        echo getTotal()*0.18; 
+                        $gstTotal = ceil($subTotal * 0.18);
+                        echo $gstTotal; 
                         ?>
                     </span>
                 </div>
@@ -110,7 +117,7 @@
                     <strong>Grand Total (Rs.) </strong>
                     <span>
                         <?php 
-                        echo getTotal() + getTotal()*0.18; 
+                        echo $subTotal + $gstTotal; 
                         ?>
                     </span>
                 </div>
@@ -130,19 +137,26 @@
 <div align=center>
     <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST">
         <button class="btn btn-success" name="verify_form5">
-            Verify<i class="fas fa-paper-plane"></i>
+            Verify&nbsp;<i class="fas fa-check"></i>
         </button>
     </form>
 </div>
 <?php
     if(isset($_POST["verify_form5"])){
         global $conn;
-        $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 2 where exhibitor_id = ".$_GET["id"];
-        $queryResult = executeQuery($conn,$setQuery);
-        if($queryResult) {
-            echo "<script>notify('Reviewed Successfully','success');</script>";
+        $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
+        $checkQueryResults = executeQuery($conn, $checkQuery);
+        if ($checkQueryResults->fetch_assoc()['optional_form5'] == 2) {
+            notify("You have already reviewed Optional form 5.", "warn");
         } else {
-            echo "<script>notify('Reviewed Unsuccessfully','error');;</script>";
+            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 2 where exhibitor_id = ".$_GET["id"];
+            $queryResult = executeQuery($conn,$setQuery);
+            if($queryResult) {
+                notify("You have successfully reviewed Optional form 5.", "success");
+            } else {
+                notify("Form Review failed: Optional form 5.", "error");
+            }
         }
+        
     }
 ?>
