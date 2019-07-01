@@ -83,14 +83,63 @@
     <strong>Info!:</strong>Kindly go through the exhibitors's submiitted details and review the form.
 </div>
 
+
 <div align=center>
-    <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST">
+
+    <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST" style="display:inline">
         <button class="btn btn-success" name="verify">
-            Verify&nbsp;<i class="fas fa-paper-plane"></i>
+            Verify&nbsp;<i class="fas fa-check"></i>
         </button>
     </form>
+    
+    <button class="btn btn-danger" id="mandatory_forms_reject">
+        Reject&nbsp;<i class="fas fa-times"></i>
+    </button>
+    
 </div>
 
+
+<!-- modal for reject mandatory forms-->
+<div class="modal fade" id="mandatory_forms_reject_modal">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Form Rejection!</h5>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="rejection_message"><strong>Enter a message to send to the exhibitor:</strong></label>
+                        <textarea class="form-control" id="rejection_message" name="rejection_message" rows=10 required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success" name="reject">Confirm</button>
+                </form>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#mandatory_forms_reject").click(function (e) { 
+        e.preventDefault();
+        $("#mandatory_forms_reject_modal").modal("show");
+    });
+</script>
 <?php
     if(isset($_POST["verify"])){
         global $conn;
@@ -118,6 +167,23 @@
                 notify("Form Reviewed successfully.", "success");
             } else {
                 notify("Form Reviewed failed. Try Again later.", "error");
+            }
+        }
+    }
+    if (isset($_POST['reject'])) {
+        global $conn;
+        $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
+        $checkQueryResults = executeQuery($conn, $checkQuery);
+        if ($checkQueryResults->fetch_assoc()['mandatory_forms'] == 2) {
+            // already verified, cannot reject.
+            notify("Mandatory forms have been already reviewed and verifed cannot reject.", "warn");
+        } else {
+            $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 0 where exhibitor_id = ".$_GET["id"];
+            $queryResult = executeQuery($conn,$setQuery);
+            if ($queryResult) {
+                notify("Mandatory forms have been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
+            } else {
+                notify("Form rejection failed: Mandatory forms", "error");
             }
         }
     }

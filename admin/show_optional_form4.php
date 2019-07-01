@@ -111,21 +111,58 @@
     </div>
     <div style="clear:both"></div>
 
-
     <div align=center>
-    <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST">
-        <button class="btn btn-success" name="verify_form4" href="#v-pills-5">
-            Verify<i class="fas fa-paper-plane"></i>
+        <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST" style="display:inline">
+            <button class="btn btn-success" name="verify_form4" href="#v-pills-5">
+                Verify&nbsp;<i class="fas fa-check"></i>
+            </button>
+        </form>
+        <button class="btn btn-danger" id="optional_form4_reject">
+            Reject&nbsp;<i class="fas fa-times"></i>
         </button>
-    </form>
+    </div>
+
+<!-- modal for reject optional form 4-->
+<div class="modal fade" id="optional_form4_reject_modal">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+
+        <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Form Rejection!</h5>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="rejection_message"><strong>Enter a message to send to the exhibitor:</strong></label>
+                        <textarea class="form-control" id="rejection_message" name="rejection_message_form4" rows=10 required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success" name="reject_form4">Confirm</button>
+                </form>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
 </div>
-<!-- <script>
-    $(document).ready(function(){
-        $("#v-pills-tab4").removeClass('active');
-        $("#v-pills-tab1").removeClass('active');
-        $("#v-pills-tab5").addClass('active');
+
+<script>
+    $("#optional_form4_reject").click(function (e) { 
+        e.preventDefault();
+        $("#optional_form4_reject_modal").modal("show");
     });
-</script> -->
+</script>
+
 <?php
     if(isset($_POST["verify_form4"])){
         global $conn;
@@ -145,5 +182,22 @@
             }
         }
         
+    }
+    if (isset($_POST['reject_form4'])) {
+        global $conn;
+        $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
+        $checkQueryResults = executeQuery($conn, $checkQuery);
+        if ($checkQueryResults->fetch_assoc()['optional_form4'] == 2) {
+            // already verified, cannot reject.
+            notify("Optional form 4 has been already reviewed and verifed, cannot reject.", "warn");
+        } else {
+            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 0 where exhibitor_id = ".$_GET["id"];
+            $queryResult = executeQuery($conn,$setQuery);
+            if ($queryResult) {
+                notify("Optional form 4 has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
+            } else {
+                notify("Form rejection failed: Optional form 4", "error");
+            }
+        }
     }
 ?>
