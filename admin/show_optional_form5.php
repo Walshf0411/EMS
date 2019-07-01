@@ -52,7 +52,7 @@
 </div>
 
 <div class="table-wrapper">
-    <table class="table " style="width:100%;">
+    <table class="table " style="width:100%;" id="optional_form5_invoice">
         <tr style="background-color:rgb(193, 13, 109);color:white;">
             <th>No.</th>
             <th>Item Description</th>
@@ -180,6 +180,38 @@
 </div>
 
 <script>
+    <?php 
+
+    if (isset($_SESSION['send_optional_form5_review_mail'])):
+        $exhibitor = getExhibitorDetails($conn, $_GET['id']);
+        $subject = "Other services form has been successfully reviewed.";
+        $mainHeader = $subject;
+        $user = $exhibitor['participant_name'];
+        $toAddress = $exhibitor['email'];
+        $mailBody = "Your submission for Other Services in Fair catalogue has   been successfully reviewed. Kindly find the invoice and pay the amount.<br>";
+    ?>
+        // send mail to exhibitor regarding the review
+        var invoice = $("#optional_form5_invoice").clone().prop("outerHTML");
+        formData = new FormData();
+        formData.append("toAddress", "<?php echo $toAddress;?>");
+        formData.append("toName", "<?php echo $user;?>");
+        formData.append("mailBody", "<?php echo $mailBody;?>" + invoice);
+        formData.append("subject", "<?php echo $subject;?>");
+        formData.append("mainHeader", "<?php echo $mainHeader;?>");
+        $.ajax({
+            type: "POST",
+            url: "send_confirmation_mail.php",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {}
+        });
+        $.notify.defaults({
+            globalPosition: "top center",
+        });
+        $.notify("Other Services form reviewed successfully", "success");
+
+    <?php unset($_SESSION['send_optional_form5_review_mail']); endif?>
     $("#optional_form5_reject").click(function (e) { 
         e.preventDefault();
         $("#optional_form5_reject_modal").modal("show");
@@ -196,7 +228,8 @@
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 2 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if($queryResult) {
-                notify("You have successfully reviewed Optional form 5.", "success");
+                $_SESSION["send_optional_form5_review_mail"] = TRUE;
+                echo "<meta http-equiv='refresh' content='0'>";
             } else {
                 notify("Form Review failed: Optional form 5.", "error");
             }
@@ -209,14 +242,14 @@
         $checkQueryResults = executeQuery($conn, $checkQuery);
         if ($checkQueryResults->fetch_assoc()['optional_form5'] == 2) {
             // already verified, cannot reject.
-            notify("Optional form 5 has been already reviewed and verifed, cannot reject.", "warn");
+            notify("Other Services form has been already reviewed and verifed, cannot reject.", "warn");
         } else {
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 0 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if ($queryResult) {
-                notify("Optional form 5 has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
+                notify("Other Services form has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
             } else {
-                notify("Form rejection failed: Optional form 5", "error");
+                notify("Form rejection failed: Other Services", "error");
             }
         }
     }

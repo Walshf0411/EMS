@@ -52,7 +52,7 @@
 </div>
 
 <div class="table-wrapper">
-    <table width=100% class="table">
+    <table width=100% class="table" id="optional_form7_invoice">
         <thead>
             <tr style ="background-color:rgb(193, 13, 109);color:white;">
                 <th>Sr.no</th>
@@ -173,6 +173,38 @@
     </div>
 </div>
 <script>
+    <?php
+    if (isset($_SESSION['send_optional_form7_review_mail'])):
+        $exhibitor = getExhibitorDetails($conn, $_GET['id']);
+        $subject = "Electrical Fittings form 2 has been successfully reviewed.";
+        $mainHeader = $subject;
+        $user = $exhibitor['participant_name'];
+        $toAddress = $exhibitor['email'];
+        $mailBody = "Your submission for Electrical Fittings 2 in Fair catalogue has been successfully reviewed. Kindly find the invoice and pay the amount.<br>";
+    ?>
+        // send mail to exhibitor regarding the review
+        var invoice = $("#optional_form7_invoice").clone().prop("outerHTML");
+        formData = new FormData();
+        formData.append("toAddress", "<?php echo $toAddress;?>");
+        formData.append("toName", "<?php echo $user;?>");
+        formData.append("mailBody", "<?php echo $mailBody;?>" + invoice);
+        formData.append("subject", "<?php echo $subject;?>");
+        formData.append("mainHeader", "<?php echo $mainHeader;?>");
+        $.ajax({
+            type: "POST",
+            url: "send_confirmation_mail.php",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {}
+        });
+        $.notify.defaults({
+            globalPosition: "top center",
+        });
+        $.notify("Electrical fittings 2 form reviewed successfully", "success");
+
+    <?php unset($_SESSION['send_optional_form7_review_mail']); endif?>
+
 $("#optional_form7_reject").click(function (e) { 
     e.preventDefault();
     $("#optional_form7_reject_modal").modal("show");
@@ -189,7 +221,8 @@ $("#optional_form7_reject").click(function (e) {
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form7 = 2 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if($queryResult) {
-                notify("You have successfully reviewed Optional form 7.", "success");
+                $_SESSION["send_optional_form7_review_mail"] = TRUE;
+                echo "<meta http-equiv='refresh' content='0'>";
             } else {
                 notify("Form Review failed: Optional form 7.", "error");
             }
