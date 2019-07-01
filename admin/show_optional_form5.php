@@ -48,7 +48,7 @@
 </div>
 
 <div style="margin-left: 1%;">
-    <h5>Your Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
+    <h5>Exhibitor Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
 </div>
 
 <div class="table-wrapper">

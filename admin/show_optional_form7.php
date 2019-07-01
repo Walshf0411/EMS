@@ -23,6 +23,7 @@
             $servicesList = getElectricalRequirements2($row["item_id"]);
             $row["price"] = $servicesList["price"];
             $row["product_name"] = $servicesList["product_name"];
+            $row['code_number'] = $servicesList["code_number"];
             $userRequirements[] = $row;
         }
         return  $userRequirements;
@@ -32,7 +33,7 @@
 <div class="col-md-12 col-sm-12">
     <p class="table">
         <table style="width:100%;">
-            <tr style="">
+            <tr style="background-color:rgb(193, 13, 109);color:white;">
                 <th>FORM 7 & 8</th>
                 <th>ELECTRICAL FITINGS ADDITIONAL REQUIREMENTS</th>
                 <th>OPTIONAL</th>
@@ -47,7 +48,7 @@
     
 
 <div style="margin-left: 1%;">
-    <h5>Your Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
+    <h5>Exhibitor Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
 </div>
 
 <div class="table-wrapper">
@@ -66,17 +67,22 @@
             <!-- Dynamic items generation from the tables-->
             <?php
                 $userRequirements = getUserElectricalRequirement2();
+                $count = 1;
+                $subTotal = 0;
                 foreach ($userRequirements as $row) {
+                    $total = $row["price"] * $row["quantity"];
+                    $subTotal += $total;
                     echo "
                     <tr>
-                        <td>".$row["item_id"]."</td>
+                        <td>".$count."</td>
                         <td>".$row["code_number"]."</td>
                         <td>".$row["product_name"]."</td>
                         <td>".$row["price"]."</td>
                         <td>".$row["quantity"]."</td>
-                        <td>".$row["total"]."</td>
+                        <td>".$total."</td>
                     </tr>
                     ";
+                    $count += 1;
                 }
                 function getTotalPrice() {
                     $userRequirements = getUserElectricalRequirement2();
@@ -91,21 +97,23 @@
             <tr>
                 <td align=right colspan=6>
                     <strong>Sub Total(Rs): </strong> <span id="electrical-items-total">
-                        <?php echo getTotalPrice(); ?>
+                        <?php echo $subTotal; ?>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td align=right colspan=6>
                     <strong>Gst Total (Rs): </strong><span id="electrical-items-gst-total">
-                    <?php echo getTotalPrice()*0.18; ?>
+                    <?php 
+                    $gstTotal = ceil($subTotal * 0.18);
+                    echo $gstTotal;?>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td align=right colspan=6>
                     <strong>Total(Rs):</strong> <span id="electrical-items-final-total">
-                    <?php echo getTotalPrice()+getTotalPrice()*0.18; ?>
+                    <?php echo $gstTotal + $subTotal; ?>
                     </span>
                 </td>
             </tr>

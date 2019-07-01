@@ -46,7 +46,7 @@
     </div>
 
     <div style="margin-left: 1%;">
-        <h5>Your Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
+        <h5>Exhibitor Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
     </div>
 
     <div class="col-md-12 col-sm-12">
@@ -73,32 +73,38 @@
                     }
                     return $total;
                 }
+                $count = 1;
+                $subTotal = 0;
                 foreach ($userRequirements as $row) {
+                    $total = $row["cost"] * $row['quantity'];
+                    $subTotal += $total;
                     echo "<tr>
-                        <td>".$row["id"]."</td>
+                        <td>".$count."</td>
                         <td>".$row["item_description"]."</td>
                         <td>".$row["cost"]."</td>
                         <td>".$row["quantity"]."</td>
-                        <td>".$row["total"]."</td>
+                        <td>".$total."</td>
                     </tr>";
+                    $count += 1;
                 }
             ?>
             
             <tr>
                 <td align="right" colspan=5><strong>Sub Total(A):</strong><span id="form6_subtotal_total">
                 <?php 
-                    echo  getElectricalTotal();;
+                    echo $subTotal;
                 ?></span></td>
             </tr>
             <tr>
                 <td align="right" colspan=5><strong>GST 18.00%(B):</strong><span id="form6_gst_total">
                 <?php 
-                    echo getElectricalTotal()*0.18; 
+                    $gstTotal = ceil($subTotal * 0.18); 
+                    echo $gstTotal; 
                 ?></span></td>
             </tr>
             <tr>
                 <td align="right" colspan=5><strong>Total cost(A + B):</strong><span id="form6_final_total"> <?php
-                    echo getElectricalTotal()+getElectricalTotal()*0.18;
+                    echo $subTotal + $gstTotal;
                 ?></span></td>
             </tr>
         </table>

@@ -48,13 +48,16 @@
     </div>
 
     <div style="margin-left: 1%;">
-        <h5>Your Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
+        <h5>Exhibitor Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
     </div>
 
     <div>
         <strong>SUBMITTED RATES</strong>
         <table class="table">
             <tr style="background-color:rgb(193, 13, 109);color:white">
+                <th>
+                    Sr.no
+                </th>
                 <th>
                     Position
                 </th>
@@ -64,18 +67,28 @@
             </tr>
             <?php
                 $userAdvertisements = getUserAdvertisements();
-                echo "<tr>";
+                $count = 1;
                 $rate = 0;
                 foreach ($userAdvertisements as $row) {
+                    echo "<tr>";
+                    echo "<td>$count</td>";
                     echo "<td>".$row["position"]."</td>";
                     echo "<td>".$row["rate"]."</td>";
                     echo "</tr>";
                     $rate +=(int)$row["rate"];
+                    $count += 1;
                 }
 
                 echo "<tr>
-                    <td colspan ='2' align='right'><strong>Sub Total : Rs.".$rate."</strong></td>;
-                </tr>"
+                    <td colspan ='3' align='right'><strong>Sub Total : Rs.".$rate."</strong></td>
+                </tr>";
+                $gstTotal = ceil($rate * 0.18);
+                echo "<tr>
+                    <td colspan ='3' align='right'><strong>GST Total (18%): Rs.".$gstTotal."</strong></td>;
+                </tr>";
+                echo "<tr>
+                    <td colspan ='3' align='right'><strong>Grand Total : Rs.".($gstTotal + $rate)."</strong></td>;
+                </tr>";
             ?>
             
         </table>
