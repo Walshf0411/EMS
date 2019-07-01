@@ -45,10 +45,11 @@
                     
                     <?php
                         $optionalForms = ["optional_form4", "optional_form5", "optional_form6", "optional_form7"];
+                        $formTags= ["Advertising in Fair Catalogue", "Other services","Electrical fittings 1", "Electrical fittings 2"];
                         $i=4;
                         foreach ($optionalForms as $option) {
                             if (getSubmittedFormDetails()[$option] >= 1){
-                                echo "<a class='nav-link' id='v-pills-tab".$i."' data-toggle='pill' href='#v-pills-".$i."' role='tab' aria-controls='v-pills-settings' aria-selected='false'>".$option." </a>
+                                echo "<a class='nav-link' id='v-pills-tab".$i."' data-toggle='pill' href='#v-pills-".$i."' role='tab' aria-controls='v-pills-settings' aria-selected='false'>".$formTags[$i-4]." </a>
                                 ";
                             }
                             $i+=1;
