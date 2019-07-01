@@ -42,7 +42,22 @@
                     <a class="nav-link" id="v-pills-tab2" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-profile" aria-selected="false">Listing in Fair Catalogue</a>
                     
                     <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-messages" aria-selected="false">Registration for badges </a>
-                    
+                    <?php
+                        $flag =0;
+                        $optionalForms = ["optional_form4", "optional_form5", "optional_form6", "optional_form7"];
+                        $i=4;
+                        foreach ($optionalForms as $option) {
+                            if (getSubmittedFormDetails()[$option] >= 1){
+                                $flag =$flag +1;
+                            }
+                            $i+=1;
+                        }
+                        if($flag >=1){
+                            echo "<div class='dropdown-divider'></div>
+                            <div class='sidebar-header'>Optional forms</div>
+                            <div class='dropdown-divider'></div>";
+                        }   
+                    ?>
                     <?php
                         $optionalForms = ["optional_form4", "optional_form5", "optional_form6", "optional_form7"];
                         $formTags= ["Advertising in Fair Catalogue", "Other services","Electrical fittings 1", "Electrical fittings 2"];
