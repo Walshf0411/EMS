@@ -8,7 +8,7 @@
     function getForm1Details(){
         global $conn;
         $id =$_GET["id"];
-        $query = "SELECT booth_number, participant_name, phone_number, contact_person from exhibitor where id = ".$id;
+        $query = "SELECT booth_number, participant_name, phone_number, contact_person, email from exhibitor where id = ".$id;
         $queryResult = executeQuery($conn,$query);
         $details = $queryResult->fetch_assoc();
         return $details;

@@ -154,7 +154,7 @@
             if($queryResult) {
                 // form review mail the user
                 $exhibitor = getExhibitorDetails($conn, $_GET['id']);
-                echo $exhibitor;
+                
                 require_once("../utils/mailer.php");
                 $exhibitionName = getAdminPreferences($conn)['event_name'];
                 
@@ -162,7 +162,7 @@
                 $mainHeader = "Mandatory forms have been reviewed successfully.";
                 $mailBody = "Your forms have been successfully reviewed by the admin.
                 Thank you for participating in $exhibitionName";
-
+                
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
                 notify("Form Reviewed successfully.", "success");
             } else {

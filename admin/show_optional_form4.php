@@ -15,7 +15,7 @@
             }
             return $advertisingList;
         }
-
+        
         function getUserAdvertisements(){
             global $conn;
             $advertisingList = getAdvertisingList();
@@ -53,7 +53,7 @@
 
     <div>
         <strong>SUBMITTED RATES</strong>
-        <table class="table">
+        <table class="table" id="optional_form4_invoice">
             <tr style="background-color:rgb(193, 13, 109);color:white">
                 <th>
                     Sr.no
@@ -112,7 +112,7 @@
     <div style="clear:both"></div>
 
     <div align=center>
-        <form action="submitted_form.php?id=<?php echo $_GET["id"]; ?>" method="POST" style="display:inline">
+        <form method="POST" style="display:inline">
             <button class="btn btn-success" name="verify_form4" href="#v-pills-5">
                 Verify&nbsp;<i class="fas fa-check"></i>
             </button>
@@ -157,6 +157,39 @@
 </div>
 
 <script>
+    <?php 
+
+    if (isset($_SESSION['send_optional_form4_review_mail'])):
+        $exhibitor = getExhibitorDetails($conn, $_GET['id']);
+        $subject = "Advertising in fair catalogue form has been successfully reviewed.";
+        $mainHeader = $subject;
+        $user = $exhibitor['participant_name'];
+        $toAddress = $exhibitor['email'];
+        $mailBody = "Your submission for Advertising in Fair catalogue has been successfully reviewed. Kindly find the invoice and pay the amount.<br>";
+    ?>
+        // send mail to exhibitor regarding the review
+        var invoice = $("#optional_form4_invoice").clone().prop("outerHTML");
+        formData = new FormData();
+        formData.append("toAddress", "<?php echo $toAddress;?>");
+        formData.append("toName", "<?php echo $user;?>");
+        formData.append("mailBody", "<?php echo $mailBody;?>" + invoice);
+        formData.append("subject", "<?php echo $subject;?>");
+        formData.append("mainHeader", "<?php echo $mainHeader;?>");
+        $.ajax({
+            type: "POST",
+            url: "send_confirmation_mail.php",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {}
+        });
+        $.notify.defaults({
+            globalPosition: "top center",
+        });
+        $.notify("Advertising in fair catalogue reviewed successfully", "success");
+
+    <?php unset($_SESSION['send_optional_form4_review_mail']); endif?>
+
     $("#optional_form4_reject").click(function (e) { 
         e.preventDefault();
         $("#optional_form4_reject_modal").modal("show");
@@ -175,8 +208,8 @@
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 2 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if($queryResult) {
-                notify("Form reviewed successfully", "success");
-                $exhibitor = getExhibitorDetails($conn, $_GET['id']);
+                $_SESSION['send_optional_form4_review_mail'] = TRUE;
+                echo "<meta http-equiv='refresh' content='0'>";
             } else {
                 notify("Form review failed", "error");
             }
@@ -194,6 +227,7 @@
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 0 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if ($queryResult) {
+                echo "<meta http-equiv='refresh' content='0'>";
                 notify("Optional form 4 has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
             } else {
                 notify("Form rejection failed: Optional form 4", "error");

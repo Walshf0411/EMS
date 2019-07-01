@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once('../utils/globals.php');
     if(DEBUG) {
         require_once('../utils/local_connect.php');
