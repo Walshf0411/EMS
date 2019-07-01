@@ -145,7 +145,7 @@
                 <form action="#" method="POST">
                     <div class="form-group">
                         <label for="rejection_message"><strong>Enter a message to send to the exhibitor:</strong></label>
-                        <textarea class="form-control" id="rejection_message" name="rejection_message_form4" rows=10 required></textarea>
+                        <textarea class="form-control" id="rejection_message" name="rejection_message_form6" rows=10 required></textarea>
                     </div>
                     <button type="submit" class="btn btn-success" name="reject_form6">Confirm</button>
                 </form>
@@ -171,13 +171,21 @@
 <?php
     if(isset($_POST["verify_form6"])){
         global $conn;
-        $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form6 = 2 where exhibitor_id = ".$_GET["id"];
-        $queryResult = executeQuery($conn,$setQuery);
-        if($queryResult) {
-            notify("You have successfully reviewed Optional form 6.", "success");
+        $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
+        $checkQueryResults = executeQuery($conn, $checkQuery);
+        if ($checkQueryResults->fetch_assoc()["optional_form6"]) {
+            notify("You have already reviewed Optional form 6.", "warn");
         } else {
-            notify("Form Review failed: Optional form 6.", "error");
+            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form6 = 2 where exhibitor_id = ".$_GET["id"];
+            $queryResult = executeQuery($conn,$setQuery);
+            if($queryResult) {
+                notify("You have successfully reviewed Optional form 6.", "success");
+            } else {
+                notify("Form Review failed: Optional form 6.", "error");
+            }
         }
+
+        
     }
 
     if (isset($_POST['reject_form6'])) {

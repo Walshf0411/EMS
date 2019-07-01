@@ -145,7 +145,7 @@
     </button>
 </div>
 
-<!-- modal for reject optional form 4-->
+<!-- modal for reject optional form 6-->
 <div class="modal fade" id="optional_form5_reject_modal">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
@@ -162,7 +162,7 @@
                 <form action="#" method="POST">
                     <div class="form-group">
                         <label for="rejection_message"><strong>Enter a message to send to the exhibitor:</strong></label>
-                        <textarea class="form-control" id="rejection_message" name="rejection_message_form4" rows=10 required></textarea>
+                        <textarea class="form-control" id="rejection_message" name="rejection_message_form5" rows=10 required></textarea>
                     </div>
                     <button type="submit" class="btn btn-success" name="reject_form5">Confirm</button>
                 </form>
