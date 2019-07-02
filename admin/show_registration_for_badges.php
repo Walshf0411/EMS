@@ -115,8 +115,8 @@
                 <div class="container">
                 <form action="#" method="POST">
                     <div class="form-group">
-                        <label for="rejection_message"><strong>Enter a message to send to the exhibitor:</strong></label>
-                        <textarea class="form-control" id="rejection_message" name="rejection_message" rows=10 required></textarea>
+                        <label for="rejection_message_mandatory"><strong>Enter a message to send to the exhibitor:</strong></label>
+                        <textarea class="form-control" id="rejection_message" name="rejection_message_mandatory" rows=10 required></textarea>
                     </div>
                     <button type="submit" class="btn btn-success" name="reject">Confirm</button>
                 </form>
@@ -181,6 +181,21 @@
             $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 0 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if ($queryResult) {
+                $exhibitor = getExhibitorDetails($conn, $_GET['id']);
+                global $base_url;
+
+                require_once("../utils/mailer.php");
+                $exhibitionName = getAdminPreferences($conn)['event_name'];
+                $rejectionMessage = $_POST['rejection_message_mandatory'];
+                $subject = "Mandatory forms reviewed for $exhibitionName.";
+                $mainHeader = "Mandatory forms have been reviewed successfully.";
+                $mailBody = "Your mandatory form submission has been rejected by the admin.<br>
+                The admin says:";
+                
+                $mailBody .= "<br><q>$rejectionMessage</q><br>";
+                $mailBody .= "You can visit this <a href='$base_url/exhibitor/'>link</a> to resubmit the form."; 
+
+                sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
                 notify("Mandatory forms have been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
             } else {
                 notify("Form rejection failed: Mandatory forms", "error");
