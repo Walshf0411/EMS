@@ -60,7 +60,7 @@ function insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $bra
     // data is not in DB.
     $username = $email;
     if (DEBUG){
-        logToJS("password: " + $password);
+        logToJS("password: " .$password);
     }
     
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

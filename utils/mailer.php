@@ -26,7 +26,7 @@ function sendMail1 ($conn, $toAddress, $toName, $mailBody, $subject, $mainHeader
 
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
     $mail->IsSMTP();
-    $mail->Host = "mail.superjuniorz.com";
+    $mail->Host = "mail.intimasia.co.in";
     $mail->SMTPAuth = true;
     //$mail->SMTPSecure = "ssl";
     $mail->Port = "587";
@@ -67,13 +67,10 @@ function sendMail ($conn, $toAddress, $toName, $username, $password, $mainHeader
 
     $mailContent = renderToString($context, 'base.php');
 
-    if (!$subject) {
-        // this is for the default mail that is sent when the user is first registered
-        $subject = $preferences['mail_subject'];
-    }
+    $subject = $preferences['mail_subject'];
 
     $mail->IsSMTP();
-    $mail->Host = "mail.superjuniorz.com";
+    $mail->Host = "mail.intimasia.co.in";
     $mail->SMTPAuth = true;
     //$mail->SMTPSecure = "ssl";
     $mail->Port = "587";

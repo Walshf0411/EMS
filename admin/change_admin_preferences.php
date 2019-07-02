@@ -1,6 +1,6 @@
 <?php
     require_once("../utils/globals.php");
-    require_once("change_admin_preferences_backend.php");
+    require_once("../utils/admin_preferences.php");
     $preferences = getAllPreferences($conn);
 ?>
 <div>
