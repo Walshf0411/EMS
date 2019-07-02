@@ -251,7 +251,7 @@
             e.preventDefault();
             formData = new FormData();
             formData.append("selected_items", JSON.stringify(selectedOptions));
-            showWaitingOverlay();
+            showWaitingOverlay("optional_form4_modal");
             $.ajax({
                 type: "POST",
                 url: "exhibitor_optional_form4_submit.php",
@@ -261,7 +261,6 @@
                 success: function (response) {
                     console.log(response);
                     $("#exhibitor_optional_form4_submit_btn").attr("disabled", "true");
-                    $("#optional_form4_modal").modal("hide");
                     $.notify("Form submitted Successfully.", "success");
                     $('#v-pills-tab-8').addClass('text-success');
                     hideWaitingOverlay();

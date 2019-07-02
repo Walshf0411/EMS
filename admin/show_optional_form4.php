@@ -19,7 +19,7 @@
         function getUserAdvertisements(){
             global $conn;
             $advertisingList = getAdvertisingList();
-            $query = "SELECT * FROM optional_form_advertising" ;
+            $query = "SELECT * FROM optional_form_advertising WHERE exhibitor_id=".$_GET['id'];
             $queryResult = executeQuery($conn, $query);
             $userAdvertisements = array();
             foreach ($queryResult as $row) {
@@ -138,7 +138,7 @@
                 <div class="container">
                 <form action="#" method="POST">
                     <div class="form-group">
-                        <label for="rejection_message"><strong>Enter a message to send to the exhibitor:</strong></label>
+                        <label for="rejection_message_form4"><strong>Enter a message to send to the exhibitor:</strong></label>
                         <textarea class="form-control" id="rejection_message" name="rejection_message_form4" rows=10 required></textarea>
                     </div>
                     <button type="submit" class="btn btn-success" name="reject_form4">Confirm</button>
@@ -158,7 +158,7 @@
 
 <script>
     <?php 
-
+    // code to send form reviewed mail to the exhibitor
     if (isset($_SESSION['send_optional_form4_review_mail'])):
         $exhibitor = getExhibitorDetails($conn, $_GET['id']);
         $subject = "Advertising in fair catalogue form has been successfully reviewed.";
@@ -227,8 +227,23 @@
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 0 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if ($queryResult) {
-                echo "<meta http-equiv='refresh' content='0'>";
-                notify("Optional form 4 has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
+                // Rejection successful.
+                $exhibitor = getExhibitorDetails($conn, $_GET['id']);
+                global $base_url;
+
+                require_once("../utils/mailer.php");
+                $exhibitionName = getAdminPreferences($conn)['event_name'];
+                $rejectionMessage = $_POST['rejection_message_form4'];
+                $subject = "Advertising in Fair Catalogue reviewed for $exhibitionName.";
+                $mainHeader = "Advertising in Fair Catalogue has been reviewed successfully.";
+                $mailBody = "Your Advertising in Fair Catalogue form submission has been rejected by the admin.<br>
+                The admin says:";
+                
+                $mailBody .= "<br><q>$rejectionMessage</q><br>";
+                $mailBody .= "You can visit this <a href='$base_url/exhibitor/'>link</a> to resubmit the form."; 
+
+                sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
+                notify("Advertising in Fair Catalogue has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
             } else {
                 notify("Form rejection failed: Optional form 4", "error");
             }
