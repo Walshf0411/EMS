@@ -61,6 +61,20 @@ Mumbai
             echo "$('#mandatory-forms-submit-btn, #agreement_checkbox').attr('disabled', 'true');";
         }
     ?>
+    function showWaitingOverlay() {
+        
+        $(".loading-overlay").animate({
+            opacity: 1
+        }, 500); 
+        $(".loading-overlay").css("z-index", "1000");
+    }
+
+    function hideWaitingOverlay() {
+        $(".loading-overlay").animate({
+            opacity: 0
+        }, 500); 
+        $(".loading-overlay").css("z-index", "-1");
+    }
     function sendData(finalFormData) {
         showWaitingOverlay();
         $.ajax({

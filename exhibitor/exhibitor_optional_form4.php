@@ -193,6 +193,20 @@
         echo "$('#exhibitor_optional_form4_submit_btn').attr('disabled', 'true');";
     }
     ?>
+    function showWaitingOverlay(modalId) {
+        $("#" + modalId).modal("hide");
+        $(".loading-overlay").animate({
+            opacity: 1
+        }, 500); 
+        $(".loading-overlay").css("z-index", "1000");
+    }
+
+    function hideWaitingOverlay() {
+        $(".loading-overlay").animate({
+            opacity: 0
+        }, 500); 
+        $(".loading-overlay").css("z-index", "-1");
+    }
     function setOptionalForm4Invoice(items) {
         // take the items and add it to a table and show it in the modal
         var tableData = "<table width='100%'>\

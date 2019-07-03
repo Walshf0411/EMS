@@ -214,6 +214,20 @@
             $.notify("Kindly select at least one of the options", "error");
         }
     }
+    function showWaitingOverlay(modalId) {
+        $("#" + modalId).modal("hide");
+        $(".loading-overlay").animate({
+            opacity: 1
+        }, 500); 
+        $(".loading-overlay").css("z-index", "1000");
+    }
+
+    function hideWaitingOverlay() {
+        $(".loading-overlay").animate({
+            opacity: 0
+        }, 500); 
+        $(".loading-overlay").css("z-index", "-1");
+    }
     function submitOptionalForm5() {
         var inputTagPrefix = "#item_quantity_";
         var obj = {};
