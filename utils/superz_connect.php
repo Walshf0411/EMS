@@ -1,10 +1,10 @@
 <?php
     require_once('globals.php');
     $servername = "localhost";
-    $username = "superjun_new";
-    $password = "Slm@15893";
-    $dbname = "superjun_new";
-    $base_url = 'http://'.$_SERVER['SERVER_NAME'].'/superz';
+    $username = "intimasi_user123";
+    $password = "intimasia###123";
+    $dbname = "intimasi_ems";
+    $base_url = 'http://intimasia.co.in/ems';
     $doc_url = $_SERVER['DOCUMENT_ROOT'].'/superz';
 
     // create connection
