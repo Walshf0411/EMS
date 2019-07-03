@@ -1,5 +1,10 @@
 <?php
     session_start();
+    if (!isset($_SESSION['admin_logged_in'])) {
+        // check if the admin is logged in or no.
+        $_SESSION['admin_not_logged_in_message'] = TRUE;
+        header("location: login.php");
+    }
     require_once('../utils/globals.php');
     if(DEBUG) {
         require_once('../utils/local_connect.php');
