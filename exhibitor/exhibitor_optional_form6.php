@@ -37,9 +37,7 @@
 
     </div>
     
-    <p id="booth">
-        Booth number: <span id="booth_number">Number</span>
-    </p>
+    <?php include("../utils/booth_number_header.php");?>
 
     <p align="center">
         <strong>

@@ -35,10 +35,7 @@
         </table>
     </p>
 </div>
-<p id="booth">
-    <label for="Booth number">Booth number:</label>
-    <input oninput="this.className = ''" name="booth_number">
-</p>
+<?php include("../utils/booth_number_header.php");?>
 
 <p align="center">
     <strong>Other services</strong>

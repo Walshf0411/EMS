@@ -34,7 +34,7 @@
             </table>
         </p>
     </div>
-
+    <?php include("../utils/booth_number_header.php");?>
     <p>
         <strong>ADVERTISING IN FAIR CATALOGUE</strong>
         Advertise in the Fair Catalogue and gain maximum advantage of your participation in Super Juniorz.
@@ -114,23 +114,6 @@
             <li>Require Bleed margin of 5mm on all side of the page.</li>
         </ul>
     </div>
-
-    <p>
-        <strong>Format :</strong>
-        <p>Files must be provided to us in the following format(s): EPS | CDR | PSD | PDF
-        ------------------------------------------------------------------------------------------------------------------------------------------------------------ 
-        I would wish to place an Advertisement in the Fair Catalogue</p>
-        <label for="Position">Position </label>
-        <select name="position" id="">
-            <?php
-                foreach (getDetails() as $row) {
-                    echo "
-                    <option value =".$row["id"].">".$row["position"]."</option>
-                    ";
-                }
-            ?>
-        </select>
-    </p>
 
     
     <div class="container">

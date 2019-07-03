@@ -33,10 +33,8 @@
 
 </div>
     
-<p id="booth">
-    <label for="Booth number">Booth number:</label>
-    <input name="booth_number">
-</p>
+<?php include("../utils/booth_number_header.php");?>
+
 <p>
 <strong>PLEASE FILL THIS FORM AND RETURN IT TO THE ORGANISERS IF THESE SERVICES ARE REQUIRED</strong>
 Please use this Form to order furnishing needs. The standard SHELL SCHEME Package Stall includes furniture on
