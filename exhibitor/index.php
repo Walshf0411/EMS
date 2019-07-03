@@ -27,7 +27,12 @@
 <?php require('../utils/header.php'); ?>
 
 <body>
-    
+    <div class="loading-overlay" align=center>
+        <div class="loading-overlay-content">
+            <i class="fas fa-spinner fa-10x fa-spin"></i><br>
+            <span>Please wait...</span>
+        </div>
+    </div>
     <!-- The side nav (Pills style)-->
     <div class="container main-content">
         <div class="row">
@@ -143,12 +148,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="loading-overlay" align=center>
-        <div class="loading-overlay-content">
-            <i class="fas fa-spinner fa-10x fa-spin"></i><br>
-            <span>Please wait...</span>
         </div>
     </div>
 
