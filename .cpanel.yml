@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/user/public_html/ems/
+    - export DEPLOYPATH=/home/intimasiaco/public_html/ems/
     - /bin/cp -R admin $DEPLOYPATH
     - /bin/cp -r * $DEPLOYPATH
