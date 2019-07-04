@@ -52,12 +52,24 @@ function sendMail ($conn, $toAddress, $toName, $username, $password, $mainHeader
 
     $content1 = "";
     $content1 .= $preferences['mail_body'];
-    $content1 .= "<br>Below are your login credentials. Kindly login to the provided link and fill in the exhbitor manual.<br><br>
+    $content1 .= "
+    <br>Below are your login credentials. Kindly login to the provided link and fill in the exhbitor manual.<br><br>
     <div>
-        <strong>username:</strong><br> $username<br>
-        <strong>password:</strong><br> $password<br>
-        <a href='$base_url/exhibitor/login.php'>Click Here.</a>
-    </div>";
+        <strong>username:</strong> $username<br>
+        <strong>password:</strong> $password<br>
+        <a href='$base_url/exhibitor/login.php'>Click Here.</a><br/>
+        <p>Please note down your username and password and do not share you password with anyone.
+        The password provided is an auto-generated password. You can change your password in the dashboard.</p>
+    </div>
+    <strong>INSTRUCTIONS</strong><br>
+    <ol>
+        <li>Click on the link and use the provided username and password to login into your account.</li>
+        <li>On the left of your dashboard you will find Mandatory forms and Optional forms.
+        Kindly fill in the details in the mandatory forms and submit it as early as possible.</li>
+        <li>Optional forms to be filled in as per requirements, but have to be submitted before the specified deadline.</li>
+        <li>Once you have submitted a form(mandatory or optional), wait for the admin to review it. You will be notified about following instructions via email.</li>
+        <li>Once a form has been reviewed by the admin you will receive an invoice regarding payment. Pay the amount specifed to the organizer's as sson as possible.</li>
+    </ol>";
     
     $context = array(
         "content1" => $content1,
