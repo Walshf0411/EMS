@@ -28,13 +28,21 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="nav flex-column nav-pills side-tab" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <div class="dropdown-divider"></div>
+                    
+                <div class="dropdown-divider"></div>
+                    
                     <div class="sidebar-header">Exhibitor Actions</div>
                     <div class="dropdown-divider"></div>
                     <a class="nav-link active" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-user-plus"></i>Add Exhibitor</a>
                     <a class="nav-link" id="v-pills-tab2" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fab fa-wpforms"></i>View Submitted Forms</a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <div class="sidebar-header">Admin Account Options</div>
+                    <div class="dropdown-divider"></div>
+                    <a class="nav-link" id="v-pills-tab5" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-plus"></i>Add admin</a>
                     <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fa fa-cog"></i>Change Admin preferences</a>
                     <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Password</a>
+                    
                 </div>
             </div>
             
@@ -51,6 +59,9 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <?php require("change_password.php");?>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <?php require("add_admin.php");?>
                     </div>
                 </div>
             </div>
