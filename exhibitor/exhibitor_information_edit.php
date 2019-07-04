@@ -6,7 +6,7 @@
     if (DEBUG){
         require('../utils/local_connect.php');
     } else {
-        require('../utills/superz_connect.php');
+        require('../utils/superz_connect.php');
     }
     
     $query = "Select * from exhibitor where id = ".$_SESSION["user_id"];
