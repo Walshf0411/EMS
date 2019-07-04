@@ -1,5 +1,14 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/user/public_html/
-    - /bin/cp -R EMS $DEPLOYPATH
+    - export DEPLOYPATH=/home/user/public_html/ems/
+    - /bin/cp -R admin $DEPLOYPATH
+    - /bin/cp -R exhibitor $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R mail_templates $DEPLOYPATH
+    - /bin/cp -R PHPMailer $DEPLOYPATH
+    - /bin/cp -R static $DEPLOYPATH
+    - /bin/cp -R utils $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp test_mail.php $DEPLOYPATH
