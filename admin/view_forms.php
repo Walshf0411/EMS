@@ -45,6 +45,8 @@
                         echo "<td><i class='fas fa-check' style='color:green;'></i></td>";
                     } elseif($row[$form] == 2) {
                         echo "<td style='color:green;'>Verified</td>";
+                    } elseif($row[$form] == 3) {
+                        echo "<td style='color:red;'>Rejected</td>";
                     } else {
                         echo "<td><i class='fas fa-times' style='color:red;'></i></td>";
                     }

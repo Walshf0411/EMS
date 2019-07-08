@@ -244,7 +244,7 @@
             // already verified, cannot reject.
             notify("Other Services form has been already reviewed and verifed, cannot reject.", "warn");
         } else {
-            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 0 where exhibitor_id = ".$_GET["id"];
+            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 3 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if ($queryResult) {
                 $exhibitor = getExhibitorDetails($conn, $_GET['id']);

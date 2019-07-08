@@ -224,7 +224,7 @@
             // already verified, cannot reject.
             notify("Optional form 4 has been already reviewed and verifed, cannot reject.", "warn");
         } else {
-            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 0 where exhibitor_id = ".$_GET["id"];
+            $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form4 = 3 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if ($queryResult) {
                 // Rejection successful.
