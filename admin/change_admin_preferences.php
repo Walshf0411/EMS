@@ -7,23 +7,53 @@
     <h4>Change preferences</h4>
     <br>
     <div class="change-preferences">
-
+        <hr>
         <!-- Form to change the display name of the admin.(Name using which the mail will be sent)-->
+        <h5>Change Form Submission Deadlines</h5>
         <form action="#" method="post" class="change-preference-form">
             
+            <input type="hidden" name="change-form-submission-deadline-form">
+
             <div class="form-group row">
-                <label for="form-submission-deadline" class="col-sm-3 col-form-label col-form-label-sm text-danger">Deadline:</label>    
+                <label for="mandatory-forms" class="col-sm-3 col-form-label col-form-label-sm">Mandatory Forms:</label>    
                 <div class="col-sm-9">
-                <!-- datetime is converted to be compatible with html datetime-local -->
-                    <input type="datetime-local" name="form-submission-deadline" id="form-submission-deadline" class="form-control form-control-sm" required value="<?php if($preferences) echo date("c", strtotime($preferences['form_submission_deadline']));?>">
-                    <input type="hidden" name="change-form-submission-deadline-form">
+                    <input type="text" name="mandatory-forms" id="mandatory-forms" class="form-control form-control-sm show-calendar" required value="<?php if($preferences) echo date('d-m-Y', strtotime($preferences['mandatory_forms_deadline'])); ?>">
                 </div>
             </div>
-            <div class="alert alert-danger help-text">
-                <strong>Warning!: </strong>This will change the deadline for exhibitor manual submission
+
+            <div class="form-group row">
+                <label for="optional-form-4" class="col-sm-3 col-form-label col-form-label-sm">Optional form 4:</label>    
+                <div class="col-sm-9">
+                    <input type="text" name="optional-form-4" id="optional-form-4" class="form-control form-control-sm show-calendar" required value="<?php if($preferences) echo date('d-m-Y', strtotime($preferences['optional_form4_deadline'])); ?>">
+                </div>
             </div>
 
-            <button class="btn btn-outline-danger" type="submit">Change Deadline</button>
+            <div class="form-group row">
+                <label for="optional-form-5" class="col-sm-3 col-form-label col-form-label-sm">Optional form 5:</label>    
+                <div class="col-sm-9">
+                    <input type="text" name="optional-form-5" id="optional-form-5" class="form-control form-control-sm show-calendar" required value="<?php if($preferences) echo date('d-m-Y', strtotime($preferences['optional_form5_deadline'])); ?>">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="optional-form-6" class="col-sm-3 col-form-label col-form-label-sm">Optional form 6:</label>    
+                <div class="col-sm-9">
+                    <input type="text" name="optional-form-6" id="optional-form-6" class="form-control form-control-sm show-calendar" required value="<?php if($preferences) echo date('d-m-Y', strtotime($preferences['optional_form6_deadline'])); ?>">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="optional-form-7" class="col-sm-3 col-form-label col-form-label-sm">Optional form 7:</label>    
+                <div class="col-sm-9">
+                    <input type="text" name="optional-form-7" id="optional-form-7" class="form-control form-control-sm show-calendar" required value="<?php if($preferences) echo date('d-m-Y', strtotime($preferences['optional_form7_deadline'])); ?>">
+                </div>
+            </div>
+
+            <div class="alert alert-info help-text">
+                <strong>Info!: </strong>This will change the deadlines for the form submission
+            </div>
+
+            <button class="btn btn-outline-info" type="submit">Change Form Submission Deadlines</button>
         </form><hr>
 
         <!-- form to change the admin emai(Address that will receive emails regarding updates)-->
@@ -123,6 +153,14 @@
 
     </div>
 </div>
+
+<script>
+    $(".show-calendar").flatpickr({
+        minDate: "today",
+        dateFormat: 'd-m-Y' ,
+    });
+</script>
+
 <?php
     require_once("../utils/globals.php");
     if (DEBUG) {
@@ -195,18 +233,6 @@
         }
     }
 
-    if (isset($_POST['change-form-submission-deadline-form'])) {
-        // change password form has been submitted
-        $formSubmissionDeadline = $conn->escape_string($_POST['form-submission-deadline']);
-        if (updatePreference($conn, $formSubmissionDeadline, 'form_submission_deadline')) {
-            $formSubmissionDeadline = date("c", strtotime($formSubmissionDeadline));
-            echo "<script>$('#form-submission-deadline').val('$formSubmissionDeadline')</script>";
-            notify("Form Submission Deadline Updated", "success");
-        } else {
-            notify("Mail Body Update failed", "error");
-        }
-    }
-
     if (isset($_POST['change-admin-email-form'])) {
         // change password form has been submitted
         $adminEmail = $conn->escape_string($_POST['admin-email']);
@@ -218,4 +244,40 @@
         }
     }
     
-    
+    if (isset($_POST['change-form-submission-deadline-form'])) {
+        $mandatoryFormsDeadline = date('Y-m-d', strtotime($_POST['mandatory-forms']));
+        $optionalForm4 = date('Y-m-d', strtotime($_POST['optional-form-4']));
+        $optionalForm5 = date('Y-m-d', strtotime($_POST['optional-form-5']));
+        $optionalForm6 = date('Y-m-d', strtotime($_POST['optional-form-6']));
+        $optionalForm7 = date('Y-m-d', strtotime($_POST['optional-form-7']));
+        $preferenceId = getPreferenceID($conn);
+        $query = "UPDATE admin_preferences
+        SET mandatory_forms_deadline = '$mandatoryFormsDeadline',
+        optional_form4_deadline = '$optionalForm4',
+        optional_form5_deadline = '$optionalForm5',
+        optional_form6_deadline = '$optionalForm6',
+        optional_form7_deadline = '$optionalForm7' where id=$preferenceId";
+
+        $mandatoryFormsDeadline = date('d-m-Y', strtotime($_POST['mandatory-forms']));
+        $optionalForm4 = date('d-m-Y', strtotime($_POST['optional-form-4']));
+        $optionalForm5 = date('d-m-Y', strtotime($_POST['optional-form-5']));
+        $optionalForm6 = date('d-m-Y', strtotime($_POST['optional-form-6']));
+        $optionalForm7 = date('d-m-Y', strtotime($_POST['optional-form-7']));
+        
+        $queryResult = executeQuery($conn, $query);
+        
+        if ($queryResult) {
+            echo "<script>";
+            echo "$('#mandatory-forms').val('$mandatoryFormsDeadline');";
+            echo "$('#optional-form-4').val('$optionalForm4');";
+            echo "$('#optional-form-5').val('$optionalForm5');";
+            echo "$('#optional-form-6').val('$optionalForm6');";
+            echo "$('#optional-form-7').val('$optionalForm7');";
+            echo "</script>";
+            
+            notify("Deadlines updated successfully", "success");
+        } else {
+            notify("Deadline updated failed", "error");
+        }
+
+    }
