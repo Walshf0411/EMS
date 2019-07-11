@@ -47,8 +47,8 @@
 <div class="input-fields" name="input-visible">
     <p>Enter the number of stall personnels required </p>
     <div class="row">
-        <div class="col-md-3 col-sm-3"><input type="number" name="input_fields" max="100" min="0" id="input_fields"></div>
-        <div class="col-md-3 col-sm-3"><input type="submit" value="submit" name="submit"></div>
+        <div class="col-md-3 col-sm-3"><input type="number" class="form-control" name="input_fields" max="100" min="0" id="input_fields"></div>
+        <div class="col-md-3 col-sm-3"><input type="submit" class="btn btn-success" value="submit" name="submit"></div>
     </div>
 </div>
 <?php    
