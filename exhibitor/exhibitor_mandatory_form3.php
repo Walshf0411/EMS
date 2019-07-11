@@ -38,40 +38,59 @@
         Kindly issue the Exhibitors’ badges for following stall personnel</li>
     </ol>
 </p>
-<form action="#" onsubmit="return false" id="exhibitor_staff_badges">
-<div class="table-input">
-    <div class="row" id="header">
-        <div class="col-md-2 col-sm-11 col-sm-offset-1">Sr.No.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1">Name of the stall Personnel</div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1">Designation</div>
-    </div>
-
+<form action="#" method="POST">
+<script>
+    $(document).ready(function(){
+        $(".table-input").hide();
+    });
+</script>
+<div class="input-fields" name="input-visible">
+    <p>Enter the number of stall personnels required </p>
     <div class="row">
-        <div class="col-md-2 col-sm-11 col-sm-offset-1">1.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_1"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_1_designation"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-sm-11 col-sm-offset-1">2.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_2"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_2_designation"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-sm-11 col-sm-offset-1">3.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_3"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_3_designation"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-sm-11 col-sm-offset-1">4.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_4"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_4_designation"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-sm-11 col-sm-offset-1">5.</div>
-        <div class="col-md-6 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_5"></div>
-        <div class="col-md-4 col-sm-11 col-sm-offset-1" style="width:100%;"><input class="required" name="stall_personnel_5_designation"></div>
+        <div class="col-md-3 col-sm-3"><input type="number" name="input_fields" max="100" min="0" id="input_fields"></div>
+        <div class="col-md-3 col-sm-3"><input type="submit" value="submit" name="submit"></div>
     </div>
 </div>
+<?php    
+    if(isset($_POST["submit"])){
+        $fields = $_POST["input_fields"];
+        echo "<script>
+            $(document).ready(function(){
+                $('#v-pills-tab-6').tab('show');
+                $('.table-input').show();
+            });
+        </script>" ;
+    }
+?>
+</form>
+<br>
+<form action="#" onsubmit="return false" id="exhibitor_staff_badges">
+    <div class="table-input">
+        <div class="row" id="header">
+            <div class="col-md-2 col-sm-11 col-sm-offset-1">Sr.No.</div>
+            <div class="col-md-6 col-sm-11 col-sm-offset-1">Name of the stall Personnel</div>
+            <div class="col-md-4 col-sm-11 col-sm-offset-1">Designation</div>
+        </div>
+    
+        <?php
+            /* The frontend logic in the form */ 
+            if(isset($_POST["submit"])){
+                if($fields>0){
+                    for ($i=0; $i < $fields; $i++) { 
+                        echo "<div class='row'>
+                                    <div class='col-md-2 col-sm-11 col-sm-offset-1'>".($i+1).".</div>
+                                    <div class='col-md-6 col-sm-11 col-sm-offset-1' style='width:100%;'><input class='required' name='stall_personnel_".($i+1)."'></div>
+                                    <div class='col-md-4 col-sm-11 col-sm-offset-1' style='width:100%;'><input class='required' name='stall_personnel_".($i+1)."_designation'></div>
+                                </div>";
+                    }
+                } else {
+                    echo "<script>$(document).ready(function(){
+                        $('.table-input').hide();
+                    });</script>" ;            
+                }
+            }
+        ?>
+    </div>
 </form>
 <div style="float:right;">
     <?php include("../utils/exhibitor_footer.php");?>
