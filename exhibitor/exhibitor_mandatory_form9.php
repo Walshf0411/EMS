@@ -23,13 +23,12 @@
             You have already submitted this form, wait for the admin to review it.
         </div>";
     }
-    ?>
-    <pre>
-To,
-The Chief Organiser
-PEPPERMINT COMMUNICATIONS PVT. LTD.
-Mumbai
-</pre>
+    ?><br>
+    To,<br>
+    The Chief Organiser <br>
+    PEPPERMINT COMMUNICATIONS PVT. LTD. <br>
+    Mumbai <br><br>
+
         <strong>Subject:</strong> Undertaking towards participation at Super Juniorz, Chennai 2019
         <p>
         We, hereby undertake not to leave our booth unattended on 24th & 25th June 2019 from 10AM to 7PM on both the days at
@@ -44,9 +43,11 @@ Mumbai
 </div>
 <div style = "clear:both;"></div>
 <div align=center>
-    <input type="checkbox" name="" id="agreement_checkbox">
-    <p>I have read the terms and conditions.</p>
+    
+    <input type="checkbox" id="agreement_checkbox" style="display:inline-block; width:5%" class="" value="" name="agreement_checkbox">I have read & agree the terms and conditions.
+    
     <br><br>
+
     <button class="btn btn-danger" data-toggle="pill" href="#v-pills-6">
         <i class="fa fa-caret-left"></i>Previous
     </button>
