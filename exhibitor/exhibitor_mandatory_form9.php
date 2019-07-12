@@ -109,9 +109,11 @@ Mumbai
         var fasciaName = $("#fascia_name");
         var fairListingForm = $("#fair-listing");
         var stallPersonnelForm = $("#exhibitor_staff_badges");
+        var numberOfStallPersonnelForm = $("#number_of_staff_personnel_form");
         // creating form Data objects for the two forms.
         var fairListingFormData = new FormData(fairListingForm.get(0));
         var stallPersonnelFormData = new FormData(stallPersonnelForm.get(0));
+        var numberOfStallPersonnelFormData = new FormData(numberOfStallPersonnelForm.get(0));
         var finalFormData = new FormData();
         
         // add all the details to the final form Data object
@@ -120,6 +122,9 @@ Mumbai
             finalFormData.append(pair[0], pair[1]);
         }
         for (pair of stallPersonnelFormData.entries()) {
+            finalFormData.append(pair[0], pair[1]);
+        }
+        for (pair of numberOfStallPersonnelFormData.entries()) {
             finalFormData.append(pair[0], pair[1]);
         }
 

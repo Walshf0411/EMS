@@ -1,6 +1,6 @@
 <?php require('../utils/form_logo_details.php'); ?>
 
-<div class="col-md-12 col-sm-12">
+<div>
     <p class="table">
         <table style="width:100%;">
             <tr>
@@ -15,47 +15,58 @@
     </p>    
 </div>
 <?php include("../utils/booth_number_header.php");?>
-    <?php
-    if (isset($_SESSION['mandatory_forms_submitted'])) {
+
+<?php
+if (isset($_SESSION['mandatory_forms_submitted'])) {
+    if ($_SESSION["mandatory_forms_submitted"] == 1) {
         // if the user has already filled in the form, the button will be disabled
         echo "<div class='alert alert-danger'>
             You have already submitted this form, wait for the admin to review it.
         </div>";
+    } else if ($_SESSION["mandatory_forms_submitted"] == 2) {
+        echo "<div class='alert alert-success'>
+            Hola! This form has been successfully verfied by the admin.
+        </div>";
     }
-    ?>
+}
+?>
 <span id="staff-personnel-form-error" class="text-danger" style="display:none">Kindly fill in all the details. If you think this is a mistake, press Next</span><br>
-<p>
-    <ol>
+<div class="container">
+    <ol style="padding:0;margin:0">
         <strong>THIS FORM MUST BE COMPLETED AND RETURNED BY EVERY EXHIBITOR</strong>
-        <li><strong>1. APPLICATION :</strong>
+        <li><strong>APPLICATION :</strong>
         Please use this Form to apply for your stall personnel badges before 15th May 2019</li>
-        <li><strong>2. PREPARATION OF EXHIBITORS’ BADGES :</strong>
+        <li><strong>PREPARATION OF EXHIBITORS’ BADGES :</strong>
         To avoid errors in the preparation of badges, Exhibitors are requested to TYPE all names in BLOCK LETTERS</li>
-        <li><strong>3. COLLECTION OF BADGES :</strong>
+        <li><strong>COLLECTION OF BADGES :</strong>
         Badges can be collected from the Organiser’s Site Office in the Hall while taking possession of their stalls.</li>
-        <li><strong>4. 2 Badges per 6 sq. m. of booth and in multiple there off.</strong></li>
-        <li><strong>5. BADGES :</strong>
+        <li><strong>2 Badges per 6 sq. m. of booth and in multiple there off.</strong></li>
+        <li><strong>BADGES :</strong>
         Kindly issue the Exhibitors’ badges for following stall personnel</li>
     </ol>
-</p>
-<form action="#" method="POST">
+</div> <hr>
+
+<form action="#" method="POST" id="number_of_staff_personnel_form">
 <script>
     $(document).ready(function(){
         $(".table-input").hide();
     });
 </script>
-<div class="input-fields" name="input-visible">
-    <p>Enter the number of stall personnels required </p>
-    <div class="row">
-        <div class="col-md-3 col-sm-3"><input type="number" class="form-control" name="input_fields" max="100" min="0" id="input_fields"></div>
-        <div class="col-md-3 col-sm-3"><input type="submit" class="btn btn-success" value="submit" name="submit"></div>
+
+<div class="container input-fields" name="input-visible">
+    <div class="form-group row">
+        <label for="input_fields" class="form-md-label"><strong>Enter number of required Stall Personnel:</strong></label>
+        <input type="number" class="form-control" name="input_fields" max="100" min="1" id="input_fields">
     </div>
+    <button type="submit" name="number_fields_submit" id="number_fields_submit" class="btn btn-success">Submit</button>
 </div>
+
 <?php    
-    if(isset($_POST["submit"])){
+    if(isset($_POST["number_fields_submit"])){
         $fields = $_POST["input_fields"];
         echo "<script>
             $(document).ready(function(){
+                $('#input_fields').val('$fields');
                 $('#v-pills-tab-6').tab('show');
                 $('.table-input').show();
             });
@@ -74,7 +85,7 @@
     
         <?php
             /* The frontend logic in the form */ 
-            if(isset($_POST["submit"])){
+            if(isset($_POST["number_fields_submit"])){
                 if($fields>0){
                     for ($i=0; $i < $fields; $i++) { 
                         echo "<div class='row'>
@@ -107,6 +118,7 @@
 </div>
 
 <script>
+
     var staffPersonnelFormValid = false;
     $(document).ready(function () {
         var staffPersonnelForm = $("#exhibitor_staff_badges");
@@ -121,5 +133,4 @@
             }
         });
     });
-    
 </script>

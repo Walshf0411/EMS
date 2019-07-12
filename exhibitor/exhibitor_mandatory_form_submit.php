@@ -94,23 +94,20 @@
         return executeQuery($conn, $query);
     }
     function insertForm3($conn, $id) {
+        $numberOfPersonnel = $_POST["input_fields"];
+        
         $stallPersonnel1 = $_POST['stall_personnel_1'];
         $stallPersonnel1Designation = $_POST['stall_personnel_1_designation'];
-        $stallPersonnel2 = $_POST['stall_personnel_2'];
-        $stallPersonnel2Designation = $_POST['stall_personnel_2_designation'];
-        $stallPersonnel3 = $_POST['stall_personnel_3'];
-        $stallPersonnel3Designation = $_POST['stall_personnel_3_designation'];
-        $stallPersonnel4 = $_POST['stall_personnel_4'];
-        $stallPersonnel4Designation = $_POST['stall_personnel_4_designation'];
-        $stallPersonnel5 = $_POST['stall_personnel_5'];
-        $stallPersonnel5Designation = $_POST['stall_personnel_5_designation'];
 
         $query = "INSERT INTO `exhibitor_stall_personnel` (`exhibitor_id`, `stall_personnel_name`, `designation`)
-        VALUES ($id, '$stallPersonnel1', '$stallPersonnel1Designation'), 
-        ($id, '$stallPersonnel2', '$stallPersonnel2Designation'), 
-        ($id, '$stallPersonnel3', '$stallPersonnel3Designation'), 
-        ($id, '$stallPersonnel4', '$stallPersonnel4Designation'), 
-        ($id, '$stallPersonnel5', '$stallPersonnel5Designation')";
+        VALUES ($id, '$stallPersonnel1', '$stallPersonnel1Designation')";        
+
+        for ($i = 2; $i <= $numberOfPersonnel; $i++) {
+            $stallPersonnel = $_POST["stall_personnel_" . $i];
+            $stallPersonnelDesignation = $_POST['stall_personnel_' . $i . '_designation'];
+            $query .= ", ($id, '$stallPersonnel', '$stallPersonnelDesignation')";
+        }
+
         return executeQuery($conn, $query);
     }
 

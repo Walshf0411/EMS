@@ -111,5 +111,6 @@
         onInputFascia();
         $("#fascia_name").attr("oninput", "onInputFascia()");
         $('[data-toggle="tooltip"]').tooltip(); 
+        $("#fascia_form").sisyphus();
     });
 </script>
