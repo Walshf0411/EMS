@@ -41,7 +41,7 @@
     <form onsubmit="return false;" id="fair-listing"> 
         <div class="form-group">
             <label for="company-name">Company name:</label>
-            <input type="text" name="company-name" class="form-control required">
+            <input type="text" name="company-name" class="form-control required uppercase-text">
         </div>
         <div class="form-group">
             <label for="address">Company address:</label>
@@ -135,6 +135,7 @@
     </form>
 
     <script>
+    $("#fair-listing input, textarea").addClass("uppercase-text");
     var fairListingFormValid = false;
     function pasteFunction (e) {
         var pastedData = e.originalEvent.clipboardData.getData('text');

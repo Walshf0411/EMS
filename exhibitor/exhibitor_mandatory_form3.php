@@ -127,7 +127,7 @@
 </div>
 
 <script>
-
+    $("#exhibitor_staff_badges input, textarea").addClass("uppercase-text");
     var staffPersonnelFormValid = false;
     $(document).ready(function () {
         var staffPersonnelForm = $("#exhibitor_staff_badges");
