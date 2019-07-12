@@ -41,12 +41,26 @@
         Advertising in the Fair Catalogue is cost effective and will be retained by the trade visitors as a sourcing referencer.
     </p>
     <?php
-    if (isset($_SESSION['optional_form4_submitted'])) {
-        // if the user has already filled in the form, the button will be disabled
-        echo "<div class='alert alert-danger'>
-            You have already submitted this form, wait for the admin to review it.
-        </div>";
-    }
+        require_once("../utils/globals.php");
+        require_once("../utils/connection.php");
+
+        $status = getFormStatus($conn);
+        if ($status) {
+            if ($status["optional_form4"] == 1) {
+                // if the user has already filled in the form, the button will be disabled
+                echo "<div class='alert alert-info'>
+                    You have already submitted this form, wait for the admin to review it.
+                </div>";
+            } else if ($status['optional_form4'] == 2) {
+                echo "<div class='alert alert-success'>
+                    Hola! This form has been reviewed by the exhibitor. Kindly find the invoice in your mail inbox & pay the amount to the organizers.
+                </div>";
+            } else if ($status['optional_form4'] == 3) {
+                echo "<div class='alert alert-danger'>
+                    Sorry! This form has been rejected, please re-submit it.
+                </div>";
+            } 
+        }
     ?>
     
     <p>
@@ -171,10 +185,18 @@
 
 <script>
     <?php
-    if (isset($_SESSION['optional_form4_submitted'])) {
-        // if the user has already filled in the form, the button will be disabled
-        echo "$('#exhibitor_optional_form4_submit_btn').attr('disabled', 'true');";
-    }
+        require_once("../utils/globals.php");
+        require_once("../utils/connection.php");
+
+        $status = getFormStatus($conn);
+        if ($status) {
+            if ($status["optional_form4"] == 1) {
+                // if the user has already filled in the form, the button will be disabled
+                echo "$('#exhibitor_optional_form4_submit_btn').attr('disabled', 'true');";
+            } else if ($status['optional_form4'] == 2) {
+                echo "$('#exhibitor_optional_form4_submit_btn').attr('disabled', 'true');";
+            } 
+        }
     ?>
     function showWaitingOverlay(modalId) {
         $("#" + modalId).modal("hide");

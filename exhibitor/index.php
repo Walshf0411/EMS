@@ -39,9 +39,6 @@
             <div class="col-lg-3">
                 <ul class="nav flex-column nav-pills side-tab" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     
-                    <div class="dropdown-divider"></div>
-                    <div class="sidebar-header">EMS</div>
-                    <div class="dropdown-divider"></div>
                     <li class="nav-item">
                         <a class="nav-link active" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-home"></i>Home</a>
                     </li>
@@ -194,31 +191,37 @@ if (isset($_SESSION['already_logged_in_message'])) {
         $(".loading-overlay").css("z-index", "-1");
     }
     <?php 
-        if (isset($_SESSION['mandatory_forms_submitted'])) {
-            echo "$('#mandatory-forms-dropdown').addClass('text-success');
-                $('#v-pills-tab-4').addClass('text-success');
-                $('#v-pills-tab-5').addClass('text-success');
-                $('#v-pills-tab-6').addClass('text-success');
-                $('#v-pills-tab-7').addClass('text-success');
-            ";
-        }
+        require_once("../utils/globals.php");
+        require_once("../utils/connection.php");
 
-        if (isset($_SESSION['optional_form4_submitted'])) {
-            echo "$('#v-pills-tab-8').addClass('text-success');";
+        $status = getFormStatus($conn);
+        if ($status) {
+            if ($status['mandatory_forms'] == 1 || $status['mandatory_forms'] == 2) {
+                echo "$('#mandatory-forms-dropdown').addClass('text-success');
+                    $('#v-pills-tab-4').addClass('text-success');
+                    $('#v-pills-tab-5').addClass('text-success');
+                    $('#v-pills-tab-6').addClass('text-success');
+                    $('#v-pills-tab-7').addClass('text-success');
+                ";
+            }
+            
+            if ($status['optional_form4'] == 1 || $status['optional_form4'] == 2) {
+                // either form submitted or reviewed.
+                echo "$('#v-pills-tab-8').addClass('text-success');";
+            }
+    
+            if ($status['optional_form5'] == 1 || $status['optional_form5'] == 2) {
+                echo "$('#v-pills-tab-9').addClass('text-success');";
+            }
+    
+            if ($status['optional_form6'] == 1 || $status['optional_form6'] == 2) {
+                echo "$('#v-pills-tab-10').addClass('text-success');";
+            }
+    
+            if ($status['optional_form7'] == 1 || $status['optional_form7'] == 2) {
+                echo "$('#v-pills-tab-11').addClass('text-success');";
+            }
         }
-
-        if (isset($_SESSION['optional_form5_submitted'])) {
-            echo "$('#v-pills-tab-9').addClass('text-success');";
-        }
-
-        if (isset($_SESSION['optional_form6_submitted'])) {
-            echo "$('#v-pills-tab-10').addClass('text-success');";
-        }
-
-        if (isset($_SESSION['optional_form7_submitted'])) {
-            echo "$('#v-pills-tab-11').addClass('text-success');";
-        }
-
     ?>
 
     // the logout.php file clears the session and once we receive response, 

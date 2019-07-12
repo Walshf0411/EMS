@@ -34,7 +34,28 @@
 </div>
     
 <?php include("../utils/booth_number_header.php");?>
+    <?php
+        require_once("../utils/globals.php");
+        require_once("../utils/connection.php");
 
+        $status = getFormStatus($conn);
+        if ($status) {
+            if ($status["optional_form7"] == 1) {
+                // if the user has already filled in the form, the button will be disabled
+                echo "<div class='alert alert-info'>
+                    You have already submitted this form, wait for the admin to review it.
+                </div>";
+            } else if ($status['optional_form7'] == 2) {
+                echo "<div class='alert alert-success'>
+                    Hola! This form has been reviewed by the exhibitor. Kindly find the invoice in your mail inbox & pay the amount to the organizers.
+                </div>";
+            } else if ($status['optional_form7'] == 3) {
+                echo "<div class='alert alert-danger'>
+                    Sorry! This form has been rejected, please re-submit it.
+                </div>";
+            } 
+        }
+    ?>
 <p>
 <strong>PLEASE FILL THIS FORM AND RETURN IT TO THE ORGANISERS IF THESE SERVICES ARE REQUIRED</strong>
 Please use this Form to order furnishing needs. The standard SHELL SCHEME Package Stall includes furniture on
@@ -42,14 +63,7 @@ pro rata basis of the area booked as given in the Application Form. For furnitur
 contact the Organiser for a separate quote. ORDER ONLY ADDITIONAL REQUIREMENTS.
 EXTRA FURNITURE RATE LIST FOR SUPER JUNIORZ, CHENNAI
 DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
-    <?php
-        if (isset($_SESSION['optional_form7_submitted'])) {
-            // if the user has already filled in the form, the button will be disabled
-            echo "<div class='alert alert-danger'>
-                You have already submitted this form, wait for the admin to review it.
-            </div>";
-        }
-    ?>
+
 <?php if ($additionalItems):?>
 <div class="table-wrapper">
     <table width=100% class="table">
@@ -155,9 +169,17 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
 
 <script>
     <?php
-        if (isset($_SESSION['optional_form7_submitted'])) {
-            // if the user has already filled in the form, the button will be disabled
-            echo "$('#exhibitor_optional_form7_submit_btn').attr('disabled', 'true');";
+        require_once("../utils/globals.php");
+        require_once("../utils/connection.php");
+
+        $status = getFormStatus($conn);
+        if ($status) {
+            if ($status["optional_form7"] == 1) {
+                // if the user has already filled in the form, the button will be disabled
+                echo "$('#exhibitor_optional_form7_submit_btn').attr('disabled', 'true');";
+            } else if ($status['optional_form7'] == 2) {
+                echo "$('#exhibitor_optional_form7_submit_btn').attr('disabled', 'true');";
+            } 
         }
     ?>
     var numberOfForm7Items = <?php echo count($additionalItems)?>;
