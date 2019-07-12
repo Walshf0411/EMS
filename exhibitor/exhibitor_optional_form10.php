@@ -3,7 +3,7 @@
     <div>
     <p class="table">
         <table style="width:100%;">
-            <tr style="background-color:rgb(193, 13, 109);">
+            <tr style="">
                 <th>FORM 10</th>
                 <th>INCOMING ITEMS LABEL
                     Please ensure each box and/or item has this incoming items label.</th>
@@ -12,9 +12,10 @@
         </table>
     </p>
     </div>
-    <div class="col-md-12 col-sm-12">
-        <table style="width:90%;">
-            <tr style="background-color:rgb(193, 13, 109);">
+
+    <div class="">
+        <table style="width:100%;">
+            <tr style="">
                 <th>Receiver Details</th>
                 <th>CHENNAI TRADE CENTER</th>
             </tr>
@@ -30,8 +31,8 @@
                 </td>
             </tr>
         </table>
-        <table style="width:90%;">
-            <tr style="background-color:rgb(193, 13, 109);">
+        <table style="width:100%;">
+            <tr style="">
                 <th colspan=2>Event Details</th>
             </tr>
             <tr>
@@ -54,8 +55,8 @@
             </tr>
         </table>
         
-        <table style="width:90%;">
-            <tr style="background-color:rgb(193, 13, 109);">
+        <table style="width:100%;">
+            <tr style="">
                 <th colspan=2>Reference:</th>
             </tr>
             <tr>
@@ -65,8 +66,8 @@
                 </td>
             </tr>
         </table>
-        <table style="width:90%;">
-            <tr style="background-color:rgb(193, 13, 109);">
+        <table style="width:100%;">
+            <tr style="">
                 <th colspan=2>Senders details</th>
             </tr>
             <tr>
@@ -104,8 +105,8 @@
                 </td>
             </tr>
         </table>
-        <table style="width:90%;">
-            <tr style="background-color:rgb(193, 13, 109);">
+        <table style="width:100%;">
+            <tr style="">
                 <th colspan=2>Item Details</th>
             </tr>
             <tr>

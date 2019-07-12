@@ -57,7 +57,7 @@
             </div>";
         }
     ?>
-    <div class="col-md-12 col-sm-12">
+    <div class="">
         <table style="width:100%;" class="table-layout-fixed">
             <tr >
                 <th>Sr.no</th>
@@ -81,13 +81,13 @@
                 }
             ?>
             <tr>
-                <td align="right" colspan=5><strong>Sub Total(A):</strong><span id="form6_subtotal_total">0</span></td>
+                <td align="right" colspan=5><strong>Sub Total:</strong><span id="form6_subtotal_total">0</span></td>
             </tr>
             <tr>
-                <td align="right" colspan=5><strong>GST 18.00%(B):</strong><span id="form6_gst_total">0</span></td>
+                <td align="right" colspan=5><strong>GST 18.00%:</strong><span id="form6_gst_total">0</span></td>
             </tr>
             <tr>
-                <td align="right" colspan=5><strong>Total cost(A + B):</strong><span id="form6_final_total">0</span></td>
+                <td align="right" colspan=5><strong>Total cost:</strong><span id="form6_final_total">0</span></td>
             </tr>
         </table>
     </div>

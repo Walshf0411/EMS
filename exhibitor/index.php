@@ -72,8 +72,9 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-8" href="#v-pills-8" role="tab">Advertising in Fair Catalogue</a>
                             <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-9" href="#v-pills-9" role="tab">Other Services</a>
-                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-10" href="#v-pills-10" role="tab">Electrical Fittings Additional Requirements</a>
-                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-11" href="#v-pills-13" role="tab">Incoming Items Label</a>
+                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-10" href="#v-pills-10" role="tab">Electrical Fittings Requirements</a>
+                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-11" href="#v-pills-11" role="tab">Additional Furniture</a>
+                            <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-12" href="#v-pills-12" role="tab">Incoming Items Label</a>
                         </div>
                     </li>
                     <div class="dropdown-divider"></div>
@@ -126,10 +127,14 @@
                     </div>
                     
                     <div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <?php include("exhibitor_optional_form_electrical_reqts_main.php"   );?>
+                        <?php include("exhibitor_optional_form6.php");?>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <?php include("exhibitor_optional_form7.php"   );?>
                     </div>
                     
-                    <div class="tab-pane fade" id="v-pills-13" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <?php include("exhibitor_optional_form10.php"); ?>
                     </div>
                     
