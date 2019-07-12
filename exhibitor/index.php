@@ -47,7 +47,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab1" data-toggle="pill" href="#v-pills-16" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fab fa-wpforms"></i>Rules and Regulations</a>
+                        <a class="nav-link" id="v-pills-tab16" data-toggle="pill" href="#v-pills-16" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fab fa-wpforms"></i>Rules and Regulations</a>
                     </li>
 
                     <li class="nav-item">
@@ -141,7 +141,6 @@
                     <div class="tab-pane fade" id="v-pills-15" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                        <?php include("exhibitor_password_change.php");?>  
                     </div>
-
                     
                     <div class="tab-pane fade" id="v-pills-16" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                        <?php include("exhibitor_rules_and_regulations.php");?>  
