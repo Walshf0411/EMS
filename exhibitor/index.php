@@ -38,13 +38,27 @@
         <div class="row">
             <div class="col-lg-3">
                 <ul class="nav flex-column nav-pills side-tab" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    
                     <div class="dropdown-divider"></div>
-                    <div class="sidebar-header">Exhibitor Manual</div>
+                    <div class="sidebar-header">EMS</div>
                     <div class="dropdown-divider"></div>
-
                     <li class="nav-item">
                         <a class="nav-link active" id="v-pills-tab1" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-home"></i>Home</a>
                     </li>
+
+                    <div class="dropdown-divider"></div>
+                    <div class="sidebar-header">Account Actions</div>
+                    <div class="dropdown-divider"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-14" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-pen"></i>Edit Exhibitor info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-tab5" data-toggle="pill" href="#v-pills-15" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Exhibitor Password</a>
+                    </li>
+
+                    <div class="dropdown-divider"></div>
+                    <div class="sidebar-header">Exhibitor Manual</div>
+                    <div class="dropdown-divider"></div>
                     
                     <li class="nav-item">
                         <a class="nav-link" id="v-pills-tab16" data-toggle="pill" href="#v-pills-16" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fab fa-wpforms"></i>Rules and Regulations</a>
@@ -76,15 +90,6 @@
                             <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-11" href="#v-pills-11" role="tab">Additional Furniture</a>
                             <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-12" href="#v-pills-12" role="tab">Incoming Items Label</a>
                         </div>
-                    </li>
-                    <div class="dropdown-divider"></div>
-                    <div class="sidebar-header">Account Actions</div>
-                    <div class="dropdown-divider"></div>
-                    <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-14" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-pen"></i>Edit Exhibitor info</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="v-pills-tab5" data-toggle="pill" href="#v-pills-15" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Exhibitor Password</a>
                     </li>
                 </ul>
             </div>
@@ -152,6 +157,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

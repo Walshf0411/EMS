@@ -1,4 +1,4 @@
-<div>
+<div style="home-content-wrapper">
     <div class="home-header">
         <h4>Welcome to Exhibitor Management System</h4>
     </div>

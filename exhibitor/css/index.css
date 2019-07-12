@@ -43,10 +43,10 @@ html, body {
 
 
 .content_wrapper{
-overflow:auto;
-max-height: 600px;
-margin-bottom: 2%;
-font-size: 14px;
+    overflow:auto;
+    max-height: 600px;
+    margin-bottom: 2%;
+    font-size: 14px;
 }
 
 .check{
@@ -115,6 +115,15 @@ font-size: 14px;
 }
 #loading-content {
     font-size: 20px;
+}
+
+#v-pills-tab .nav-item a{
+    color: var(--primary-color);
+}
+
+#v-pills-tab .nav-item .active {
+    background-color: var(--primary-color);
+    color:white;
 }
 
 @media only screen
