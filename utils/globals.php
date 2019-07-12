@@ -2,6 +2,8 @@
 
 // turn development mode on off by setting this boolean
 define("DEBUG", FALSE);
+// define("DEBUG", TRUE);
+
 
 function logToJS($message) {
     echo "<script>console.log('$message')</script>";
