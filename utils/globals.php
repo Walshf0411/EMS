@@ -1,7 +1,7 @@
 <?php
 
 // turn development mode on off by setting this boolean
-define("DEBUG", TRUE);
+define("DEBUG", FALSE);
 
 function logToJS($message) {
     echo "<script>console.log('$message')</script>";
