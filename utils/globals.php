@@ -68,3 +68,11 @@ function getExhibitorDetails($conn, $exhibitorId) {
     $queryResult = executeQuery($conn, $query);
     return $queryResult->fetch_assoc();
 }
+function getFormStatus($conn) {
+    $query = "SELECT * FROM exhibitor_forms_submitted where exhibitor_id=".$_SESSION['user_id'];
+    $queryResult = executeQuery($conn, $query);
+    if ($queryResult->num_rows > 0) {
+        $status = $queryResult->fetch_assoc();
+        return $status;
+    }
+}

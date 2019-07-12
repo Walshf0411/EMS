@@ -45,32 +45,6 @@
         unset($_SESSION['user_not_logged_in_message']);
         notify("Kindly login to continue", "error");
     }
-    function setFormStatus($conn) {
-        $query = "SELECT * FROM exhibitor_forms_submitted where exhibitor_id=".$_SESSION['user_id'];
-        $queryResult = executeQuery($conn, $query);
-        if ($queryResult->num_rows > 0) {
-            $status = $queryResult->fetch_assoc();
-            if ($status['mandatory_forms'] == 1) {
-                $_SESSION['mandatory_forms_submitted'] = TRUE;
-            }
-
-            if ($status['optional_form4'] == 1) {
-                $_SESSION['optional_form4_submitted'] = TRUE;
-            }
-
-            if ($status['optional_form5'] == 1) {
-                $_SESSION['optional_form5_submitted'] = TRUE;
-            }
-
-            if ($status['optional_form6'] == 1) {
-                $_SESSION['optional_form6_submitted'] = TRUE;
-            }
-
-            if ($status['optional_form7'] == 1) {
-                $_SESSION['optional_form7_submitted'] = TRUE;
-            }
-        }
-    }
 
     function checkLoginCredentials($conn, $email, $password) {
         $valid = FALSE;
@@ -93,7 +67,7 @@
                 $_SESSION['exhibitor_contact_person'] = $user['contact_person'];
                 $_SESSION['exhibitor_contact_number'] = $user['phone_number'];
                 $valid = TRUE;
-                setFormStatus($conn);
+                // setFormStatus($conn);
             }
         }
         return $valid;

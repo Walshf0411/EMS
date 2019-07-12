@@ -15,12 +15,27 @@
     </div>
     <?php include("../utils/booth_number_header.php");?>
     <?php
-    if (isset($_SESSION['mandatory_forms_submitted'])) {
-        // if the user has already filled in the form, the button will be disabled
-        echo "<div class='alert alert-danger'>
-            You have already submitted this form, wait for the admin to review it.
-        </div>";
+    require_once("../utils/globals.php");
+    require_once("../utils/connection.php");
+
+    $status = getFormStatus($conn);
+    if ($status) {
+        if ($status["mandatory_forms"] == 1) {
+            // if the user has already filled in the form, the button will be disabled
+            echo "<div class='alert alert-info'>
+                You have already submitted this form, wait for the admin to review it.
+            </div>";
+        } else if ($status['mandatory_forms'] == 2) {
+            echo "<div class='alert alert-success'>
+                Hola! This form has been reviewed by the exhibitor.
+            </div>";
+        } else if ($status['mandatory_forms'] == 3) {
+            echo "<div class='alert alert-danger'>
+                Sorry! This form has been rejected, please re-submit it.
+            </div>";
+        } 
     }
+    
     ?>
     <span id="fair-listing-form-error" class="text-danger" style="display:none">Kindly fill in all the details. If you think this is a mistake, press Next.</span>
     <form onsubmit="return false;" id="fair-listing"> 
