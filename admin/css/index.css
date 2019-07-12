@@ -1,6 +1,16 @@
+:root{
+    --primary-color: #DEA787;
+}
+
 html, body {
     background: #e0e0e0;
 }
+
+th{
+    background-color: var(--primary-color);
+    color:white;
+}
+
 .fa, .fab{
     margin: 0;
     padding: 6px;
@@ -45,6 +55,15 @@ html, body {
 }
 .loading-overlay span {
     font-size: 2rem;
+}
+
+#v-pills-tab .nav-link {
+    color: var(--primary-color);
+}
+
+#v-pills-tab .active, #v-pills-tab > .show{
+    background-color: var(--primary-color);
+    color:white;
 }
 
 @media (max-width: 768px) {

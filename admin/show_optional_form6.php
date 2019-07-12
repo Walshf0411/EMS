@@ -30,10 +30,10 @@
 ?>
 
 <?php require('../utils/form_logo_details.php'); ?>
-    <div class="col-md-12 col-sm-12">
+    <div class="">
         <p class="table">
             <table style="width:100%;">
-                <tr style = "background-color:rgb(193, 13, 109);color:white;">
+                <tr style ="">
                     <th>FORM 6</th>
                     <th>ELECTRICAL FITINGS ADDITIONAL REQUIREMENTS</th>
                     <th>OPTIONAL</th>
@@ -49,9 +49,9 @@
         <h5>Exhibitor Booth Number: <?php echo getForm1Details()["booth_number"]; ?></h5>
     </div>
 
-    <div class="col-md-12 col-sm-12">
+    <div class="">
         <table style="width:100%;" class="table-layout-fixed" id="optional_form6_invoice">
-            <tr style ="background-color:rgb(193, 13, 109);color:white;">
+            <tr style ="">
                 <th>Sr.no</th>
                 <th>DESCRIPTION OF SERVICE/ITEMS</th>
                 <th>Cost@INR</th>

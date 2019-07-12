@@ -1,3 +1,11 @@
 .visible{
     display : none;
 }
+#v-pills-tab .nav-link {
+    color: var(--primary-color);
+}
+
+#v-pills-tab .active, #v-pills-tab > .show{
+    background-color: var(--primary-color);
+    color:white;
+}

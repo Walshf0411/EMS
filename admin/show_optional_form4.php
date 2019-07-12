@@ -32,10 +32,10 @@
     ?>   
     <?php include("../utils/form_logo_details.php");?>
 
-    <div class="col-md-12 col-sm-12">
+    <div class="">
         <p class="table">
             <table style="width:100%;">
-                <tr style="background-color:rgb(193, 13, 109);color:white;">
+                <tr style="">
                     <th>FORM 4</th>
                     <th>ADVERTISING IN FAIR CATALOGUE</th>
                     <th>OPTIONAL</th>
@@ -54,7 +54,7 @@
     <div>
         <strong>SUBMITTED RATES</strong>
         <table class="table" id="optional_form4_invoice">
-            <tr style="background-color:rgb(193, 13, 109);color:white">
+            <tr style="">
                 <th>
                     Sr.no
                 </th>

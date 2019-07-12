@@ -66,7 +66,7 @@
                     ?>
                     <?php
                         $optionalForms = ["optional_form4", "optional_form5", "optional_form6", "optional_form7"];
-                        $formTags= ["Advertising in Fair Catalogue", "Other services","Electrical fittings 1", "Electrical fittings 2"];
+                        $formTags= ["Advertising in Fair Catalogue", "Other services","Electrical fittings", "Additional Furniture"];
                         $i=4;
                         foreach ($optionalForms as $option) {
                             if (getSubmittedFormDetails()[$option] >= 1){

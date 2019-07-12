@@ -32,10 +32,10 @@
 
 <?php require('../utils/form_logo_details.php'); ?>
 
-<div class="col-md-12 col-sm-12">
+<div class="">
     <p class="table">
         <table style="width:100%;">
-            <tr style="background-color:rgb(193, 13, 109);color:white;">
+            <tr style="">
                 <th>FORM 5</th>
                 <th>OTHER SERVICES</th>
                 <th>OPTIONAL</th>
@@ -53,7 +53,7 @@
 
 <div class="table-wrapper">
     <table class="table " style="width:100%;" id="optional_form5_invoice">
-        <tr style="background-color:rgb(193, 13, 109);color:white;">
+        <tr style="">
             <th>No.</th>
             <th>Item Description</th>
             <th>Amount(INR)</th>

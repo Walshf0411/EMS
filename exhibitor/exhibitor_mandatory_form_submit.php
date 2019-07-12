@@ -9,6 +9,11 @@
     }
     require("../utils/mailer.php");
     
+    function sanitizeString($string) {
+        global $conn;
+        return $conn->real_escape_string(strtoupper(strip_tags(trim($string))));
+    }
+
     function checkFormParamsInPost($iterator) {
         $valid = TRUE;
         foreach($iterator as $entry) {
@@ -60,27 +65,27 @@
     }
 
     function insertFascia($conn, $id) {
-        $fasciaName = $_POST['fascia_name'];
+        $fasciaName = sanitizeString($_POST['fascia_name']);
         $query = "INSERT INTO fascia_names(exhibitor_id, fascia_name) values($id, '$fasciaName')";
         return executeQuery($conn, $query);
     }
     function insertForm2($conn, $id) {
-        $companyName = $_POST['company-name'];
-        $address = $_POST['address'];
-        $telephoneISDCode = $_POST["telephone_isd_code"];
-        $telephoneSTDCode = $_POST['telephone_std_code'];
-        $telephone = $_POST['telephone'];
-        $faxISDCode = $_POST['fax_isd_code'];
-        $faxSTDCode = $_POST['fax_std_code'];
-        $fax = $_POST['fax'];
-        $mobileISDCode = $_POST['mobile_isd_code'];
-        $mobile = $_POST['mobile'];
-        $email = $_POST['email'];
-        $website = $_POST['website'];
-        $person = $_POST['person'];
-        $designation = $_POST['designation'];
-        $profile = $_POST['profile'];
-        $products = $_POST['products'];
+        $companyName = sanitizeString($_POST['company-name']);
+        $address = sanitizeString($_POST['address']);
+        $telephoneISDCode = sanitizeString($_POST["telephone_isd_code"]);
+        $telephoneSTDCode = sanitizeString($_POST['telephone_std_code']);
+        $telephone = sanitizeString($_POST['telephone']);
+        $faxISDCode = sanitizeString($_POST['fax_isd_code']);
+        $faxSTDCode = sanitizeString($_POST['fax_std_code']);
+        $fax = sanitizeString($_POST['fax']);
+        $mobileISDCode = sanitizeString($_POST['mobile_isd_code']);
+        $mobile = sanitizeString($_POST['mobile']);
+        $email = sanitizeString($_POST['email']);
+        $website = sanitizeString($_POST['website']);
+        $person = sanitizeString($_POST['person']);
+        $designation = sanitizeString($_POST['designation']);
+        $profile = sanitizeString($_POST['profile']);
+        $products = sanitizeString($_POST['products']);
         
         $query = "INSERT INTO `fair_catalogue_listing` (`company_name`, `company_address`,
         `telephone_isd_code`, `telephone_std_code`, `telephone_number`, `fax_isd_code`,
@@ -96,15 +101,15 @@
     function insertForm3($conn, $id) {
         $numberOfPersonnel = $_POST["input_fields"];
         
-        $stallPersonnel1 = $_POST['stall_personnel_1'];
-        $stallPersonnel1Designation = $_POST['stall_personnel_1_designation'];
+        $stallPersonnel1 = sanitizeString($_POST['stall_personnel_1']);
+        $stallPersonnel1Designation = sanitizeString($_POST['stall_personnel_1_designation']);
 
         $query = "INSERT INTO `exhibitor_stall_personnel` (`exhibitor_id`, `stall_personnel_name`, `designation`)
         VALUES ($id, '$stallPersonnel1', '$stallPersonnel1Designation')";        
 
         for ($i = 2; $i <= $numberOfPersonnel; $i++) {
-            $stallPersonnel = $_POST["stall_personnel_" . $i];
-            $stallPersonnelDesignation = $_POST['stall_personnel_' . $i . '_designation'];
+            $stallPersonnel = sanitizeString($_POST["stall_personnel_" . $i]);
+            $stallPersonnelDesignation = sanitizeString($_POST['stall_personnel_' . $i . '_designation']);
             $query .= ", ($id, '$stallPersonnel', '$stallPersonnelDesignation')";
         }
 

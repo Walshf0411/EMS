@@ -16,10 +16,10 @@
 ?>
 
 <?php require('../utils/form_logo_details.php'); ?>
-    <div class="col-md-12 col-sm-12">
+    <div class="">
         <p class="table">
             <table style="width:100%;">
-                <tr style="background-color:rgb(193, 13, 109);color:white;">
+                <tr style="">
                     <th>FORM 2</th>
                     <th>LISTING IN FAIR CATALOGUE</th>
                     <th>MANDATORY</th>

@@ -30,10 +30,10 @@
     }
 ?>
 <?php include("../utils/form_logo_details.php"); ?>
-<div class="col-md-12 col-sm-12">
+<div class="">
     <p class="table">
         <table style="width:100%;">
-            <tr style="background-color:rgb(193, 13, 109);color:white;">
+            <tr style="">
                 <th>FORM 7 & 8</th>
                 <th>ELECTRICAL FITINGS ADDITIONAL REQUIREMENTS</th>
                 <th>OPTIONAL</th>
@@ -54,7 +54,7 @@
 <div class="table-wrapper">
     <table width=100% class="table" id="optional_form7_invoice">
         <thead>
-            <tr style ="background-color:rgb(193, 13, 109);color:white;">
+            <tr style ="">
                 <th>Sr.no</th>
                 <th>Code No</th>
                 <th>Name of the product</th>
