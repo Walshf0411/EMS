@@ -88,11 +88,12 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
                 $quantityId = "electrical-item-" . $item['id'];
                 $totalId = "electrical-item-" . $item['id'] . "-total";
                 $onInput = "onItemChanged1(" . $item['id'] . ", this.value)";
+                $image = "<img src='../images/additional_fittings_images/additional_fittings".$item['id'].".png'/>";
             ?>
             <tr>
                 <td><?php echo $count;?></td>
                 <td><?php echo $codeNumber;?></td>
-                <td><?php echo $productName?></td>
+                <td data-toggle="tooltip" title="<?php echo $image;?>" data-html="true" data-placement="auto"><?php echo $productName?></td>
                 <td><span id="<?php echo $priceId;?>"><?php echo $price;?></span><?php if($days > 1) echo $days." Days"?></td>
                 <td><input type="number" id="<?php echo $quantityId;?>" min=0 oninput='<?php echo $onInput ?>'></td>
                 <td><span id="<?php echo $totalId;?>">0</span></td>
@@ -332,6 +333,8 @@ DATED 24-25 JUNE 2019 | Venue Trade Center, Chennai, Tamil Nadu.</p>
         updateTotals1();
     }
     $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+
         $("#exhibitor_optional_form7_submit_btn").click(function (e) { 
             e.preventDefault();
             setOptionalForm7Invoice();
