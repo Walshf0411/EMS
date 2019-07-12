@@ -1,6 +1,6 @@
 <div class="content_wrapper">
     <div><h3>Rules and Regulations</h3></div> 
-    <ul>
+    <ul style="margin-top:2%;">
         <li> <strong>Terms of Application and Exhibition Rules & Regulations</strong>
             <ol>
                 <li>
