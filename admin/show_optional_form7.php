@@ -39,7 +39,11 @@
                 <th>OPTIONAL</th>
             </tr>
             <tr>
-                <td colspan="3">Submission Date - 10th June 2019 </td>
+                <?php 
+                    require_once("../utils/connection.php");
+                    require_once("../utils/globals.php");
+                ?>
+                <td colspan="3">Submission Date - <?php echo getSubmissionDates($conn)['optional_form7_deadline'];?></td>
             </tr>
         </table>
     </p>
@@ -233,9 +237,9 @@ $("#optional_form7_reject").click(function (e) {
         global $conn;
         $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
         $checkQueryResults = executeQuery($conn, $checkQuery);
-        if ($checkQueryResults->fetch_assoc()['optional_form7'] == 2) {
+        if ($checkQueryResults->fetch_assoc()['optional_form7'] == 2 || $checkQueryResults->fetch_assoc()['optional_form7'] == 3) {
             // already verified, cannot reject.
-            notify("Optional form 7 has been already reviewed and verifed, cannot reject.", "warn");
+            notify("Optional form 7 has been already reviewed, cannot reject.", "warn");
         } else {
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form7 = 3 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
@@ -254,6 +258,10 @@ $("#optional_form7_reject").click(function (e) {
                 
                 $mailBody .= "<br><q>$rejectionMessage</q><br>";
                 $mailBody .= "You can visit this <a href='$base_url/exhibitor/'>link</a> to resubmit the form.";
+
+                // delete exhbitor entriess
+                $query = "DELETE FROM optional_additional_fittings2 WHERE exhibitor_id=".$_GET['id'];
+                executeQuery($conn, $query);
 
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
                 notify("Electrical Fittings 2 form has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");

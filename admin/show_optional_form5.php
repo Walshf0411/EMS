@@ -41,7 +41,11 @@
                 <th>OPTIONAL</th>
             </tr>
             <tr>
-                <td colspan="3">Submission Date - 5th June 2019 </td>
+                <?php 
+                    require_once("../utils/connection.php");
+                    require_once("../utils/globals.php");
+                ?>
+                <td colspan="3">Submission Date - <?php echo getSubmissionDates($conn)['optional_form5_deadline'];?></td>
             </tr>
         </table>
     </p>
@@ -240,9 +244,9 @@
         global $conn;
         $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
         $checkQueryResults = executeQuery($conn, $checkQuery);
-        if ($checkQueryResults->fetch_assoc()['optional_form5'] == 2) {
+        if ($checkQueryResults->fetch_assoc()['optional_form5'] == 2 || $checkQueryResults->fetch_assoc()['optional_form5'] == 3) {
             // already verified, cannot reject.
-            notify("Other Services form has been already reviewed and verifed, cannot reject.", "warn");
+            notify("Other Services form has been already reviewed, cannot reject.", "warn");
         } else {
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 3 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
@@ -260,6 +264,10 @@
                 
                 $mailBody .= "<br><q>$rejectionMessage</q><br>";
                 $mailBody .= "You can visit this <a href='$base_url/exhibitor/'>link</a> to resubmit the form."; 
+                
+                // delete exhibiror entries
+                $query = "DELETE FROM optional_other_services WHERE exhibitor_id=".$_GET["id"];
+                executeQuery($conn, $query);
 
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
                 notify("Other services has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");

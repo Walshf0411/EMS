@@ -25,7 +25,11 @@
                     <th>MANDATORY</th>
                 </tr>
                 <tr>
-                    <td colspan="3">Submission Date - 5th June 2019 </td>
+                    <?php 
+                        require_once("../utils/connection.php");
+                        require_once("../utils/globals.php");
+                    ?>
+                    <td colspan="3">Submission Date - <?php echo getSubmissionDates($conn)['mandatory_forms_deadline']?></td>
                 </tr>
             </table>
         </p>        
