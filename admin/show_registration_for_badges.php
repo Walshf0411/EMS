@@ -174,13 +174,23 @@
             }
         }
     }
+    function deleteExhibitorMandatoryForm($conn, $id) {
+        $deleteQuery = "DELETE FROM fascia_names where exhibitor_id=".$id.";";
+        $deleteQuery .= "DELETE FROM fair_catalogue_listing WHERE exhibitor_id=".$id.";";
+        $deleteQuery .= "DELETE FROM exhibitor_stall_personnel WHERE exhibitor_id=".$id.";";
+
+        $conn->multi_query($deleteQuery);
+    }
     if (isset($_POST['reject'])) {
         global $conn;
         $checkQuery = "SELECT * FROM exhibitor_forms_submitted WHERE exhibitor_id=".$_GET['id'];
         $checkQueryResults = executeQuery($conn, $checkQuery);
-        if ($checkQueryResults->fetch_assoc()['mandatory_forms'] == 2) {
+        if ($checkQueryResults->fetch_assoc()['mandatory_forms'] == 2 || $checkQueryResults->fetch_assoc()['mandatory_forms'] == 3) {
             // already verified, cannot reject.
             notify("Mandatory forms have been already reviewed and verifed cannot reject.", "warn");
+        } 
+        else if ($checkQueryResults->fetch_assoc()['mandatory_forms'] == 0) {
+            notify("Form has been not re-submitted yet", "warn");
         } else {
             $setQuery = "UPDATE exhibitor_forms_submitted SET mandatory_forms = 3 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
@@ -200,6 +210,9 @@
                 $mailBody .= "You can visit this <a href='$base_url/exhibitor/'>link</a> to resubmit the form."; 
 
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
+
+                deleteExhibitorMandatoryForm($conn, $_GET['id']);
+
                 notify("Mandatory forms have been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
             } else {
                 notify("Form rejection failed: Mandatory forms", "error");
