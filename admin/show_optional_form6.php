@@ -39,7 +39,11 @@
                     <th>OPTIONAL</th>
                 </tr>
                 <tr>
-                    <td colspan="3">Submission Date - 10th June 2019 </td>
+                    <?php 
+                        require_once("../utils/connection.php");
+                        require_once("../utils/globals.php");
+                    ?>
+                    <td colspan="3">Submission Date - <?php echo getSubmissionDates($conn)['optional_form6_deadline'];?> </td>
                 </tr>
             </table>
         </p>
