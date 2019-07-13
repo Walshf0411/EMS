@@ -81,7 +81,6 @@
         for ($i = 1; $i <=5 ; $i++) {
             
             if (isset($_POST['brand_name' . $i]) && $_POST['brand_name' . $i] !== ''){
-                logToJS($i);
                 $brand = trim($_POST['brand_name' . $i]) . ", ";
                 $brands .= $brand;
             }

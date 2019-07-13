@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <div class="container" id="main-container">
-        <div class="login-container" align ="center">
+    <div class="container" id="main-container" style="background-image: url('../images/login_background.jpg'); background-size:cover">
+        <div class="login-container" align ="center" >
             <form action="login.php" method ="POST" >
-                <img id="logo_image" src="../images/logo.png" alt="Super Juniorz's logo">
+                <img id="logo_image" src="../images/logo.png" alt="INTIMASIA logo">
                 <br><br>
                 <h5>Exhibitor Login</h5>
                 <div class="input_div">
