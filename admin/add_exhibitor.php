@@ -38,28 +38,28 @@
         
         <form action="#" id="add-exhibitor-form" method="POST" class="add-exhibitor">     
             <div class="form-group">
-                <strong><label for="name">Company Name:</label></strong><br>
+                <strong><label for="name">Company Name<span class="required-asterik">*</span></label></strong><br>
                 <input type="text" name="name" class="form-control required"/>
             </div>
 
             <div class="form-group">
-                <strong><label for="email">Email:</label></strong><br>
+                <strong><label for="email">Email<span class="required-asterik">*</span></label></strong><br>
                 <input type="email" name="email" class="form-control required email"/>
             </div>
             <div class="form-group">
-                <strong><label for="contact_person">Contact Person:</label></strong>
-                <input type="text" class="form-control required" name="contact_person">
+                <strong><label for="contact_person">Contact Person</label></strong>
+                <input type="text" class="form-control" name="contact_person">
             </div>
             <div class="form-group">
-                <strong><label for="phone_number">Contact number:</label></strong><br>
-                <input type="phone" class="form-control required" name="phone_number"/>
+                <strong><label for="phone_number">Contact number</label></strong><br>
+                <input type="phone" class="form-control" name="phone_number"/>
             </div>
             <div class="form-group">
-                <strong><label for="brand_name">Brand Name:</label></strong>
-                <textarea class="form-control required" name="brand_name"></textarea>
+                <strong><label for="brand_name">Brand Name</label></strong>
+                <textarea class="form-control" name="brand_name"></textarea>
             </div>
             <div class="form-group">
-                <strong><label for="booth_number">Booth Number:</label></strong>
+                <strong><label for="booth_number">Booth Number<span class="required-asterik">*</span></label></strong>
                 <input type="text" class="form-control required" name="booth_number">
             </div>
             <button type="submit" class="btn btn-outline-info">Add Exhibitor</button>

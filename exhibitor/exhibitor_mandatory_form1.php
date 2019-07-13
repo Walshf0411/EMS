@@ -87,7 +87,7 @@
 </button>
 
 <div class="modal fade" id="imageModal">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="row">
                 <div class="offset-sm-10"></div>
@@ -108,9 +108,67 @@
                 </div>
                 <div class="container" align=center>
                     <strong>STALL AMENITIES</strong><br>
-                
-                    <img src="../images/standard_booth_layout1.jpg" alt="standard layout 1">
-                    <img src="../images/standard_booth_layout2.jpg" alt="standard layout 1">
+                    <img src="../images/stall_amenities.png" alt="stall amenities"><br><br>
+                    <strong>STALL LAYOUT</strong><br>
+                    <br>
+                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img src="../images/standard_booth_layout_1.png" alt="standard booth layout 1">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="standard-booth-layout-text">
+                            <b>Front View <br>
+                            Technical Size : 9sqm <br>
+                            Top View<br>
+                            Technical Size : 9sqm<br></b>
+                            </div>
+
+                        </div>
+                    </div><br><br>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="standard-booth-layout-text">
+                            <b>Front View <br>
+                            Technical Size : 12sqm<br>
+                            Top View<br>
+                            Technical Size : 12sqm<br></b>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <img src="../images/standard_booth_layout_2.png" alt="standard booth layout 2">
+                        </div>
+                    </div><br><br>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img src="../images/standard_booth_layout_3.png" alt="standard booth layout 3">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="standard-booth-layout-text">
+                            <b>Front View <br>
+                            Technical Size : 15sqm <br>
+                            Top View <br>
+                            Technical Size : 15sqm <br></b>
+                            </div>
+                        </div>
+                    </div><br><br>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="standard-booth-layout-text">
+                            <b>Front View <br>
+                            Technical Size : 18sqm<br>
+                            Top View<br>
+                            Technical Size : 18sqm<br></b>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <img src="../images/standard_booth_layout_4.png" alt="standard booth layout 4">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         

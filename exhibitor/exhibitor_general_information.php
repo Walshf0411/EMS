@@ -18,39 +18,39 @@
         <tbody>
             <tr>
                 <td>Booth Construction</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>6th July 2019</td>
+                <td>11:00 AM to 9:00 PM</td>
+                <td>5:00 PM to 9 PM</td>
             </tr>
             <tr>
                 <td>Move-In Exhibits</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>6th July 2019</td>
+                <td>11:00 AM to 9:00 PM</td>
+                <td>5:00 PM to 9 PM</td>
             </tr>
             <tr>
                 <td>Move-Out Exhibits</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>9th July 2019</td>
+                <td>7:00 PM Onwards</td>
+                <td>7:00 PM Onwards</td>
             </tr>
             <tr>
                 <td>Electricity Turn-Off</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>All Days</td>
+                <td>7:30 PM</td>
+                <td>7:30 PM</td>
             </tr>
             <tr>
                 <td>Booth Dismantling</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>9th July 2019</td>
+                <td>8:00 PM to 10:00 PM</td>
+                <td>8:00 PM to 10:00 PM</td>
             </tr>
         </tbody>
     </table>
 </div><br>
-<strong>Note:</strong> Confirmed Exhibitor alloted 30sqm & above space must submit booth design by 10th June 2019 for
-approval. <br>
+<strong>Note:</strong> Confirmed Exhibitor alloted 30sgm & above space must submit booth design by 20th July 2019 for
+approval <br>
 <strong>IMPORTANT NOTE FOR EXHIBITORS WITH CUSTOM BUILT BOOTHS</strong>
 <strong><ol>
     <li>The exhibitors and/or their contractors would not be permitted to undertake any substantial work
@@ -59,7 +59,7 @@ approval. <br>
     <li>Exhibitors and their contractors are advised to bring pre-fabricated booths which can be assembled
     and fitted with ease in the shortest possible time requiring only final finishing touches.</li>
     <li>All exhibitors who have taken raw space must ensure that their booth dismantling is completed by
-    10.00 p.m. on 25th June 2019 in order to avoid any late charges imposed by the Venue.</li>
+    10.00 p.m. on 9th August 2019 in order to avoid any late charges imposed by the Venue.</li>
     <li>Exhibitors need to take prior approvals from the organisers before finalising booth contractor/Stall
 design agency which is not listed in organisors approval list of vendors.</li>
 </ol></strong>
@@ -72,10 +72,10 @@ exhibitors under 18 years of age will be admitted.</p>
 
 <strong>2. General Information</strong><br>
 <strong class="tab-space">2.1 Official Fair Name</strong>
-<p class="tab-space">SUPER JUNIORZ, Chennai</p>
+<p class="tab-space">INTIMASIA, Kolkata</p>
 
 <strong class="tab-space">2.2 Venue</strong>
-<p class="tab-space">Trade Center, Chennai, Tamil Nadu.</p>
+<p class="tab-space">Netaji Indoor Stadium, Kolkata, West Bengal.</p>
 
 <strong class="tab-space">2.3 Organiser</strong>
 <p class="tab-space">
@@ -88,17 +88,20 @@ exhibitors under 18 years of age will be admitted.</p>
 
 <strong class="tab-space">2.4 Fair Dates & Timings</strong>
 <p class="tab-space">
-    24th June 2018 (MON) 10:00 am - 7:00 pm <br>
-    25th June 2018 (TUE) 10:00 am - 7:00 pm <br>
+    7th August 2019 (WED) 10:00 am - 7:00 pm <br>
+    8th August 2019 (THU) 10:00 am - 7:00 pm <br>
+    9th August 2019 (FRI) 10:00 am - 7:00 pm <br>
     (Open to registered trade buyers only) <br>
 </p>
 
 <strong class="tab-space">2.5 Visitors’ Information</strong>
 <p class="tab-space">
-The fair is open to trade buyers only, with free admission on 24th & 25th June 2019. Visitors must register at the fair and wear the visitor badge during the fair. No visitors under 18 will be admitted.
+The fair is open to trade buyers only, with free admission on 7th, 8th & 9th August 2019. Visitors must
+register at the fair and wear the visitor badge during the fair. No visitors under 18 will be admitted.
 </p>
 
 <strong class="tab-space">2.6 Opening Ceremony</strong>
 <p class="tab-space">
-The Opening Ceremony of the Fair will be held on 24th June 2019 at 11 A.M. at Chennai Trade Center. All exhibitors are invited to attend the ceremony.
+The Opening Ceremony of the Fair will be held on 7th August 2019 at 11 A.M. at Netaji Indoor Stadium,
+Kolkata. All exhibitors are invited to attend the ceremony.
 </p>

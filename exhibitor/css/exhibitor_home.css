@@ -7,6 +7,6 @@
 }
 @media (min-width: 768px) {
     .home-content {
-        height: 460px;
+        min-height: 460px;
     }   
 }
