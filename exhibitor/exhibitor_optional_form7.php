@@ -26,7 +26,11 @@
                 <th>OPTIONAL</th>
             </tr>
             <tr>
-                <td colspan="3">Submission Date - 10th June 2019 </td>
+                <?php 
+                    require_once("../utils/connection.php");
+                    require_once("../utils/globals.php");
+                ?>
+                <td colspan="3">Submission Date - <?php echo getSubmissionDates($conn)['optional_form7_deadline'];?></td>
             </tr>
         </table>
     </p>
@@ -39,6 +43,7 @@
         require_once("../utils/connection.php");
 
         $status = getFormStatus($conn);
+        $deadlineGone = strtotime(getSubmissionDates($conn)['optional_form7_deadline']) < strtotime("today");
         if ($status) {
             if ($status["optional_form7"] == 1) {
                 // if the user has already filled in the form, the button will be disabled
@@ -53,7 +58,11 @@
                 echo "<div class='alert alert-danger'>
                     Sorry! This form has been rejected, please re-submit it.
                 </div>";
-            } 
+            } else if ($status["optional_form7"] == 0 && $deadlineGone) {
+                echo "<div class='alert alert-danger'>
+                    Sorry! The deadline for this form has already passed, your submission will not be considered.
+                </div>";
+            }
         }
     ?>
 <p>
