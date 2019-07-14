@@ -132,55 +132,55 @@
         
         
         <label class="container-check">Lingerie
-            <input type="checkbox" name="category1" value="Lingerie">
+            <input type="checkbox" name="category[]"id="category" value="Lingerie">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Men's Innerwear
-            <input type="checkbox" name="category2" value="Men's Innerwear">
+            <input type="checkbox" name="category[]"id="category" value="Men's Innerwear">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Kid's Innerwear
-            <input type="checkbox" name="category3" value="Kid's Innerwear">
+            <input type="checkbox" name="category[]"id="category" value="Kid's Innerwear">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Sleepwear
-            <input type="checkbox" name="category4" value="Sleepwear">
+            <input type="checkbox" name="category[]"id="category" value="Sleepwear">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Loungewear
-            <input type="checkbox" name="category5" value="Loungewear">
+            <input type="checkbox" name="category[]"id="category" value="Loungewear">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Active wear
-            <input type="checkbox" name="category6" value="Active wear">
+            <input type="checkbox" name="category6[]"id="category" value="Active wear">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Thermals
-            <input type="checkbox" name="category7" value="Thermals">
+            <input type="checkbox" name="category7[]"id="category" value="Thermals">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Socks & Stockings
-            <input type="checkbox" name="category8" value="Socks & Stockings">
+            <input type="checkbox" name="category8[]"id="category" value="Socks & Stockings">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Lingerie Accessories 
-            <input type="checkbox" name="category9" value="Lingerie Accessories">
+            <input type="checkbox" name="category9[]"id="category" value="Lingerie Accessories">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Retail Display
-            <input type="checkbox" name="category10" value="Retail Display">
+            <input type="checkbox" name="category10[]"id="category" value="Retail Display">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Retail Store Design Solution
-            <input type="checkbox" name="category11" value="Retail Store Design Solution">
+            <input type="checkbox" name="category11[]" id="category" value="Retail Store Design Solution">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Retail Softwares 
-            <input type="checkbox" name="category12" value="Retail Softwares">
+            <input type="checkbox" name="category12[]" id="category" value="Retail Softwares">
             <span class="checkmark"></span>
         </label>
         <label class="container-check">Others
-            <input type="checkbox" name="category10" value="Others">
+            <input type="checkbox" name="category13[]" id="category" value="Others">
             <span class="checkmark"></span>
         </label>
         
