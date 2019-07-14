@@ -43,8 +43,7 @@
             "person",
             "designation",
             "profile",
-            "products",
-            "category"
+            "products"
         ];
 
         return checkFormParamsInPost($form2);
