@@ -49,11 +49,10 @@ function sendMail ($conn, $toAddress, $toName, $username, $password, $mainHeader
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
     global $base_url;
-
     $content1 = "";
-    $content1 .= $preferences['mail_body'];
+    $content1 .= nl2br($preferences['mail_body']); #converts new linest to <br>
     $content1 .= "
-    <br>Below are your login credentials. Kindly login to the provided link and fill in the exhbitor manual.<br><br>
+    <br>We're excited to have you on board, kindly click on the link below to complete your participation process by filling the Exhibitor Manual. Please note your login details are as follows:<br><br>
     <div>
         <strong>username:</strong> $username<br>
         <strong>password:</strong> $password<br>
@@ -73,7 +72,6 @@ function sendMail ($conn, $toAddress, $toName, $username, $password, $mainHeader
     
     $context = array(
         "content1" => $content1,
-        "user" => $toName, 
         "mainHeader" => $mainHeader
     );
 
@@ -117,9 +115,10 @@ sendMailToAdmin ($conn, $mailBody, $subject, $mainHeader);
 echo "Mail sent";
 
 sendMail1($conn, "walshfernades.320@gmail.com", "walsh", "hello", "Test", "test");
-
+*/
 // var_dump(getAdminPreferences($conn));
 
+/*
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 $mail->IsSMTP();
 $mail->Host = "mail.superjuniorz.com";
@@ -140,4 +139,5 @@ $mail->Body = "asdasd";
 $mail->Send();
 echo "mail send";
 */
+// sendMail ($conn, "walshfernades.320@gmail.com", "Walsh fernandes", "walshfernades", "gitbtit", "Testing");
 ?>
