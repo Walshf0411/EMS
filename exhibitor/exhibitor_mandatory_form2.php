@@ -127,7 +127,63 @@
             <label for="products">Products supplied / manufactured:</label>
             <textarea name="products" class="form-control required" rows="7"></textarea>
         </div>
-
+        <!-- Adding the product categories -->
+        <div class="form-group">Product category</div>
+        
+        
+        <label class="container-check">Lingerie
+            <input type="checkbox" name="category[]"id="category" value="Lingerie">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Men's Innerwear
+            <input type="checkbox" name="category[]"id="category" value="Men's Innerwear">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Kid's Innerwear
+            <input type="checkbox" name="category[]"id="category" value="Kid's Innerwear">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Sleepwear
+            <input type="checkbox" name="category[]"id="category" value="Sleepwear">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Loungewear
+            <input type="checkbox" name="category[]"id="category" value="Loungewear">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Active wear
+            <input type="checkbox" name="category6[]"id="category" value="Active wear">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Thermals
+            <input type="checkbox" name="category7[]"id="category" value="Thermals">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Socks & Stockings
+            <input type="checkbox" name="category8[]"id="category" value="Socks & Stockings">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Lingerie Accessories 
+            <input type="checkbox" name="category9[]"id="category" value="Lingerie Accessories">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Retail Display
+            <input type="checkbox" name="category10[]"id="category" value="Retail Display">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Retail Store Design Solution
+            <input type="checkbox" name="category11[]" id="category" value="Retail Store Design Solution">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Retail Softwares 
+            <input type="checkbox" name="category12[]" id="category" value="Retail Softwares">
+            <span class="checkmark"></span>
+        </label>
+        <label class="container-check">Others
+            <input type="checkbox" name="category13[]" id="category" value="Others">
+            <span class="checkmark"></span>
+        </label>
+        
         <div style="float:right">
             <?php include("../utils/exhibitor_footer.php");?>
         </div>

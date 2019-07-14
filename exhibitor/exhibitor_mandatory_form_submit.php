@@ -43,7 +43,8 @@
             "person",
             "designation",
             "profile",
-            "products"
+            "products",
+            "category"
         ];
 
         return checkFormParamsInPost($form2);
@@ -86,15 +87,21 @@
         $designation = sanitizeString($_POST['designation']);
         $profile = sanitizeString($_POST['profile']);
         $products = sanitizeString($_POST['products']);
+        $categories = "";
+        $productCategories = $_POST["category"];
+        foreach ($productCategories as $product) {
+            $categories = $product." ,"; 
+        }
+        $categories = substr($categories,0,strlen($categories) - 1 );
         
         $query = "INSERT INTO `fair_catalogue_listing` (`company_name`, `company_address`,
         `telephone_isd_code`, `telephone_std_code`, `telephone_number`, `fax_isd_code`,
         `fax_std_code`, `fax_number`, `mobile_isd_code`, `mobile_number`, `email`,
         `website`, `contact_person`, `designation`, `company_profile`, `products_supplied`, 
-        `exhibitor_id`) 
+        `exhibitor_id`, `product_category`) 
         VALUES ('$companyName', '$address', '$telephoneISDCode', '$telephoneSTDCode', '$telephone', 
         '$faxISDCode', '$faxSTDCode', '$fax', '$mobileISDCode', '$mobile', '$email', '$website', 
-        '$person', '$designation', '$profile', '$products', $id)";
+        '$person', '$designation', '$profile', '$products', $id, '$categories')";
 
         return executeQuery($conn, $query);
     }
