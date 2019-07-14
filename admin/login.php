@@ -23,7 +23,7 @@
     <div class="container" id="main-container">
         <div class="login-container" align=center>
             <form action="#" method=POST onsubmit="isValidForm(this)" id="login-form">
-                <img id="logo_image" src="../images/logo.png" alt="Super Juniorz's logo">
+                <img id="logo_image" src="../images/logo.png" alt="Intimasia Logo" width="280px" height="150px">
                 <br><br>
                 <h5>Admin Login</h5>
                 <div class="error_div text-danger""></div>
