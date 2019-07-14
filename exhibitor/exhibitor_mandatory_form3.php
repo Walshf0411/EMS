@@ -74,9 +74,17 @@
 <div class="container input-fields" name="input-visible">
     <div class="form-group row">
         <label for="input_fields" class="form-md-label"><strong>Enter number of required Stall Personnel:</strong></label>
-        <input type="number" class="form-control" name="input_fields" max="100" min="1" id="input_fields">
+        <input type="number" class="form-control required" name="input_fields" max="100" min="1" id="input_fields" required>
+        <div class="invalid-feedback" id="stall-personnel-error">
+            Please enter your required number of stall personnel
+        </div>
+        <small class="form-text text-muted">
+            Enter the number of stall personnel badges you require. 
+        </small>        
     </div>
-    <button type="submit" name="number_fields_submit" id="number_fields_submit" class="btn btn-success">Submit</button>
+    <div class="row">
+        <button type="submit" name="number_fields_submit" id="number_fields_submit" class="btn btn-success">Submit</button>
+    </div>
 </div>
 
 <?php    
@@ -108,7 +116,7 @@
                     for ($i=0; $i < $fields; $i++) { 
                         echo "<div class='row'>
                                     <div class='col-md-2 col-sm-11 col-sm-offset-1'>".($i+1).".</div>
-                                    <div class='col-md-6 col-sm-11 col-sm-offset-1' style='width:100%;'><input class='required' name='stall_personnel_".($i+1)."'></div>
+                                    <div class='col-md-6 col-sm-11 col-sm-offset-1' style='width:100%;'><input class='required stall_personnel_name_field' name='stall_personnel_".($i+1)."'></div>
                                     <div class='col-md-4 col-sm-11 col-sm-offset-1' style='width:100%;'><input class='required' name='stall_personnel_".($i+1)."_designation'></div>
                                 </div>";
                     }
@@ -143,12 +151,23 @@
         staffPersonnelForm.validate();
         staffPersonnelForm.sisyphus();
         $("#mandatory_form3_next_btn").click(function() {
-            
-            if (staffPersonnelForm.valid()){
-                staffPersonnelFormValid = true;
-                $("#staff-personnel-form-error").css("display", "none");
-                $("#v-pills-tab-7").tab("show");
+        numberOfStallPersonnel = $(".stall_personnel_name_field").length;
+        
+        if (numberOfStallPersonnel > 0 && staffPersonnelForm.valid()){
+            staffPersonnelFormValid = true;
+            $("#staff-personnel-form-error").css("display", "none");
+            $("#v-pills-tab-7").tab("show");
+        } else {
+            // error hai kuch toh
+            if (numberOfStallPersonnel > 0){
+                $("#stall-personnel-error").css('display', 'none');
+                $("#input_fields").removeClass("is-invalid");
+            }else {
+                $("#stall-personnel-error").css('display', 'block');
+                $("#input_fields").addClass("is-invalid");
+                $("#staff-personnel-form-error").css("display", "block");
             }
+        }
         });
     });
 </script>
