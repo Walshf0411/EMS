@@ -167,6 +167,9 @@
                 $mailBody = "Your forms have been successfully reviewed by the admin.
                 Thank you for participating in $exhibitionName";
                 
+                require_once("../utils/globals.php");
+                logToDb($conn, $_GET['id'], "MANDATORY FORMS", "ACCEPTED");
+
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
                 notify("Form Reviewed successfully.", "success");
             } else {
@@ -212,6 +215,9 @@
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
 
                 deleteExhibitorMandatoryForm($conn, $_GET['id']);
+
+                require_once("../utils/globals.php");
+                logToDb($conn, $_GET['id'], "MANDATORY FORMS", "REJECTED");
 
                 notify("Mandatory forms have been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
             } else {

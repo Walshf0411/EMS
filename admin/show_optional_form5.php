@@ -232,6 +232,8 @@
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form5 = 2 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if($queryResult) {
+                require_once("../utils/globals.php");
+                logToDb($conn, $_GET['id'], "OTHER SERVICES", "ACCEPTED");
                 $_SESSION["send_optional_form5_review_mail"] = TRUE;
                 echo "<meta http-equiv='refresh' content='0'>";
             } else {
@@ -268,6 +270,9 @@
                 // delete exhibiror entries
                 $query = "DELETE FROM optional_other_services WHERE exhibitor_id=".$_GET["id"];
                 executeQuery($conn, $query);
+
+                require_once("../utils/globals.php");
+                logToDb($conn, $_GET['id'], "OTHER SERVICES", "REJECTED");
 
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
                 notify("Other services has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");

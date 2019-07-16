@@ -225,6 +225,8 @@ $("#optional_form7_reject").click(function (e) {
             $setQuery = "UPDATE exhibitor_forms_submitted SET optional_form7 = 2 where exhibitor_id = ".$_GET["id"];
             $queryResult = executeQuery($conn,$setQuery);
             if($queryResult) {
+                require_once("../utils/globals.php");
+                logToDb($conn, $_GET['id'], "ADDITIONAL FURNITURE", "ACCEPTED");
                 $_SESSION["send_optional_form7_review_mail"] = TRUE;
                 echo "<meta http-equiv='refresh' content='0'>";
             } else {
@@ -262,6 +264,9 @@ $("#optional_form7_reject").click(function (e) {
                 // delete exhbitor entriess
                 $query = "DELETE FROM optional_additional_fittings2 WHERE exhibitor_id=".$_GET['id'];
                 executeQuery($conn, $query);
+
+                require_once("../utils/globals.php");
+                logToDb($conn, $_GET['id'], "ADDITIONAL FURNITURE", "REJECTED");
 
                 sendMail1($conn, $exhibitor['email'], $exhibitor['participant_name'], $mailBody, $subject, $mainHeader);
                 notify("Electrical Fittings 2 form has been rejected successfully. The exhbitor will be notified regarding resubmission", "success");
