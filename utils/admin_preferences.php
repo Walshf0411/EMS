@@ -10,3 +10,4 @@
         $queryResults = executeQuery($conn, $query);
         return $queryResults->fetch_assoc();
     }
+?>

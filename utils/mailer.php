@@ -11,7 +11,7 @@ if (DEBUG) {
     require_once("superz_connect.php");
 }
 require("../utils/render_mail_templates.php");
-require("../utils/admin_preferences.php");
+require_once("../utils/admin_preferences.php");
 
 function sendMail1 ($conn, $toAddress, $toName, $mailBody, $subject, $mainHeader) {
     $preferences = getAdminPreferences($conn);

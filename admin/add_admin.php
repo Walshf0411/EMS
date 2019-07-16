@@ -19,6 +19,7 @@
                     <?php 
                         require_once("add_admin_backend.php");
                         getAllAdmins($conn);
+                        require_once("../utils/mailer.php");
                     ?>
                 </tbody>
             </table>
@@ -119,9 +120,13 @@
         
         if (!checkAdminExists($conn, $fullName, $username, $email)) {
             // admin does not exist.
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $query = "INSERT INTO admin(full_name, username, email, password) values('$fullName', '$username', '$email', '$password')";
-        
+            $password1 = password_hash($password, PASSWORD_DEFAULT);
+            $query = "INSERT INTO admin(full_name, username, email, password) values('$fullName', '$username', '$email', '$password1')";
+            $mailHeader = "You have been invited to INTIMASIA Kolkata 2019";
+            $mailBody = "username: ".$fullName." Password : ".$password;
+            $subject = "Invitation to event";
+            sendMail1($conn, $email, $name, $mailBody, $subject, $mailHeader);
+            
             if (executeQuery($conn, $query)) {
                 notify("Admin account created", "success");
             }else {
