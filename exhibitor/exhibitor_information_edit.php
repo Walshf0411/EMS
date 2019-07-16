@@ -1,3 +1,5 @@
+<?php require('../utils/form_logo_details.php'); ?>
+    <hr>
 <div align=center>
     <h5>Edit Exhibitor Information</h5>
 </div>

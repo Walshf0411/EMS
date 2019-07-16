@@ -1,3 +1,5 @@
+<?php require('../utils/form_logo_details.php'); ?>
+    <hr>
 <div class="container">
     <div class="row">
         <div class="offset-sm-4"></div>

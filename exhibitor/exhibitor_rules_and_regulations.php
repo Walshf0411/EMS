@@ -1,3 +1,5 @@
+<?php require('../utils/form_logo_details.php'); ?>
+    <hr>
 <div class="content_wrapper">
     <div><h3>Rules and Regulations</h3></div> 
     <ul style="margin-top:2%;">

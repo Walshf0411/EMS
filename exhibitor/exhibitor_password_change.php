@@ -1,3 +1,5 @@
+<?php require('../utils/form_logo_details.php'); ?>
+    <hr>
 <main class="content" role="content">
     <section id="section1">
         <div id="regForm" class="container-fluid col-md-12  col-sm-12">
