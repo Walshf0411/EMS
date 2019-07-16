@@ -146,6 +146,9 @@
                 }
                 executeQuery($conn, $setQuery);
             }
+            include_once("../utils/globals.php");
+            logToDb($conn, $id, "MANDATORY FORMS");
+
             $_SESSION['mandatory_forms_submitted'] = TRUE;
             $participantName = $_SESSION['user_full_name'] ;
 

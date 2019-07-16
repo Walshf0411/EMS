@@ -38,6 +38,9 @@
                 $setQuery = "INSERT INTO exhibitor_forms_submitted (exhibitor_id, optional_form5, booth_number, participant_name) VALUES(".$_SESSION['user_id'].", 1, '$boothNumber', '$participantName')";
                 executeQuery($conn, $setQuery);
             }
+            include_once("../utils/globals.php");
+            logToDb($conn, $_SESSION["user_id"], "OTHER SERVICES");
+
             $participantName = $_SESSION['user_full_name'];
             global $base_url;
             

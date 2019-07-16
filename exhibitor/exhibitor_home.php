@@ -1,4 +1,6 @@
 <div style="home-content-wrapper">
+    <?php require('../utils/form_logo_details.php'); ?>
+    <hr>
     <div class="home-header">
         <h4>Welcome to Exhibitor Management System</h4>
     </div>

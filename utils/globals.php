@@ -1,7 +1,7 @@
 <?php
 
 // turn development mode on off by setting this boolean
-define("DEBUG", FALSE);
+define("DEBUG", TRUE);
 
 function logToJS($message) {
     echo "<script>console.log('$message')</script>";
@@ -92,5 +92,42 @@ function getSubmissionDates($conn, $format="d F Y") {
         $dates["optional_form7_deadline"] = date($format, strtotime($dates['optional_form7_deadline']));
 
         return $dates;
+    }
+}
+
+function logToDb($conn, $exhibitorId, $formName, $status=NULL) {
+    
+    /**
+     * function to log some status about form submision in db.
+     * Possible status messages
+     * Exhibitor: SUBMITTED EDITED
+     * ADMIN: ACCEPTED, REJETED
+     *  */ 
+    if (!$status) {
+        // a status wiil be provided only by the admin code
+        // the below if else loop is to determine what the status should be
+        $checkQuery = "SELECT * FROM logs WHERE exhibitor_id = $exhibitorId AND form_name = '$formName'";
+        $checkQueryResult = executeQuery($conn, $checkQuery);
+        if ($checkQueryResult->num_rows > 0) {
+            /* 
+            the above statement means that the user has already 
+            submitted the form before, hence we add a log with the status EDITED
+            */
+            $status = "EDITED";
+            $insertLog = "INSERT INTO logs(exhibitor_id, form_name, status) values($exhibitorId, '$formName', '$status')";
+            executeQuery($conn, $insertLog);
+        } else {
+            /**
+             * This block means that the user has not previously submitted this form
+             * hence the status will be SUBMITTED.
+             */
+            $status = "SUBMITTED";
+            $insertLog = "INSERT INTO logs(exhibitor_id, form_name, status) values($exhibitorId, '$formName', '$status')";
+            executeQuery($conn, $insertLog);
+        }
+    } else {
+        // this code will execute only when exhibitor side calls the method.
+        $insertLog = "INSERT INTO logs(exhibitor_id, form_name, status) values($exhibitorId, '$formName', '$status')";
+        executeQuery($conn, $insertLog);
     }
 }
