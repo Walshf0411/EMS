@@ -21,25 +21,25 @@
 
 <body>
     <div class="container" id="main-container">
-        <div class="login-container" align=center>
-            <form action="#" method=POST onsubmit="isValidForm(this)" id="login-form">
-                <img id="logo_image" src="../images/logo.png" alt="Intimasia Logo" width="280px" height="150px">
+        <img src="../images/login_background.jpg" alt="Background image" width="100%" height="100%" id="login-background-image">
+        
+        <div class="login-container" align="center">
+            <form action="login.php" method ="POST">
+                <img id="logo_image" class="img-responsive" src="../images/logo.png" alt="INTIMASIA logo">
                 <br><br>
                 <h5>Admin Login</h5>
-                <div class="error_div text-danger""></div>
                 <div class="input_div">
                     <i class="fa fa-user"></i>
-                    <input required type="text" name="userid" autocomplete="false" class="form-control input_box" placeholder="Enter User ID">
-                </div>
-                <br>
+                    <input type="text" name="email" autocomplete="false" class="form-control input_box" placeholder="Enter Username" required>
+                </div><br>
                 <div class="input_div">
                     <i class="fa fa-key"></i>
-                    <input required type="password" name="password" autocomplete="false" class="form-control input_box" placeholder="Enter password">
-                </div>
-                <br>
-                <button type="submit" class="btn btn-outline-info"><i class="fas fa-email"></i> Submit</button>
+                    <input type="password" name="password" autocomplete="false" class="form-control input_box" placeholder="Enter password" required>
+                </div><br>
+                <button type="submit" name="submit" class="btn btn-outline-info"><i class="fas fa-email"></i> Submit</button>
             </form>
         </div>
+
     </div>
 </body>
 </html>

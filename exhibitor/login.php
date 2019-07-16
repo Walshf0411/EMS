@@ -19,9 +19,11 @@
 </head>
 <body>
     <div class="container" id="main-container">
-        <div class="login-container" align ="center" >
-            <form action="login.php" method ="POST" >
-                <img id="logo_image" src="../images/logo.png" alt="INTIMASIA logo" width="280px" height="150px;">
+        <img src="../images/login_background.jpg" alt="Background image" width="100%" height="100%" id="login-background-image">
+        
+        <div class="login-container" align="center">
+            <form action="login.php" method ="POST">
+                <img id="logo_image" class="img-responsive" src="../images/logo.png" alt="INTIMASIA logo">
                 <br><br>
                 <h5>Exhibitor Login</h5>
                 <div class="input_div">
@@ -35,8 +37,10 @@
                 <button type="submit" name="submit" class="btn btn-outline-info"><i class="fas fa-email"></i> Submit</button>
             </form>
         </div>
+
     </div>
 </body>
+
 <?php
     // if the user is tries to access the dashboard without login in, will be redirected to this page
     // and the below code will execute to show him that he has to first login.

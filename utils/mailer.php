@@ -52,7 +52,7 @@ function sendMail ($conn, $toAddress, $toName, $username, $password, $mainHeader
     $content1 = "";
     $content1 .= nl2br($preferences['mail_body']); #converts new linest to <br>
     $content1 .= "
-    <br>We're excited to have you on board, kindly click on the link below to complete your participation process by filling the Exhibitor Manual. Please note your login details are as follows:<br><br>
+    <br>Kindly click on the link below to complete your participation process by filling the Exhibitor Manual. Please note your login details are as follows:<br><br>
     <div>
         <strong>username:</strong> $username<br>
         <strong>password:</strong> $password<br>
