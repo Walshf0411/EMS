@@ -24,13 +24,13 @@
         <img src="../images/login_background.jpg" alt="Background image" width="100%" height="100%" id="login-background-image">
         
         <div class="login-container" align="center">
-            <form action="login.php" method ="POST">
+            <form action="login.php" method="POST">
                 <img id="logo_image" class="img-responsive" src="../images/logo.png" alt="INTIMASIA logo">
                 <br><br>
                 <h5>Admin Login</h5>
                 <div class="input_div">
                     <i class="fa fa-user"></i>
-                    <input type="text" name="email" autocomplete="false" class="form-control input_box" placeholder="Enter Username" required>
+                    <input type="text" name="userid" autocomplete="false" class="form-control input_box" placeholder="Enter Username" required>
                 </div><br>
                 <div class="input_div">
                     <i class="fa fa-key"></i>
@@ -78,6 +78,7 @@
     }
     // below is the code that will execute on user submitting the login form.
     if (isset($_POST['userid']) && isset($_POST['password'])) {
+
         require_once('../utils/globals.php');
         if (DEBUG) {
             // if development mode is on
