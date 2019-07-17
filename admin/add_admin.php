@@ -123,7 +123,7 @@
             $password1 = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT INTO admin(full_name, username, email, password) values('$fullName', '$username', '$email', '$password1')";
             $mailHeader = "You have been invited to INTIMASIA Kolkata 2019";
-            $mailBody = "username: ".$fullName." Password : ".$password;
+            $mailBody = "username: ".$email." Password : ".$password;
             $subject = "Invitation to event";
             sendMail1($conn, $email, $name, $mailBody, $subject, $mailHeader);
             
