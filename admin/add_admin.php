@@ -27,9 +27,6 @@
     </div>
 
     <h4>Add Admin</h4>
-    <div class="alert alert-danger">
-        <strong>NOTE:</strong> The preferences will be common for all the admins.
-    </div>    
     <form action="#" method="post" class="form-group">
         <div class="form-group">
             <label for="full_name">Full Name</label>
