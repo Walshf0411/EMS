@@ -53,10 +53,10 @@
     PEPPERMINT COMMUNICATIONS PVT. LTD. <br>
     Mumbai <br><br>
 
-        <strong>Subject:</strong> Undertaking towards participation at Super Juniorz, Chennai 2019
+        <strong>Subject:</strong> Undertaking towards participation at Intimasia, Kolkata 2019
         <p>
-        We, hereby undertake not to leave our booth unattended on 24th & 25th June 2019 from 10AM to 7PM on both the days at
-        Super Juniorz 2019. Furthermore, we shall abide by all the rules and regulations as mentioned in participation form and Exhibitors
+        We, hereby undertake not to leave our booth unattended on 07th, 08th & 09th August 2019 from 10AM to 7PM on all the days at
+        Intimasia 2019. Furthermore, we shall abide by all the rules and regulations as mentioned in participation form and Exhibitors
         Manual. We also understand the dismantling of booths before the end of exhibition or leaving the booths unattended shall attract a
         penalty of Rs.50,000 (Rupees Fifty Thousand Only) in addition to being bared from participating in any future event of Peppermint
         Communications Pvt. Ltd.

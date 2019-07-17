@@ -53,7 +53,7 @@
     <ol style="padding:0;margin:0">
         <strong>THIS FORM MUST BE COMPLETED AND RETURNED BY EVERY EXHIBITOR</strong>
         <li><strong>APPLICATION :</strong>
-        Please use this Form to apply for your stall personnel badges before 15th May 2019</li>
+        Please use this Form to apply for your stall personnel badges before <?php echo getSubmissionDates($conn)['mandatory_forms_deadline']?></li>
         <li><strong>PREPARATION OF EXHIBITORS’ BADGES :</strong>
         To avoid errors in the preparation of badges, Exhibitors are requested to TYPE all names in BLOCK LETTERS</li>
         <li><strong>COLLECTION OF BADGES :</strong>

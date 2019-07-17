@@ -26,15 +26,21 @@
                 <td class="w-25"><a href="mailto:yusuf@peppermint.co.in">yusuf@peppermint.co.in</a></td>
             </tr>
             <tr>
+                <td ><div>General Manager</div></td>
+                <td ><div>Ms. Mariya Dohadwala</div></td>
+                <td><a href="tel:+919920836252">+91-9920836252</a></td>
+                <td ><a href="mailto:yusuf@peppermint.co.in">mariya@peppermint.co.in</a></td>
+            </tr>
+            <tr>
                 <td><div>Project Head</div></td>
-                <td><div>Ms. Farheen Khan</div></td>
-                <td><a href="tel:+91 80808 99927">+91-80808-99927</a></td>
-                <td><a href="mailto:farheen.khan@peppermint.co.in">farheen.khan@peppermint.co.in</a></td>
+                <td><div>Mr. Ratnadeep Bagchi</div></td>
+                <td><a href="tel:+91-8369082005">+91-8369082005</a></td>
+                <td><a href="mailto:ratnadeep.bagchi@peppermint.co.in">ratnadeep.bagchi@peppermint.co.in</a></td>
             </tr>
             <tr>
                 <td><div>Production Head</div></td>
                 <td><div>Mr. Ganesh Agawane</div></td>
-                <td><a href="tel:+91 75063 99952">+91-75063-99952</td>
+                <td><a href="tel:+91-7506399952">+91-7506399952</td>
                 <td><a href="mailto:ganesh.agawane@peppermint.co.in">ganesh.agawane@peppermint.co.in</a></td>
             </tr>
         </tbody>
@@ -52,20 +58,20 @@
             <tr>
                 <td class="w-25"><div>Exhibitor Queries</div></td>
                 <td class="w-25"><div>Ms. Siddhi Karia</div></td>
-                <td class="w-25"><a href="tel:+91 98191 32860">+91-98191-32860</a></td>
-                <td class="w-25"><a href="mailto:sj.exhibitor@gmail.com">sj.exhibitor@gmail.com</a></td>
+                <td class="w-25"><a href="tel:+91 98191 32860">+91-9819132860</a></td>
+                <td class="w-25"><a href="mailto:intimasia.exhibitor@gmail.com">intimasia.exhibitor@gmail.com</a></td>
             </tr>
             <tr>
                 <td><div>Visitor Registration</div></td>
-                <td><div>Ms. Pallavi Dhavade</div></td>
-                <td><a href="tel:+91 86574 84504">+91-86574-84504</a></td>
-                <td><a href="mailto:sj.exhibitor@gmail.com">sj.visitors@gmail.com</a></td>
+                <td><div>Ms. Anjali Singh</div></td>
+                <td><a href="tel:+91-7506399951">+91-7506399951</a></td>
+                <td><a href="mailto:intimasia.exhibitor@gmail.com">intimasia.visitors@gmail.com</a></td>
             </tr>
             <tr>
                 <td><div>VIP Buyers Services</div></td>
                 <td><div>Ms. Umankashi Parmar</div></td>
-                <td><a href="tel:+91 75063 99951">+91 75063-99951</a></td>
-                <td><a href="mailto:sj.exhibitor@gmail.com">sj.visitors@gmail.com</a></td>
+                <td><a href="tel:+91 7506399951">+91 7506399951</a></td>
+                <td><a href="mailto:uma.parmar@gmail.com">uma.parmar@gmail.com</a></td>
             </tr>
         </tbody>
     </table>

@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div class="container" id="main-container">
+    <div class="" id="main-container">
         <img src="../images/login_background.jpg" alt="Background image" width="100%" height="100%" id="login-background-image">
         
         <div class="login-container" align="center">
