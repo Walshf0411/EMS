@@ -20,6 +20,8 @@ function printExhibitorList($conn, $queryResult) {
             $contactPerson = $exhibitor['contact_person'];
             $phoneNumber = $exhibitor['phone_number'];
             $boothNumber = $exhibitor['booth_number'];
+            $boothSize = $exhibitor['booth_size'];
+            $amount = $exhibitor['amount'];
             echo "<tr>
                     <td>$count</td>
                     <td>$name</td>
@@ -27,6 +29,8 @@ function printExhibitorList($conn, $queryResult) {
                     <td>$contactPerson</td>
                     <td>$phoneNumber</td>
                     <td>$boothNumber</td>
+                    <td>$boothSize</td>
+                    <td>$amount</td>
                 </tr>";
             $count++;
         }

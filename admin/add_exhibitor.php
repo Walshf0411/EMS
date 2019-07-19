@@ -14,7 +14,9 @@
                         <th>Email</th>
                         <th>Contact Person</th>
                         <th>Contact number</th>
-                        <th>Booth Number</th>   
+                        <th>Booth Number</th>
+                        <th>Booth Size</th>
+                        <th>Amount</th>   
                     </tr>
                 </thead>
                 <tbody id="exhibitor-list-body">
