@@ -119,9 +119,15 @@
             // admin does not exist.
             $password1 = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT INTO admin(full_name, username, email, password) values('$fullName', '$username', '$email', '$password1')";
+<<<<<<< HEAD
             $mailHeader = "You have been added as admin at INTIMASIA Kolkata 2019";
             $mailBody = "Username: ".$username."<br> Password : ".$password;
             $subject = $mailHeader;
+=======
+            $mailHeader = "You have been invited to INTIMASIA Kolkata 2019";
+            $mailBody = "username: ".$email." Password : ".$password;
+            $subject = "Invitation to event";
+>>>>>>> 4893682de978be66ab24ae4aff93ba8708577188
             sendMail1($conn, $email, $name, $mailBody, $subject, $mailHeader);
             
             if (executeQuery($conn, $query)) {

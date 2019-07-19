@@ -46,11 +46,6 @@
             </div>
             
             <div class="form-group">
-                <strong><label for="booth_number">Booth Number<span class="required-asterik">*</span></label></strong>
-                <input type="text" class="form-control required" name="booth_number">
-            </div>
-            
-            <div class="form-group">
                 <strong><label for="contact_person">Contact Person</label></strong>
                 <input type="text" class="form-control" name="contact_person">
             </div>
@@ -64,6 +59,23 @@
                 <input type="email" name="email" class="form-control required email"/>
             </div>
             
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <strong><label for="booth_number">Booth Number<span class="required-asterik">*</span></label></strong>
+                        <input type="text" class="form-control required" name="booth_number">
+                    </div>
+                    <div class="col-md-4">
+                        <strong><label for="booth_number">Booth Side<span class="required-asterik">*</span></label></strong>
+                        <input type="text" class="form-control required" name="booth_side">
+                    </div>
+                    <div class="col-md-4">
+                        <strong><label for="booth_number">Amount<span class="required-asterik">*</span></label></strong>
+                        <input type="text" class="form-control required" name="amount">
+                    </div>
+                </div>
+            </div>
+
             <button type="submit" class="btn btn-outline-info">Add Exhibitor</button>
 
             <div class="overlay" id="add-exhibitor-overlay" align=center>
@@ -123,7 +135,7 @@
 <?php
 
 // below is the code to execute
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_person']) && isset($_POST['phone_number']) && isset($_POST['brand_name']) && isset($_POST['booth_number'])) {
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_person']) && isset($_POST['phone_number']) && isset($_POST['brand_name']) && isset($_POST['booth_number']) && isset($_POST["booth_side"]) && isset($_POST["amount"])) {
     // if the data is properly send through the request.
     $name = $conn->real_escape_string(trim($_POST['name']));
     $email = $conn->real_escape_string(trim($_POST['email']));
@@ -131,6 +143,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_per
     $phoneNumber = $conn->real_escape_string(trim($_POST['phone_number']));
     $brandName = $conn->real_escape_string(trim($_POST['brand_name']));
     $boothNumber = $conn->real_escape_string(trim($_POST['booth_number']));
+    $boothSide = $conn->real_escape_string(trim($_POST['booth_side']));
+    $amount = $conn->real_escape_string(trim($_POST['amount']));
 
     logToJS($name.$email.$phoneNumber);
 
@@ -145,7 +159,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_per
             $password = generatePassword();
             // the below mail is written as such that, only if the mail is sent to the user then only, 
             // will the exhibitor be added in the database.
-            if (insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $brandName, $boothNumber, $username, $password)) {
+            if (insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $brandName, $boothNumber, $username, $password,$boothSide,$amount)) {
                 $mailHeader = "You have been invited to INTIMASIA Kolkata 2019";
                 sendMail($conn, $email, $name, $email, $password, $mailHeader);
                 $_SESSION['insert_status'] = "success";
