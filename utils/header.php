@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top">
 	<div class="container">
 		
-		<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "EXHIBITOR"): ?>
+		<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "ADMIN"): ?>
 		<a class="navbar-brand" href="http://intimasia.com/ems/exhibitor">EMS</a>
 		<?php elseif(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "EXHIBITOR"): ?>
 		<a class="navbar-brand" href="http://intimasia.com/ems/admin">EMS</a>
