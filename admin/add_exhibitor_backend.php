@@ -69,7 +69,7 @@ function insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $boo
     
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $query = "INSERT INTO exhibitor(participant_name, username, phone_number, email, password, booth_number, contact_person, booth_size, amount) 
-    values('$name', '$brandName', '$username', '$phoneNumber','$email', '$hashedPassword', '$boothNumber', '$contactPerson','$boothSide','$amount')";
+    values('$name', '$username', '$phoneNumber','$email', '$hashedPassword', '$boothNumber', '$contactPerson','$boothSide','$amount')";
     $queryResult = executeQuery($conn, $query);
     return $queryResult;
 }
