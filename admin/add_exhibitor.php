@@ -46,11 +46,11 @@
             </div>
             
             <div class="form-group">
-                <strong><label for="contact_person">Contact Person</label></strong>
+                <strong><label for="contact_person">Contact Person<span class="required-asterik">*</span></label></strong>
                 <input type="text" class="form-control" name="contact_person">
             </div>
             <div class="form-group">
-                <strong><label for="phone_number">Contact number</label></strong><br>
+                <strong><label for="phone_number">Contact number<span class="required-asterik">*</span></label></strong><br>
                 <input type="phone" class="form-control" name="phone_number"/>
             </div>
             
@@ -66,8 +66,8 @@
                         <input type="text" class="form-control required" name="booth_number">
                     </div>
                     <div class="col-md-4">
-                        <strong><label for="booth_number">Booth Side<span class="required-asterik">*</span></label></strong>
-                        <input type="text" class="form-control required" name="booth_side">
+                        <strong><label for="booth_number">Booth Size<span class="required-asterik">*</span></label></strong>
+                        <input type="text" class="form-control required" name="booth_size">
                     </div>
                     <div class="col-md-4">
                         <strong><label for="booth_number">Amount<span class="required-asterik">*</span></label></strong>
@@ -135,13 +135,12 @@
 <?php
 
 // below is the code to execute
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_person']) && isset($_POST['phone_number']) && isset($_POST['brand_name']) && isset($_POST['booth_number']) && isset($_POST["booth_side"]) && isset($_POST["amount"])) {
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_person']) && isset($_POST['phone_number']) && isset($_POST['booth_number']) && isset($_POST["booth_size"]) && isset($_POST["amount"])) {
     // if the data is properly send through the request.
     $name = $conn->real_escape_string(trim($_POST['name']));
     $email = $conn->real_escape_string(trim($_POST['email']));
     $contactPerson = $conn->real_escape_string(trim($_POST['contact_person']));
     $phoneNumber = $conn->real_escape_string(trim($_POST['phone_number']));
-    $brandName = $conn->real_escape_string(trim($_POST['brand_name']));
     $boothNumber = $conn->real_escape_string(trim($_POST['booth_number']));
     $boothSide = $conn->real_escape_string(trim($_POST['booth_side']));
     $amount = $conn->real_escape_string(trim($_POST['amount']));
