@@ -15,10 +15,12 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav ">
 				<li class="nav-item">
-					<?php if(isset($_SESSION['user_type']) && $_SESSION['EXHIBITOR']): ?>
+					<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "EXHIBITOR"): ?>
 					<a class="nav-link" href="http://intimasia.com/ems/exhibitor">Home</a>
-					<?php elseif(isset($_SESSION['user_type']) && $_SESSION['ADMIN']): ?>
+					<?php elseif(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "ADMIN"): ?>
 					<a class="nav-link" href="http://intimasia.com/ems/admin">Home</a>
+					<?php else :?>
+					<a class="nav-link" href="http://intimasia.com/ems/">Home</a>
 					<?php endif ?>
 				</li>
 			</ul>

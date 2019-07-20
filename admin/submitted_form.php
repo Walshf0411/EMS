@@ -108,3 +108,15 @@
     </div>
 </body>
 </html>
+<script>
+    // the logout.php file clears the session and once we receive response, 
+    // we redirect user to the login page
+    $("#logout-btn").click(function() {
+        $.ajax({
+            url: "../logout.php",
+            success: function(data) {
+                window.location.href="login.php";
+            }
+        });
+    });
+</script>
