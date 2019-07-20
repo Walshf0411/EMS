@@ -70,6 +70,7 @@
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['full_name'] = $user['full_name'];
                 $_SESSION['id'] = $user['id'];
+                $_SESSION['user_type'] = 'ADMIN';
                 $valid = TRUE;
             }
         }

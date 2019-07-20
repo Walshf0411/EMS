@@ -67,6 +67,7 @@
                 $_SESSION['username'] = $user['username']; // this is baiscally his email
                 $_SESSION['user_full_name'] = $user['participant_name'];
                 $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_type'] = 'EXHIBITOR';
                 $_SESSION['exhibitor_booth_number'] = $user['booth_number'];
                 $_SESSION['exhibitor_contact_person'] = $user['contact_person'];
                 $_SESSION['exhibitor_contact_number'] = $user['phone_number'];

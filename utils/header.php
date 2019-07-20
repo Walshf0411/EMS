@@ -1,7 +1,12 @@
 <nav class="navbar navbar-expand-md bg-light navbar-light sticky-top">
 	<div class="container">
 		
-		<a class="navbar-brand" href="#">EMS</a>
+		<?php if(isset($_SESSION['user_type']) && $_SESSION['EXHIBITOR']): ?>
+		<a class="navbar-brand" href="http://intimasia.com/ems/exhibitor">EMS</a>
+		<?php elseif(isset($_SESSION['user_type']) && $_SESSION['ADMIN']): ?>
+		<a class="navbar-brand" href="http://intimasia.com/ems/admin">EMS</a>
+		<?php endif ?>
+		
 		
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
@@ -10,7 +15,11 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav ">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Home</a>
+					<?php if(isset($_SESSION['user_type']) && $_SESSION['EXHIBITOR']): ?>
+					<a class="nav-link" href="http://intimasia.com/ems/exhibitor">Home</a>
+					<?php elseif(isset($_SESSION['user_type']) && $_SESSION['ADMIN']): ?>
+					<a class="nav-link" href="http://intimasia.com/ems/admin">Home</a>
+					<?php endif ?>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
