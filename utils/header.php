@@ -2,9 +2,11 @@
 	<div class="container">
 		
 		<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "ADMIN"): ?>
-		<a class="navbar-brand" href="http://intimasia.com/ems/exhibitor">EMS</a>
+		<a class="navbar-brand" href="http://intimasia.co.in/ems/exhibitor">EMS</a>
 		<?php elseif(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "EXHIBITOR"): ?>
-		<a class="navbar-brand" href="http://intimasia.com/ems/admin">EMS</a>
+		<a class="navbar-brand" href="http://intimasia.co.in/ems/admin">EMS</a>
+		<?php else :?>
+		<a class="navbar-brand" href="http://intimasia.co.in/ems/">EMS</a>
 		<?php endif ?>
 		
 		
@@ -16,11 +18,11 @@
 			<ul class="navbar-nav ">
 				<li class="nav-item">
 					<?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "EXHIBITOR"): ?>
-					<a class="nav-link" href="http://intimasia.com/ems/exhibitor">Home</a>
+					<a class="nav-link" href="http://intimasia.co.in/ems/exhibitor">Home</a>
 					<?php elseif(isset($_SESSION['user_type']) && $_SESSION['user_type'] == "ADMIN"): ?>
-					<a class="nav-link" href="http://intimasia.com/ems/admin">Home</a>
+					<a class="nav-link" href="http://intimasia.co.in/ems/admin">Home</a>
 					<?php else :?>
-					<a class="nav-link" href="http://intimasia.com/ems/">Home</a>
+					<a class="nav-link" href="http://intimasia.co.in/ems/">Home</a>
 					<?php endif ?>
 				</li>
 			</ul>
