@@ -158,7 +158,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_per
             $password = generatePassword();
             // the below mail is written as such that, only if the mail is sent to the user then only, 
             // will the exhibitor be added in the database.
-            if (insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $brandName, $boothNumber, $username, $password,$boothSide,$amount)) {
+            if (insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $boothNumber, $username, $password,$boothSide,$amount)) {
                 $mailHeader = "You have been invited to INTIMASIA Kolkata 2019";
                 sendMail($conn, $email, $name, $email, $password, $mailHeader);
                 $_SESSION['insert_status'] = "success";

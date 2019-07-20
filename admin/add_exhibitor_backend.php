@@ -56,11 +56,11 @@ function checkExists($conn, $name, $email, $phoneNumber) {
     return $exists;
 }
 function checkBoothNumberExists($conn, $boothNumber) {
-    $query = "SELECT * FROM Exhibitor where booth_number='$boothNumber'";
+    $query = "SELECT * FROM exhibitor where booth_number='$boothNumber'";
     return executeQuery($conn, $query)->num_rows > 0;
 }
 
-function insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $brandName, $boothNumber, $username, $password,$boothSide, $amount) {
+function insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $boothNumber, $username, $password,$boothSide, $amount) {
     // data is not in DB.
     $username = $email;
     if (DEBUG){
@@ -68,7 +68,7 @@ function insertDataToDB($conn, $name, $email, $contactPerson, $phoneNumber, $bra
     }
     
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $query = "INSERT INTO exhibitor(participant_name, brands, username, phone_number, email, password, booth_number, contact_person, booth_side, amount) 
+    $query = "INSERT INTO exhibitor(participant_name, username, phone_number, email, password, booth_number, contact_person, booth_size, amount) 
     values('$name', '$brandName', '$username', '$phoneNumber','$email', '$hashedPassword', '$boothNumber', '$contactPerson','$boothSide','$amount')";
     $queryResult = executeQuery($conn, $query);
     return $queryResult;
