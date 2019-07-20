@@ -66,11 +66,11 @@
                         <input type="text" class="form-control required" name="booth_number">
                     </div>
                     <div class="col-md-4">
-                        <strong><label for="booth_number">Booth Size<span class="required-asterik">*</span></label></strong>
+                        <strong><label for="booth_size">Booth Size<span class="required-asterik">*</span></label></strong>
                         <input type="text" class="form-control required" name="booth_size">
                     </div>
                     <div class="col-md-4">
-                        <strong><label for="booth_number">Amount<span class="required-asterik">*</span></label></strong>
+                        <strong><label for="amount">Amount<span class="required-asterik">*</span></label></strong>
                         <input type="text" class="form-control required" name="amount">
                     </div>
                 </div>
@@ -142,7 +142,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact_per
     $contactPerson = $conn->real_escape_string(trim($_POST['contact_person']));
     $phoneNumber = $conn->real_escape_string(trim($_POST['phone_number']));
     $boothNumber = $conn->real_escape_string(trim($_POST['booth_number']));
-    $boothSide = $conn->real_escape_string(trim($_POST['booth_side']));
+    $boothSide = $conn->real_escape_string(trim($_POST['booth_size']));
     $amount = $conn->real_escape_string(trim($_POST['amount']));
 
     logToJS($name.$email.$phoneNumber);
