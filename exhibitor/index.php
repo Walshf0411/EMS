@@ -88,6 +88,7 @@
                             <a class="dropdown-item" data-toggle="pill" id="v-pills-tab-12" href="#v-pills-12" role="tab">Incoming Items Label</a>
                         </div>
                     </li>
+
                 </ul>
             </div>
             
@@ -149,9 +150,6 @@
                        <?php include("exhibitor_password_change.php");?>  
                     </div>
                     
-                    <div class="tab-pane fade" id="v-pills-16" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                       <?php include("exhibitor_rules_and_regulations.php");?>  
-                    </div>
                 </div>
             </div>
 

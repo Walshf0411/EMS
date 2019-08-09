@@ -43,6 +43,11 @@
                     <a class="nav-link" id="v-pills-tab3" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fa fa-cog"></i>Change Admin preferences</a>
                     <a class="nav-link" id="v-pills-tab4" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-key"></i>Change Password</a>
                     
+                    <div class="dropdown-divider"></div>
+                    <div class="sidebar-header">Generate Reports</div>
+                    <div class="dropdown-divider"></div>
+                    <a class="nav-link" id="v-pills-tab6" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-file-download"></i>Generate Fascia names</a>
+                    
                 </div>
             </div>
             
@@ -60,9 +65,10 @@
                     <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <?php require("change_password.php");?>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <?php require("add_admin.php");?>
+                    <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <?php require("generate_fascia_reports.php"); ?>
                     </div>
+
                 </div>
             </div>
         </div>
