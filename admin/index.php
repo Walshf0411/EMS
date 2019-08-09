@@ -46,7 +46,7 @@
                     <div class="dropdown-divider"></div>
                     <div class="sidebar-header">Generate Reports</div>
                     <div class="dropdown-divider"></div>
-                    <a class="nav-link" id="v-pills-tab6" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-file-download"></i>Generate Fascia names</a>
+                    <a class="nav-link" id="v-pills-tab6" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-file-download"></i>Generate reports</a>
                     
                 </div>
             </div>
@@ -66,7 +66,7 @@
                         <?php require("change_password.php");?>
                     </div>
                     <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <?php require("generate_fascia_reports.php"); ?>
+                        <?php require("generate_reports.php"); ?>
                     </div>
 
                 </div>
